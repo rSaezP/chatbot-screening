@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aprobado - Felicitaciones</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 600px;
+            margin: 40px auto;
+            background-color: #ffffff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .header {
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 32px;
+        }
+        .header .emoji {
+            font-size: 60px;
+            margin-bottom: 10px;
+        }
+        .content {
+            padding: 40px 30px;
+            color: #333333;
+            line-height: 1.6;
+        }
+        .content h2 {
+            color: #11998e;
+            font-size: 24px;
+            margin-top: 0;
+        }
+        .score-box {
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+            border-radius: 8px;
+            margin: 30px 0;
+        }
+        .score-box .score {
+            font-size: 48px;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+        .info-box {
+            background-color: #e8f5e9;
+            border-left: 4px solid #11998e;
+            padding: 15px;
+            margin: 20px 0;
+        }
+        .footer {
+            background-color: #f8f9fa;
+            padding: 20px 30px;
+            text-align: center;
+            color: #666666;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="emoji">🎉</div>
+            <h1>¡Felicitaciones!</h1>
+        </div>
+
+        <div class="content">
+            <h2>Hola {{nombre_candidato}},</h2>
+
+            <p><strong>¡Excelentes noticias!</strong> Has <strong>aprobado</strong> exitosamente la evaluación.</p>
+
+            <div class="score-box">
+                <div>Tu Puntaje</div>
+                <div class="score">{{puntaje}}%</div>
+                <div>Puntaje requerido: {{umbral}}%</div>
+            </div>
+
+            <div class="info-box">
+                <strong>📋 Evaluación:</strong> {{nombre_chatbot}}<br>
+                <strong>📅 Fecha de completado:</strong> {{fecha_completado}}<br>
+                <strong>✅ Resultado:</strong> APROBADO
+            </div>
+
+            <p>{{mensaje_personalizado}}</p>
+
+            <p><strong>Próximos pasos:</strong></p>
+            <ul>
+                <li>Nuestro equipo de recursos humanos revisará tu perfil</li>
+                <li>Te contactaremos pronto para informarte sobre los siguientes pasos</li>
+                <li>Mantén tu teléfono y email disponibles</li>
+            </ul>
+
+            <p>Gracias por tu tiempo y dedicación durante esta evaluación. Estamos impresionados con tus resultados y esperamos poder continuar con el proceso de selección.</p>
+
+            <p style="margin-top: 30px; color: #11998e; font-weight: bold;">¡Te deseamos mucho éxito!</p>
+        </div>
+
+        <div class="footer">
+            <p>Este es un correo automático, por favor no respondas a este mensaje.</p>
+            <p>© {{nombre_empresa}} - Sistema de Evaluación de Candidatos</p>
+        </div>
+    </div>
+</body>
+</html>

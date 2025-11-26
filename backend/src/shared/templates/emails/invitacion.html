@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invitación a Entrevista</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 600px;
+            margin: 40px auto;
+            background-color: #ffffff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 28px;
+        }
+        .content {
+            padding: 40px 30px;
+            color: #333333;
+            line-height: 1.6;
+        }
+        .content h2 {
+            color: #667eea;
+            font-size: 22px;
+            margin-top: 0;
+        }
+        .button {
+            display: inline-block;
+            background-color: #667eea;
+            color: white;
+            padding: 15px 40px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin: 20px 0;
+            font-weight: bold;
+        }
+        .button:hover {
+            background-color: #5568d3;
+        }
+        .info-box {
+            background-color: #f8f9fa;
+            border-left: 4px solid #667eea;
+            padding: 15px;
+            margin: 20px 0;
+        }
+        .footer {
+            background-color: #f8f9fa;
+            padding: 20px 30px;
+            text-align: center;
+            color: #666666;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🎯 ¡Has sido invitado!</h1>
+        </div>
+
+        <div class="content">
+            <h2>Hola {{nombre_candidato}},</h2>
+
+            <p>¡Tenemos excelentes noticias! Has sido seleccionado para participar en nuestro proceso de evaluación.</p>
+
+            <p><strong>{{nombre_empresa}}</strong> te invita a completar la siguiente entrevista virtual:</p>
+
+            <div class="info-box">
+                <strong>📋 Evaluación:</strong> {{nombre_chatbot}}<br>
+                <strong>📅 Válida hasta:</strong> {{fecha_expiracion}}<br>
+                <strong>⏱️ Duración:</strong> Tienes {{duracion_dias}} días para completarla
+            </div>
+
+            <p>La entrevista es completamente digital y podrás realizarla en cualquier momento desde tu dispositivo favorito.</p>
+
+            <center>
+                <a href="{{chatbot_url}}" class="button">Comenzar Entrevista</a>
+            </center>
+
+            <p style="margin-top: 30px;"><strong>Consejos importantes:</strong></p>
+            <ul>
+                <li>Asegúrate de estar en un lugar tranquilo</li>
+                <li>Tómate tu tiempo para responder cada pregunta</li>
+                <li>Sé honesto y auténtico en tus respuestas</li>
+                <li>Puedes pausar y continuar más tarde si lo necesitas</li>
+            </ul>
+
+            <p>Si el botón no funciona, copia y pega esta URL en tu navegador:<br>
+            <small style="color: #667eea;">{{chatbot_url}}</small></p>
+        </div>
+
+        <div class="footer">
+            <p>Este es un correo automático, por favor no respondas a este mensaje.</p>
+            <p>© {{nombre_empresa}} - Sistema de Evaluación de Candidatos</p>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<!-- saved from url=(0058)https://site-uikit-vue2.0.3itapp.com/components/input.html -->
+<html lang="es-ES" dir="ltr" data-eit-theme="light"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Input | UIKIT 2.0</title>
+    <meta name="description" content="Documentación">
+    <meta name="generator" content="VitePress v1.6.4">
+    <style type="text/css">:root, :host {
+  --fa-font-solid: normal 900 1em/1 "Font Awesome 6 Free";
+  --fa-font-regular: normal 400 1em/1 "Font Awesome 6 Free";
+  --fa-font-light: normal 300 1em/1 "Font Awesome 6 Pro";
+  --fa-font-thin: normal 100 1em/1 "Font Awesome 6 Pro";
+  --fa-font-duotone: normal 900 1em/1 "Font Awesome 6 Duotone";
+  --fa-font-duotone-regular: normal 400 1em/1 "Font Awesome 6 Duotone";
+  --fa-font-duotone-light: normal 300 1em/1 "Font Awesome 6 Duotone";
+  --fa-font-duotone-thin: normal 100 1em/1 "Font Awesome 6 Duotone";
+  --fa-font-brands: normal 400 1em/1 "Font Awesome 6 Brands";
+  --fa-font-sharp-solid: normal 900 1em/1 "Font Awesome 6 Sharp";
+  --fa-font-sharp-regular: normal 400 1em/1 "Font Awesome 6 Sharp";
+  --fa-font-sharp-light: normal 300 1em/1 "Font Awesome 6 Sharp";
+  --fa-font-sharp-thin: normal 100 1em/1 "Font Awesome 6 Sharp";
+  --fa-font-sharp-duotone-solid: normal 900 1em/1 "Font Awesome 6 Sharp Duotone";
+  --fa-font-sharp-duotone-regular: normal 400 1em/1 "Font Awesome 6 Sharp Duotone";
+  --fa-font-sharp-duotone-light: normal 300 1em/1 "Font Awesome 6 Sharp Duotone";
+  --fa-font-sharp-duotone-thin: normal 100 1em/1 "Font Awesome 6 Sharp Duotone";
+}
+
+svg:not(:root).svg-inline--fa, svg:not(:host).svg-inline--fa {
+  overflow: visible;
+  box-sizing: content-box;
+}
+
+.svg-inline--fa {
+  display: var(--fa-display, inline-block);
+  height: 1em;
+  overflow: visible;
+  vertical-align: -0.125em;
+}
+.svg-inline--fa.fa-2xs {
+  vertical-align: 0.1em;
+}
+.svg-inline--fa.fa-xs {
+  vertical-align: 0em;
+}
+.svg-inline--fa.fa-sm {
+  vertical-align: -0.0714285705em;
+}
+.svg-inline--fa.fa-lg {
+  vertical-align: -0.2em;
+}
+.svg-inline--fa.fa-xl {
+  vertical-align: -0.25em;
+}
+.svg-inline--fa.fa-2xl {
+  vertical-align: -0.3125em;
+}
+.svg-inline--fa.fa-pull-left {
+  margin-right: var(--fa-pull-margin, 0.3em);
+  width: auto;
+}
+.svg-inline--fa.fa-pull-right {
+  margin-left: var(--fa-pull-margin, 0.3em);
+  width: auto;
+}
+.svg-inline--fa.fa-li {
+  width: var(--fa-li-width, 2em);
+  top: 0.25em;
+}
+.svg-inline--fa.fa-fw {
+  width: var(--fa-fw-width, 1.25em);
+}
+
+.fa-layers svg.svg-inline--fa {
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.fa-layers-counter, .fa-layers-text {
+  display: inline-block;
+  position: absolute;
+  text-align: center;
+}
+
+.fa-layers {
+  display: inline-block;
+  height: 1em;
+  position: relative;
+  text-align: center;
+  vertical-align: -0.125em;
+  width: 1em;
+}
+.fa-layers svg.svg-inline--fa {
+  transform-origin: center center;
+}
+
+.fa-layers-text {
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  transform-origin: center center;
+}
+
+.fa-layers-counter {
+  background-color: var(--fa-counter-background-color, #ff253a);
+  border-radius: var(--fa-counter-border-radius, 1em);
+  box-sizing: border-box;
+  color: var(--fa-inverse, #fff);
+  line-height: var(--fa-counter-line-height, 1);
+  max-width: var(--fa-counter-max-width, 5em);
+  min-width: var(--fa-counter-min-width, 1.5em);
+  overflow: hidden;
+  padding: var(--fa-counter-padding, 0.25em 0.5em);
+  right: var(--fa-right, 0);
+  text-overflow: ellipsis;
+  top: var(--fa-top, 0);
+  transform: scale(var(--fa-counter-scale, 0.25));
+  transform-origin: top right;
+}
+
+.fa-layers-bottom-right {
+  bottom: var(--fa-bottom, 0);
+  right: var(--fa-right, 0);
+  top: auto;
+  transform: scale(var(--fa-layers-scale, 0.25));
+  transform-origin: bottom right;
+}
+
+.fa-layers-bottom-left {
+  bottom: var(--fa-bottom, 0);
+  left: var(--fa-left, 0);
+  right: auto;
+  top: auto;
+  transform: scale(var(--fa-layers-scale, 0.25));
+  transform-origin: bottom left;
+}
+
+.fa-layers-top-right {
+  top: var(--fa-top, 0);
+  right: var(--fa-right, 0);
+  transform: scale(var(--fa-layers-scale, 0.25));
+  transform-origin: top right;
+}
+
+.fa-layers-top-left {
+  left: var(--fa-left, 0);
+  right: auto;
+  top: var(--fa-top, 0);
+  transform: scale(var(--fa-layers-scale, 0.25));
+  transform-origin: top left;
+}
+
+.fa-1x {
+  font-size: 1em;
+}
+
+.fa-2x {
+  font-size: 2em;
+}
+
+.fa-3x {
+  font-size: 3em;
+}
+
+.fa-4x {
+  font-size: 4em;
+}
+
+.fa-5x {
+  font-size: 5em;
+}
+
+.fa-6x {
+  font-size: 6em;
+}
+
+.fa-7x {
+  font-size: 7em;
+}
+
+.fa-8x {
+  font-size: 8em;
+}
+
+.fa-9x {
+  font-size: 9em;
+}
+
+.fa-10x {
+  font-size: 10em;
+}
+
+.fa-2xs {
+  font-size: 0.625em;
+  line-height: 0.1em;
+  vertical-align: 0.225em;
+}
+
+.fa-xs {
+  font-size: 0.75em;
+  line-height: 0.0833333337em;
+  vertical-align: 0.125em;
+}
+
+.fa-sm {
+  font-size: 0.875em;
+  line-height: 0.0714285718em;
+  vertical-align: 0.0535714295em;
+}
+
+.fa-lg {
+  font-size: 1.25em;
+  line-height: 0.05em;
+  vertical-align: -0.075em;
+}
+
+.fa-xl {
+  font-size: 1.5em;
+  line-height: 0.0416666682em;
+  vertical-align: -0.125em;
+}
+
+.fa-2xl {
+  font-size: 2em;
+  line-height: 0.03125em;
+  vertical-align: -0.1875em;
+}
+
+.fa-fw {
+  text-align: center;
+  width: 1.25em;
+}
+
+.fa-ul {
+  list-style-type: none;
+  margin-left: var(--fa-li-margin, 2.5em);
+  padding-left: 0;
+}
+.fa-ul > li {
+  position: relative;
+}
+
+.fa-li {
+  left: calc(-1 * var(--fa-li-width, 2em));
+  position: absolute;
+  text-align: center;
+  width: var(--fa-li-width, 2em);
+  line-height: inherit;
+}
+
+.fa-border {
+  border-color: var(--fa-border-color, #eee);
+  border-radius: var(--fa-border-radius, 0.1em);
+  border-style: var(--fa-border-style, solid);
+  border-width: var(--fa-border-width, 0.08em);
+  padding: var(--fa-border-padding, 0.2em 0.25em 0.15em);
+}
+
+.fa-pull-left {
+  float: left;
+  margin-right: var(--fa-pull-margin, 0.3em);
+}
+
+.fa-pull-right {
+  float: right;
+  margin-left: var(--fa-pull-margin, 0.3em);
+}
+
+.fa-beat {
+  animation-name: fa-beat;
+  animation-delay: var(--fa-animation-delay, 0s);
+  animation-direction: var(--fa-animation-direction, normal);
+  animation-duration: var(--fa-animation-duration, 1s);
+  animation-iteration-count: var(--fa-animation-iteration-count, infinite);
+  animation-timing-function: var(--fa-animation-timing, ease-in-out);
+}
+
+.fa-bounce {
+  animation-name: fa-bounce;
+  animation-delay: var(--fa-animation-delay, 0s);
+  animation-direction: var(--fa-animation-direction, normal);
+  animation-duration: var(--fa-animation-duration, 1s);
+  animation-iteration-count: var(--fa-animation-iteration-count, infinite);
+  animation-timing-function: var(--fa-animation-timing, cubic-bezier(0.28, 0.84, 0.42, 1));
+}
+
+.fa-fade {
+  animation-name: fa-fade;
+  animation-delay: var(--fa-animation-delay, 0s);
+  animation-direction: var(--fa-animation-direction, normal);
+  animation-duration: var(--fa-animation-duration, 1s);
+  animation-iteration-count: var(--fa-animation-iteration-count, infinite);
+  animation-timing-function: var(--fa-animation-timing, cubic-bezier(0.4, 0, 0.6, 1));
+}
+
+.fa-beat-fade {
+  animation-name: fa-beat-fade;
+  animation-delay: var(--fa-animation-delay, 0s);
+  animation-direction: var(--fa-animation-direction, normal);
+  animation-duration: var(--fa-animation-duration, 1s);
+  animation-iteration-count: var(--fa-animation-iteration-count, infinite);
+  animation-timing-function: var(--fa-animation-timing, cubic-bezier(0.4, 0, 0.6, 1));
+}
+
+.fa-flip {
+  animation-name: fa-flip;
+  animation-delay: var(--fa-animation-delay, 0s);
+  animation-direction: var(--fa-animation-direction, normal);
+  animation-duration: var(--fa-animation-duration, 1s);
+  animation-iteration-count: var(--fa-animation-iteration-count, infinite);
+  animation-timing-function: var(--fa-animation-timing, ease-in-out);
+}
+
+.fa-shake {
+  animation-name: fa-shake;
+  animation-delay: var(--fa-animation-delay, 0s);
+  animation-direction: var(--fa-animation-direction, normal);
+  animation-duration: var(--fa-animation-duration, 1s);
+  animation-iteration-count: var(--fa-animation-iteration-count, infinite);
+  animation-timing-function: var(--fa-animation-timing, linear);
+}
+
+.fa-spin {
+  animation-name: fa-spin;
+  animation-delay: var(--fa-animation-delay, 0s);
+  animation-direction: var(--fa-animation-direction, normal);
+  animation-duration: var(--fa-animation-duration, 2s);
+  animation-iteration-count: var(--fa-animation-iteration-count, infinite);
+  animation-timing-function: var(--fa-animation-timing, linear);
+}
+
+.fa-spin-reverse {
+  --fa-animation-direction: reverse;
+}
+
+.fa-pulse,
+.fa-spin-pulse {
+  animation-name: fa-spin;
+  animation-direction: var(--fa-animation-direction, normal);
+  animation-duration: var(--fa-animation-duration, 1s);
+  animation-iteration-count: var(--fa-animation-iteration-count, infinite);
+  animation-timing-function: var(--fa-animation-timing, steps(8));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fa-beat,
+.fa-bounce,
+.fa-fade,
+.fa-beat-fade,
+.fa-flip,
+.fa-pulse,
+.fa-shake,
+.fa-spin,
+.fa-spin-pulse {
+    animation-delay: -1ms;
+    animation-duration: 1ms;
+    animation-iteration-count: 1;
+    transition-delay: 0s;
+    transition-duration: 0s;
+  }
+}
+@keyframes fa-beat {
+  0%, 90% {
+    transform: scale(1);
+  }
+  45% {
+    transform: scale(var(--fa-beat-scale, 1.25));
+  }
+}
+@keyframes fa-bounce {
+  0% {
+    transform: scale(1, 1) translateY(0);
+  }
+  10% {
+    transform: scale(var(--fa-bounce-start-scale-x, 1.1), var(--fa-bounce-start-scale-y, 0.9)) translateY(0);
+  }
+  30% {
+    transform: scale(var(--fa-bounce-jump-scale-x, 0.9), var(--fa-bounce-jump-scale-y, 1.1)) translateY(var(--fa-bounce-height, -0.5em));
+  }
+  50% {
+    transform: scale(var(--fa-bounce-land-scale-x, 1.05), var(--fa-bounce-land-scale-y, 0.95)) translateY(0);
+  }
+  57% {
+    transform: scale(1, 1) translateY(var(--fa-bounce-rebound, -0.125em));
+  }
+  64% {
+    transform: scale(1, 1) translateY(0);
+  }
+  100% {
+    transform: scale(1, 1) translateY(0);
+  }
+}
+@keyframes fa-fade {
+  50% {
+    opacity: var(--fa-fade-opacity, 0.4);
+  }
+}
+@keyframes fa-beat-fade {
+  0%, 100% {
+    opacity: var(--fa-beat-fade-opacity, 0.4);
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(var(--fa-beat-fade-scale, 1.125));
+  }
+}
+@keyframes fa-flip {
+  50% {
+    transform: rotate3d(var(--fa-flip-x, 0), var(--fa-flip-y, 1), var(--fa-flip-z, 0), var(--fa-flip-angle, -180deg));
+  }
+}
+@keyframes fa-shake {
+  0% {
+    transform: rotate(-15deg);
+  }
+  4% {
+    transform: rotate(15deg);
+  }
+  8%, 24% {
+    transform: rotate(-18deg);
+  }
+  12%, 28% {
+    transform: rotate(18deg);
+  }
+  16% {
+    transform: rotate(-22deg);
+  }
+  20% {
+    transform: rotate(22deg);
+  }
+  32% {
+    transform: rotate(-12deg);
+  }
+  36% {
+    transform: rotate(12deg);
+  }
+  40%, 100% {
+    transform: rotate(0deg);
+  }
+}
+@keyframes fa-spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.fa-rotate-90 {
+  transform: rotate(90deg);
+}
+
+.fa-rotate-180 {
+  transform: rotate(180deg);
+}
+
+.fa-rotate-270 {
+  transform: rotate(270deg);
+}
+
+.fa-flip-horizontal {
+  transform: scale(-1, 1);
+}
+
+.fa-flip-vertical {
+  transform: scale(1, -1);
+}
+
+.fa-flip-both,
+.fa-flip-horizontal.fa-flip-vertical {
+  transform: scale(-1, -1);
+}
+
+.fa-rotate-by {
+  transform: rotate(var(--fa-rotate-angle, 0));
+}
+
+.fa-stack {
+  display: inline-block;
+  vertical-align: middle;
+  height: 2em;
+  position: relative;
+  width: 2.5em;
+}
+
+.fa-stack-1x,
+.fa-stack-2x {
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: var(--fa-stack-z-index, auto);
+}
+
+.svg-inline--fa.fa-stack-1x {
+  height: 1em;
+  width: 1.25em;
+}
+.svg-inline--fa.fa-stack-2x {
+  height: 2em;
+  width: 2.5em;
+}
+
+.fa-inverse {
+  color: var(--fa-inverse, #fff);
+}
+
+.sr-only,
+.fa-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.sr-only-focusable:not(:focus),
+.fa-sr-only-focusable:not(:focus) {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.svg-inline--fa .fa-primary {
+  fill: var(--fa-primary-color, currentColor);
+  opacity: var(--fa-primary-opacity, 1);
+}
+
+.svg-inline--fa .fa-secondary {
+  fill: var(--fa-secondary-color, currentColor);
+  opacity: var(--fa-secondary-opacity, 0.4);
+}
+
+.svg-inline--fa.fa-swap-opacity .fa-primary {
+  opacity: var(--fa-secondary-opacity, 0.4);
+}
+
+.svg-inline--fa.fa-swap-opacity .fa-secondary {
+  opacity: var(--fa-primary-opacity, 1);
+}
+
+.svg-inline--fa mask .fa-primary,
+.svg-inline--fa mask .fa-secondary {
+  fill: black;
+}</style><link rel="preload stylesheet" href="https://site-uikit-vue2.0.3itapp.com/assets/style.C7syULa8.css" as="style">
+    <link rel="preload stylesheet" href="https://site-uikit-vue2.0.3itapp.com/vp-icons.css" as="style">
+    
+    <script type="module" src="./Input _ UIKIT 2.0_files/app.C6wZxko1.js.descargar"></script>
+    <link rel="preload" href="https://site-uikit-vue2.0.3itapp.com/assets/inter-roman-latin.Di8DUHzh.woff2" as="font" type="font/woff2" crossorigin="">
+    <link rel="modulepreload" href="https://site-uikit-vue2.0.3itapp.com/assets/chunks/theme.CZFwxCHe.js">
+    <link rel="modulepreload" href="https://site-uikit-vue2.0.3itapp.com/assets/chunks/framework.HPF_-wp9.js">
+    <link rel="modulepreload" href="https://site-uikit-vue2.0.3itapp.com/assets/components_pagination.md.Dr0QwB5X.lean.js">
+    <link rel="icon" href="https://site-uikit-vue2.0.3itapp.com/favicon.png">
+    <script id="check-dark-mode">(()=>{const e=localStorage.getItem("vitepress-theme-appearance")||"auto",a=window.matchMedia("(prefers-color-scheme: dark)").matches;(!e||e==="auto"?a:e==="dark")&&document.documentElement.classList.add("dark")})();</script>
+    <script id="check-mac-os">document.documentElement.classList.toggle("mac",/Mac|iPhone|iPod|iPad/i.test(navigator.platform));</script>
+  <link rel="prefetch" href="https://site-uikit-vue2.0.3itapp.com/assets/index.md.DIsWoWzq.js"><link rel="prefetch" href="https://site-uikit-vue2.0.3itapp.com/assets/guide_getting-started.md.B1RVD8qO.js"><link rel="prefetch" href="https://site-uikit-vue2.0.3itapp.com/assets/components_alert.md.bxTUuxqQ.js"><link rel="prefetch" href="https://site-uikit-vue2.0.3itapp.com/assets/styles_background.md.rWwloeio.js"><link rel="prefetch" href="https://site-uikit-vue2.0.3itapp.com/assets/components_badge.md.DQdOkxsJ.js"><link rel="prefetch" href="https://site-uikit-vue2.0.3itapp.com/assets/components_button.md.CyMcyffT.js"><link rel="prefetch" href="https://site-uikit-vue2.0.3itapp.com/assets/components_detail.md.Bq50YgUl.js"><link rel="prefetch" href="https://site-uikit-vue2.0.3itapp.com/assets/components_dialog.md.DfdOwQ8j.js"><link rel="prefetch" href="https://site-uikit-vue2.0.3itapp.com/assets/components_dropdown.md.Bqkhb485.js"><link rel="prefetch" href="https://site-uikit-vue2.0.3itapp.com/assets/components_errors.md.LlOZO4Ty.js"><link rel="prefetch" href="https://site-uikit-vue2.0.3itapp.com/assets/components_filters.md.CwAE4fKI.js"><link rel="prefetch" href="https://site-uikit-vue2.0.3itapp.com/assets/components_input.md.CjZYvJTO.js"><link rel="prefetch" href="https://site-uikit-vue2.0.3itapp.com/assets/components_loading.md.Dctk7ME3.js"><link rel="prefetch" href="https://site-uikit-vue2.0.3itapp.com/assets/components_progressBar.md.C2MpS3CE.js"><link rel="prefetch" href="https://site-uikit-vue2.0.3itapp.com/assets/components_select.md.Du03Wp2H.js"><link rel="prefetch" href="https://site-uikit-vue2.0.3itapp.com/assets/components_tab.md.D0GuXMiz.js"><link rel="prefetch" href="https://site-uikit-vue2.0.3itapp.com/assets/components_table.md.CxerxzXa.js"><link rel="prefetch" href="https://site-uikit-vue2.0.3itapp.com/assets/components_textareaResize.md.BeFp8cw0.js"><link rel="prefetch" href="https://site-uikit-vue2.0.3itapp.com/assets/components_toast.md.B5J5bBwG.js"><link rel="prefetch" href="https://site-uikit-vue2.0.3itapp.com/assets/utils_useAction.md.C3f__EPf.js"><link rel="prefetch" href="https://site-uikit-vue2.0.3itapp.com/assets/utils_useFormat.md.Bb3z1iEg.js"><link rel="prefetch" href="https://site-uikit-vue2.0.3itapp.com/assets/utils_useInputMask.md.BXBeTh-F.js"><link rel="prefetch" href="https://site-uikit-vue2.0.3itapp.com/assets/utils_useKeypress.md.CJ5_9f4Q.js"><link rel="modulepreload" as="script" crossorigin="" href="https://site-uikit-vue2.0.3itapp.com/assets/chunks/VPLocalSearchBox.iDhHLIxp.js"><link rel="prefetch" href="https://site-uikit-vue2.0.3itapp.com/assets/utils_useTable.md.DqiOEclg.js"><link rel="prefetch" href="https://site-uikit-vue2.0.3itapp.com/assets/utils_useTheme.md.CCdElWaW.js"><link rel="prefetch" href="https://site-uikit-vue2.0.3itapp.com/assets/utils_useTooltip.md.C1Q8oZjK.js"><link rel="prefetch" href="https://site-uikit-vue2.0.3itapp.com/assets/utils_useValidator.md.BtpmqSmO.js"><link rel="prefetch" href="https://site-uikit-vue2.0.3itapp.com/assets/composables_useFilters.md.BkrX18bI.js"><link rel="prefetch" href="https://site-uikit-vue2.0.3itapp.com/assets/composables_useLogos.md.B9xVqPEu.js"><link rel="prefetch" href="https://site-uikit-vue2.0.3itapp.com/assets/composables_useMessage.md.uaXP7cnH.js"><link rel="prefetch" href="https://site-uikit-vue2.0.3itapp.com/assets/composables_useRequired.md.BVYZUzEq.js"><link rel="prefetch" href="https://site-uikit-vue2.0.3itapp.com/assets/composables_useRules.md.D0l-bHBd.js"><link rel="prefetch" href="https://site-uikit-vue2.0.3itapp.com/assets/styles_border.md.BR-Qt85a.js"><link rel="prefetch" href="https://site-uikit-vue2.0.3itapp.com/assets/styles_color.md.YPeFvCPl.js"><link rel="prefetch" href="https://site-uikit-vue2.0.3itapp.com/assets/styles_flex.md.CP6QDTNo.js"><link rel="prefetch" href="https://site-uikit-vue2.0.3itapp.com/assets/styles_object.md.KZsiPi2O.js"><link rel="prefetch" href="https://site-uikit-vue2.0.3itapp.com/assets/styles_opacity.md.DY8BtE1Z.js"><link rel="prefetch" href="https://site-uikit-vue2.0.3itapp.com/assets/styles_shape.md.wGA_I4ps.js"><link rel="prefetch" href="https://site-uikit-vue2.0.3itapp.com/assets/styles_spacing.md.C06oDC2O.js"><link rel="prefetch" href="https://site-uikit-vue2.0.3itapp.com/assets/styles_text.md.C8ILrC3x.js"><link rel="prefetch" href="https://site-uikit-vue2.0.3itapp.com/assets/styles_transform.md.UXCkHADo.js"><link rel="prefetch" href="https://site-uikit-vue2.0.3itapp.com/assets/styles_transition.md.Ch8vdbRP.js"></head>
+  <body style="">
+    <div id="app"><div class="Layout" data-v-5d98c3a5=""><!--[--><!--]--><!--[--><span tabindex="-1" data-v-0b0ada53=""></span><a href="https://site-uikit-vue2.0.3itapp.com/components/input.html#VPContent" class="VPSkipLink visually-hidden" data-v-0b0ada53="">Skip to content</a><!--]--><!----><header class="VPNav" data-v-5d98c3a5="" data-v-ae24b3ad=""><div class="VPNavBar has-sidebar top" data-v-ae24b3ad="" data-v-6aa21345=""><div class="wrapper" data-v-6aa21345=""><div class="container" data-v-6aa21345=""><div class="title" data-v-6aa21345=""><div class="VPNavBarTitle has-sidebar" data-v-6aa21345="" data-v-1168a8e4=""><a class="title" href="https://site-uikit-vue2.0.3itapp.com/" data-v-1168a8e4=""><!--[--><!--]--><!--[--><img class="VPImage logo" src="./Input _ UIKIT 2.0_files/isotipo.png" alt="" data-v-8426fc1a=""><!--]--><span data-v-1168a8e4="">UIKIT 2.0</span><!--[--><!--]--></a></div></div><div class="content" data-v-6aa21345=""><div class="content-body" data-v-6aa21345=""><!--[--><!--]--><div class="VPNavBarSearch search" data-v-6aa21345=""><!--[--><!----><div id="local-search"><button type="button" class="DocSearch DocSearch-Button" aria-label="Buscar"><span class="DocSearch-Button-Container"><span class="vp-icon DocSearch-Search-Icon"></span><span class="DocSearch-Button-Placeholder">Buscar</span></span><span class="DocSearch-Button-Keys"><kbd class="DocSearch-Button-Key"></kbd><kbd class="DocSearch-Button-Key">K</kbd></span></button></div><!--]--></div><nav aria-labelledby="main-nav-aria-label" class="VPNavBarMenu menu" data-v-6aa21345="" data-v-dc692963=""><span id="main-nav-aria-label" class="visually-hidden" data-v-dc692963=""> Main Navigation </span><!--[--><!--[--><a class="VPLink link VPNavBarMenuLink" href="https://site-uikit-vue2.0.3itapp.com/guide/getting-started.html" tabindex="0" data-v-dc692963="" data-v-e56f3d57=""><!--[--><span data-v-e56f3d57="">Guía</span><!--]--></a><!--]--><!--[--><a class="VPLink link VPNavBarMenuLink" href="https://site-uikit-vue2.0.3itapp.com/components/alert.html" tabindex="0" data-v-dc692963="" data-v-e56f3d57=""><!--[--><span data-v-e56f3d57="">Componentes</span><!--]--></a><!--]--><!--[--><a class="VPLink link VPNavBarMenuLink" href="https://site-uikit-vue2.0.3itapp.com/styles/background.html" tabindex="0" data-v-dc692963="" data-v-e56f3d57=""><!--[--><span data-v-e56f3d57="">Estilos</span><!--]--></a><!--]--><!--]--></nav><!----><div class="VPNavBarAppearance appearance" data-v-6aa21345="" data-v-6c893767=""><button class="VPSwitch VPSwitchAppearance" type="button" role="switch" title="Switch to dark theme" aria-checked="false" data-v-6c893767="" data-v-5337faa4="" data-v-1d5665e3=""><span class="check" data-v-1d5665e3=""><span class="icon" data-v-1d5665e3=""><!--[--><span class="vpi-sun sun" data-v-5337faa4=""></span><span class="vpi-moon moon" data-v-5337faa4=""></span><!--]--></span></span></button></div><div class="VPSocialLinks VPNavBarSocialLinks social-links" data-v-6aa21345="" data-v-0394ad82="" data-v-7bc22406=""><!--[--><a class="VPSocialLink no-icon" href="https://github.com/3itsoluciones/uikit-3it-vue" aria-label="github" target="_blank" rel="noopener" data-v-7bc22406="" data-v-bd121fe5=""><span class="vpi-social-github"></span></a><a class="VPSocialLink no-icon" href="https://cl.linkedin.com/company/3itchile" aria-label="linkedin" target="_blank" rel="noopener" data-v-7bc22406="" data-v-bd121fe5=""><span class="vpi-social-linkedin"></span></a><!--]--></div><div class="VPFlyout VPNavBarExtra extra" data-v-6aa21345="" data-v-bb2aa2f0="" data-v-cf11d7a2=""><button type="button" class="button" aria-haspopup="true" aria-expanded="false" aria-label="extra navigation" data-v-cf11d7a2=""><span class="vpi-more-horizontal icon" data-v-cf11d7a2=""></span></button><div class="menu" data-v-cf11d7a2=""><div class="VPMenu" data-v-cf11d7a2="" data-v-b98bc113=""><!----><!--[--><!--[--><!----><div class="group" data-v-bb2aa2f0=""><div class="item appearance" data-v-bb2aa2f0=""><p class="label" data-v-bb2aa2f0="">Appearance</p><div class="appearance-action" data-v-bb2aa2f0=""><button class="VPSwitch VPSwitchAppearance" type="button" role="switch" title="Switch to dark theme" aria-checked="false" data-v-bb2aa2f0="" data-v-5337faa4="" data-v-1d5665e3=""><span class="check" data-v-1d5665e3=""><span class="icon" data-v-1d5665e3=""><!--[--><span class="vpi-sun sun" data-v-5337faa4=""></span><span class="vpi-moon moon" data-v-5337faa4=""></span><!--]--></span></span></button></div></div></div><div class="group" data-v-bb2aa2f0=""><div class="item social-links" data-v-bb2aa2f0=""><div class="VPSocialLinks social-links-list" data-v-bb2aa2f0="" data-v-7bc22406=""><!--[--><a class="VPSocialLink no-icon" href="https://github.com/3itsoluciones/uikit-3it-vue" aria-label="github" target="_blank" rel="noopener" data-v-7bc22406="" data-v-bd121fe5=""><span class="vpi-social-github"></span></a><a class="VPSocialLink no-icon" href="https://cl.linkedin.com/company/3itchile" aria-label="linkedin" target="_blank" rel="noopener" data-v-7bc22406="" data-v-bd121fe5=""><span class="vpi-social-linkedin"></span></a><!--]--></div></div></div><!--]--><!--]--></div></div></div><!--[--><!--]--><button type="button" class="VPNavBarHamburger hamburger" aria-label="mobile navigation" aria-expanded="false" aria-controls="VPNavScreen" data-v-6aa21345="" data-v-e5dd9c1c=""><span class="container" data-v-e5dd9c1c=""><span class="top" data-v-e5dd9c1c=""></span><span class="middle" data-v-e5dd9c1c=""></span><span class="bottom" data-v-e5dd9c1c=""></span></span></button></div></div></div></div><div class="divider" data-v-6aa21345=""><div class="divider-line" data-v-6aa21345=""></div></div></div><!----></header><div class="VPLocalNav has-sidebar" data-v-5d98c3a5="" data-v-a6f0e41e=""><div class="container" data-v-a6f0e41e=""><button class="menu" aria-expanded="false" aria-controls="VPSidebarNav" data-v-a6f0e41e=""><span class="vpi-align-left menu-icon" data-v-a6f0e41e=""></span><span class="menu-text" data-v-a6f0e41e="">Menu</span></button><div class="VPLocalNavOutlineDropdown" style="--vp-vh:0px;" data-v-a6f0e41e="" data-v-8a42e2b4=""><button data-v-8a42e2b4="" class=""><span data-v-8a42e2b4="" class="menu-text">On this page</span><span data-v-8a42e2b4="" class="vpi-chevron-right icon"></span></button><!----></div></div></div><aside class="VPSidebar" data-v-5d98c3a5="" data-v-319d5ca6=""><div class="curtain" data-v-319d5ca6=""></div><nav class="nav" id="VPSidebarNav" aria-labelledby="sidebar-aria-label" tabindex="-1" data-v-319d5ca6=""><span class="visually-hidden" id="sidebar-aria-label" data-v-319d5ca6=""> Sidebar Navigation </span><!--[--><!--]--><!--[--><div class="group" data-v-c40bc020=""><section class="VPSidebarItem level-0" data-v-c40bc020="" data-v-b3fd67f8=""><div class="item" role="button" tabindex="0" data-v-b3fd67f8=""><div class="indicator" data-v-b3fd67f8=""></div><h2 class="text" data-v-b3fd67f8="">Introducción</h2><!----></div><div class="items" data-v-b3fd67f8=""><!--[--><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8=""><div class="item" data-v-b3fd67f8=""><div class="indicator" data-v-b3fd67f8=""></div><a class="VPLink link link" href="https://site-uikit-vue2.0.3itapp.com/guide/getting-started.html" data-v-b3fd67f8=""><!--[--><p class="text" data-v-b3fd67f8="">Empezando</p><!--]--></a><!----></div><!----></div><!--]--></div></section></div><div class="group" data-v-c40bc020=""><section class="VPSidebarItem level-0 has-active" data-v-c40bc020="" data-v-b3fd67f8=""><div class="item" role="button" tabindex="0" data-v-b3fd67f8=""><div class="indicator" data-v-b3fd67f8=""></div><h2 class="text" data-v-b3fd67f8="">Componentes</h2><!----></div><div class="items" data-v-b3fd67f8=""><!--[--><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8=""><div class="item" data-v-b3fd67f8=""><div class="indicator" data-v-b3fd67f8=""></div><a class="VPLink link link" href="https://site-uikit-vue2.0.3itapp.com/components/alert.html" data-v-b3fd67f8=""><!--[--><p class="text" data-v-b3fd67f8="">Alert</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8=""><div class="item" data-v-b3fd67f8=""><div class="indicator" data-v-b3fd67f8=""></div><a class="VPLink link link" href="https://site-uikit-vue2.0.3itapp.com/components/badge.html" data-v-b3fd67f8=""><!--[--><p class="text" data-v-b3fd67f8="">Badge</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8=""><div class="item" data-v-b3fd67f8=""><div class="indicator" data-v-b3fd67f8=""></div><a class="VPLink link link" href="https://site-uikit-vue2.0.3itapp.com/components/button.html" data-v-b3fd67f8=""><!--[--><p class="text" data-v-b3fd67f8="">Button</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8=""><div class="item" data-v-b3fd67f8=""><div class="indicator" data-v-b3fd67f8=""></div><a class="VPLink link link" href="https://site-uikit-vue2.0.3itapp.com/components/detail.html" data-v-b3fd67f8=""><!--[--><p class="text" data-v-b3fd67f8="">Detail</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8=""><div class="item" data-v-b3fd67f8=""><div class="indicator" data-v-b3fd67f8=""></div><a class="VPLink link link" href="https://site-uikit-vue2.0.3itapp.com/components/dialog.html" data-v-b3fd67f8=""><!--[--><p class="text" data-v-b3fd67f8="">Dialog</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8=""><div class="item" data-v-b3fd67f8=""><div class="indicator" data-v-b3fd67f8=""></div><a class="VPLink link link" href="https://site-uikit-vue2.0.3itapp.com/components/dropdown.html" data-v-b3fd67f8=""><!--[--><p class="text" data-v-b3fd67f8="">Dropdown</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8=""><div class="item" data-v-b3fd67f8=""><div class="indicator" data-v-b3fd67f8=""></div><a class="VPLink link link" href="https://site-uikit-vue2.0.3itapp.com/components/errors.html" data-v-b3fd67f8=""><!--[--><p class="text" data-v-b3fd67f8="">Errors</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8=""><div class="item" data-v-b3fd67f8=""><div class="indicator" data-v-b3fd67f8=""></div><a class="VPLink link link" href="https://site-uikit-vue2.0.3itapp.com/components/filters.html" data-v-b3fd67f8=""><!--[--><p class="text" data-v-b3fd67f8="">Filters</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link is-active has-active" data-v-b3fd67f8=""><div class="item" data-v-b3fd67f8=""><div class="indicator" data-v-b3fd67f8=""></div><a class="VPLink link link" href="https://site-uikit-vue2.0.3itapp.com/components/input.html" data-v-b3fd67f8=""><!--[--><p class="text" data-v-b3fd67f8="">Input</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8=""><div class="item" data-v-b3fd67f8=""><div class="indicator" data-v-b3fd67f8=""></div><a class="VPLink link link" href="https://site-uikit-vue2.0.3itapp.com/components/loading.html" data-v-b3fd67f8=""><!--[--><p class="text" data-v-b3fd67f8="">Loading</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8=""><div class="item" data-v-b3fd67f8=""><div class="indicator" data-v-b3fd67f8=""></div><a class="VPLink link link" href="https://site-uikit-vue2.0.3itapp.com/components/pagination.html" data-v-b3fd67f8=""><!--[--><p class="text" data-v-b3fd67f8="">Pagination</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8=""><div class="item" data-v-b3fd67f8=""><div class="indicator" data-v-b3fd67f8=""></div><a class="VPLink link link" href="https://site-uikit-vue2.0.3itapp.com/components/progressBar.html" data-v-b3fd67f8=""><!--[--><p class="text" data-v-b3fd67f8="">ProgressBar</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8=""><div class="item" data-v-b3fd67f8=""><div class="indicator" data-v-b3fd67f8=""></div><a class="VPLink link link" href="https://site-uikit-vue2.0.3itapp.com/components/select.html" data-v-b3fd67f8=""><!--[--><p class="text" data-v-b3fd67f8="">Select</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8=""><div class="item" data-v-b3fd67f8=""><div class="indicator" data-v-b3fd67f8=""></div><a class="VPLink link link" href="https://site-uikit-vue2.0.3itapp.com/components/tab.html" data-v-b3fd67f8=""><!--[--><p class="text" data-v-b3fd67f8="">Tab</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8=""><div class="item" data-v-b3fd67f8=""><div class="indicator" data-v-b3fd67f8=""></div><a class="VPLink link link" href="https://site-uikit-vue2.0.3itapp.com/components/table.html" data-v-b3fd67f8=""><!--[--><p class="text" data-v-b3fd67f8="">Table</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8=""><div class="item" data-v-b3fd67f8=""><div class="indicator" data-v-b3fd67f8=""></div><a class="VPLink link link" href="https://site-uikit-vue2.0.3itapp.com/components/textareaResize.html" data-v-b3fd67f8=""><!--[--><p class="text" data-v-b3fd67f8="">TextareaResize</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8=""><div class="item" data-v-b3fd67f8=""><div class="indicator" data-v-b3fd67f8=""></div><a class="VPLink link link" href="https://site-uikit-vue2.0.3itapp.com/components/toast.html" data-v-b3fd67f8=""><!--[--><p class="text" data-v-b3fd67f8="">Toast</p><!--]--></a><!----></div><!----></div><!--]--></div></section></div><div class="group" data-v-c40bc020=""><section class="VPSidebarItem level-0" data-v-c40bc020="" data-v-b3fd67f8=""><div class="item" role="button" tabindex="0" data-v-b3fd67f8=""><div class="indicator" data-v-b3fd67f8=""></div><h2 class="text" data-v-b3fd67f8="">Utilidades</h2><!----></div><div class="items" data-v-b3fd67f8=""><!--[--><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8=""><div class="item" data-v-b3fd67f8=""><div class="indicator" data-v-b3fd67f8=""></div><a class="VPLink link link" href="https://site-uikit-vue2.0.3itapp.com/utils/useAction.html" data-v-b3fd67f8=""><!--[--><p class="text" data-v-b3fd67f8="">useAction</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8=""><div class="item" data-v-b3fd67f8=""><div class="indicator" data-v-b3fd67f8=""></div><a class="VPLink link link" href="https://site-uikit-vue2.0.3itapp.com/utils/useFormat.html" data-v-b3fd67f8=""><!--[--><p class="text" data-v-b3fd67f8="">useFormat</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8=""><div class="item" data-v-b3fd67f8=""><div class="indicator" data-v-b3fd67f8=""></div><a class="VPLink link link" href="https://site-uikit-vue2.0.3itapp.com/utils/useInputMask.html" data-v-b3fd67f8=""><!--[--><p class="text" data-v-b3fd67f8="">useInputMask</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8=""><div class="item" data-v-b3fd67f8=""><div class="indicator" data-v-b3fd67f8=""></div><a class="VPLink link link" href="https://site-uikit-vue2.0.3itapp.com/utils/useKeypress.html" data-v-b3fd67f8=""><!--[--><p class="text" data-v-b3fd67f8="">useKeypress</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8=""><div class="item" data-v-b3fd67f8=""><div class="indicator" data-v-b3fd67f8=""></div><a class="VPLink link link" href="https://site-uikit-vue2.0.3itapp.com/utils/useTable.html" data-v-b3fd67f8=""><!--[--><p class="text" data-v-b3fd67f8="">useTable</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8=""><div class="item" data-v-b3fd67f8=""><div class="indicator" data-v-b3fd67f8=""></div><a class="VPLink link link" href="https://site-uikit-vue2.0.3itapp.com/utils/useTheme.html" data-v-b3fd67f8=""><!--[--><p class="text" data-v-b3fd67f8="">useTheme</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8=""><div class="item" data-v-b3fd67f8=""><div class="indicator" data-v-b3fd67f8=""></div><a class="VPLink link link" href="https://site-uikit-vue2.0.3itapp.com/utils/useTooltip.html" data-v-b3fd67f8=""><!--[--><p class="text" data-v-b3fd67f8="">useTooltip</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8=""><div class="item" data-v-b3fd67f8=""><div class="indicator" data-v-b3fd67f8=""></div><a class="VPLink link link" href="https://site-uikit-vue2.0.3itapp.com/utils/useValidator.html" data-v-b3fd67f8=""><!--[--><p class="text" data-v-b3fd67f8="">useValidator</p><!--]--></a><!----></div><!----></div><!--]--></div></section></div><div class="group" data-v-c40bc020=""><section class="VPSidebarItem level-0" data-v-c40bc020="" data-v-b3fd67f8=""><div class="item" role="button" tabindex="0" data-v-b3fd67f8=""><div class="indicator" data-v-b3fd67f8=""></div><h2 class="text" data-v-b3fd67f8="">Composables</h2><!----></div><div class="items" data-v-b3fd67f8=""><!--[--><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8=""><div class="item" data-v-b3fd67f8=""><div class="indicator" data-v-b3fd67f8=""></div><a class="VPLink link link" href="https://site-uikit-vue2.0.3itapp.com/composables/useFilters.html" data-v-b3fd67f8=""><!--[--><p class="text" data-v-b3fd67f8="">useFilters</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8=""><div class="item" data-v-b3fd67f8=""><div class="indicator" data-v-b3fd67f8=""></div><a class="VPLink link link" href="https://site-uikit-vue2.0.3itapp.com/composables/useLogos.html" data-v-b3fd67f8=""><!--[--><p class="text" data-v-b3fd67f8="">useLogos</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8=""><div class="item" data-v-b3fd67f8=""><div class="indicator" data-v-b3fd67f8=""></div><a class="VPLink link link" href="https://site-uikit-vue2.0.3itapp.com/composables/useMessage.html" data-v-b3fd67f8=""><!--[--><p class="text" data-v-b3fd67f8="">useMessage</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8=""><div class="item" data-v-b3fd67f8=""><div class="indicator" data-v-b3fd67f8=""></div><a class="VPLink link link" href="https://site-uikit-vue2.0.3itapp.com/composables/useRequired.html" data-v-b3fd67f8=""><!--[--><p class="text" data-v-b3fd67f8="">useRequired</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8=""><div class="item" data-v-b3fd67f8=""><div class="indicator" data-v-b3fd67f8=""></div><a class="VPLink link link" href="https://site-uikit-vue2.0.3itapp.com/composables/useRules.html" data-v-b3fd67f8=""><!--[--><p class="text" data-v-b3fd67f8="">useRules</p><!--]--></a><!----></div><!----></div><!--]--></div></section></div><div class="group" data-v-c40bc020=""><section class="VPSidebarItem level-0" data-v-c40bc020="" data-v-b3fd67f8=""><div class="item" role="button" tabindex="0" data-v-b3fd67f8=""><div class="indicator" data-v-b3fd67f8=""></div><h2 class="text" data-v-b3fd67f8="">Styles</h2><!----></div><div class="items" data-v-b3fd67f8=""><!--[--><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8=""><div class="item" data-v-b3fd67f8=""><div class="indicator" data-v-b3fd67f8=""></div><a class="VPLink link link" href="https://site-uikit-vue2.0.3itapp.com/styles/background.html" data-v-b3fd67f8=""><!--[--><p class="text" data-v-b3fd67f8="">Background</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8=""><div class="item" data-v-b3fd67f8=""><div class="indicator" data-v-b3fd67f8=""></div><a class="VPLink link link" href="https://site-uikit-vue2.0.3itapp.com/styles/border.html" data-v-b3fd67f8=""><!--[--><p class="text" data-v-b3fd67f8="">Border</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8=""><div class="item" data-v-b3fd67f8=""><div class="indicator" data-v-b3fd67f8=""></div><a class="VPLink link link" href="https://site-uikit-vue2.0.3itapp.com/styles/color.html" data-v-b3fd67f8=""><!--[--><p class="text" data-v-b3fd67f8="">Color</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8=""><div class="item" data-v-b3fd67f8=""><div class="indicator" data-v-b3fd67f8=""></div><a class="VPLink link link" href="https://site-uikit-vue2.0.3itapp.com/styles/flex.html" data-v-b3fd67f8=""><!--[--><p class="text" data-v-b3fd67f8="">Flex</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8=""><div class="item" data-v-b3fd67f8=""><div class="indicator" data-v-b3fd67f8=""></div><a class="VPLink link link" href="https://site-uikit-vue2.0.3itapp.com/styles/object.html" data-v-b3fd67f8=""><!--[--><p class="text" data-v-b3fd67f8="">Object</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8=""><div class="item" data-v-b3fd67f8=""><div class="indicator" data-v-b3fd67f8=""></div><a class="VPLink link link" href="https://site-uikit-vue2.0.3itapp.com/styles/opacity.html" data-v-b3fd67f8=""><!--[--><p class="text" data-v-b3fd67f8="">Opacity</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8=""><div class="item" data-v-b3fd67f8=""><div class="indicator" data-v-b3fd67f8=""></div><a class="VPLink link link" href="https://site-uikit-vue2.0.3itapp.com/styles/shape.html" data-v-b3fd67f8=""><!--[--><p class="text" data-v-b3fd67f8="">Shape</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8=""><div class="item" data-v-b3fd67f8=""><div class="indicator" data-v-b3fd67f8=""></div><a class="VPLink link link" href="https://site-uikit-vue2.0.3itapp.com/styles/spacing.html" data-v-b3fd67f8=""><!--[--><p class="text" data-v-b3fd67f8="">Spacing</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8=""><div class="item" data-v-b3fd67f8=""><div class="indicator" data-v-b3fd67f8=""></div><a class="VPLink link link" href="https://site-uikit-vue2.0.3itapp.com/styles/text.html" data-v-b3fd67f8=""><!--[--><p class="text" data-v-b3fd67f8="">Text</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8=""><div class="item" data-v-b3fd67f8=""><div class="indicator" data-v-b3fd67f8=""></div><a class="VPLink link link" href="https://site-uikit-vue2.0.3itapp.com/styles/transform.html" data-v-b3fd67f8=""><!--[--><p class="text" data-v-b3fd67f8="">Transform</p><!--]--></a><!----></div><!----></div><div class="VPSidebarItem level-1 is-link" data-v-b3fd67f8=""><div class="item" data-v-b3fd67f8=""><div class="indicator" data-v-b3fd67f8=""></div><a class="VPLink link link" href="https://site-uikit-vue2.0.3itapp.com/styles/transition.html" data-v-b3fd67f8=""><!--[--><p class="text" data-v-b3fd67f8="">Transition</p><!--]--></a><!----></div><!----></div><!--]--></div></section></div><!--]--><!--[--><!--]--></nav></aside><div class="VPContent has-sidebar" id="VPContent" data-v-5d98c3a5="" data-v-1428d186=""><div class="VPDoc has-sidebar has-aside" data-v-1428d186="" data-v-39a288b8=""><!--[--><!--]--><div class="container" data-v-39a288b8=""><div class="aside" data-v-39a288b8=""><div class="aside-curtain" data-v-39a288b8=""></div><div class="aside-container" data-v-39a288b8=""><div class="aside-content" data-v-39a288b8=""><div class="VPDocAside" data-v-39a288b8="" data-v-3f215769=""><!--[--><!--]--><!--[--><!--]--><nav aria-labelledby="doc-outline-aria-label" class="VPDocAsideOutline has-outline" data-v-3f215769="" data-v-a5bbad30=""><div class="content" data-v-a5bbad30=""><div class="outline-marker" data-v-a5bbad30="" style="top: 33px; opacity: 0;"></div><div aria-level="2" class="outline-title" id="doc-outline-aria-label" role="heading" data-v-a5bbad30="">On this page</div><ul class="VPDocOutlineItem root" data-v-a5bbad30="" data-v-b933a997=""><!--[--><li data-v-b933a997=""><a data-v-b933a997="" class="outline-link" href="https://site-uikit-vue2.0.3itapp.com/components/input.html#props" title="Props">Props</a><ul data-v-b933a997="" class="VPDocOutlineItem nested"><li data-v-b933a997=""><a data-v-b933a997="" class="outline-link" href="https://site-uikit-vue2.0.3itapp.com/components/input.html#inputtype" title="inputType">inputType</a><!----></li><li data-v-b933a997=""><a data-v-b933a997="" class="outline-link" href="https://site-uikit-vue2.0.3itapp.com/components/input.html#placeholder" title="placeHolder">placeHolder</a><!----></li><li data-v-b933a997=""><a data-v-b933a997="" class="outline-link" href="https://site-uikit-vue2.0.3itapp.com/components/input.html#maxlength" title="maxLength">maxLength</a><!----></li><li data-v-b933a997=""><a data-v-b933a997="" class="outline-link" href="https://site-uikit-vue2.0.3itapp.com/components/input.html#isdisabled" title="isDisabled">isDisabled</a><!----></li><li data-v-b933a997=""><a data-v-b933a997="" class="outline-link" href="https://site-uikit-vue2.0.3itapp.com/components/input.html#floatlabel" title="floatLabel">floatLabel</a><!----></li><li data-v-b933a997=""><a data-v-b933a997="" class="outline-link" href="https://site-uikit-vue2.0.3itapp.com/components/input.html#floatleft" title="floatLeft">floatLeft</a><!----></li><li data-v-b933a997=""><a data-v-b933a997="" class="outline-link" href="https://site-uikit-vue2.0.3itapp.com/components/input.html#floatright" title="floatRight">floatRight</a><!----></li><li data-v-b933a997=""><a data-v-b933a997="" class="outline-link" href="https://site-uikit-vue2.0.3itapp.com/components/input.html#input-1" title="input">input</a><!----></li><li data-v-b933a997=""><a data-v-b933a997="" class="outline-link" href="https://site-uikit-vue2.0.3itapp.com/components/input.html#requiredfield" title="requiredField">requiredField</a><!----></li><li data-v-b933a997=""><a data-v-b933a997="" class="outline-link" href="https://site-uikit-vue2.0.3itapp.com/components/input.html#error" title="error">error</a><!----></li><li data-v-b933a997=""><a data-v-b933a997="" class="outline-link" href="https://site-uikit-vue2.0.3itapp.com/components/input.html#validation" title="validation">validation</a><!----></li><li data-v-b933a997=""><a data-v-b933a997="" class="outline-link" href="https://site-uikit-vue2.0.3itapp.com/components/input.html#keypress" title="keyPress">keyPress</a><!----></li><li data-v-b933a997=""><a data-v-b933a997="" class="outline-link" href="https://site-uikit-vue2.0.3itapp.com/components/input.html#inputmask" title="inputMask">inputMask</a><!----></li><li data-v-b933a997=""><a data-v-b933a997="" class="outline-link" href="https://site-uikit-vue2.0.3itapp.com/components/input.html#submitted" title="submitted">submitted</a><!----></li></ul></li><li data-v-b933a997=""><a data-v-b933a997="" class="outline-link" href="https://site-uikit-vue2.0.3itapp.com/components/input.html#emits" title="Emits">Emits</a><ul data-v-b933a997="" class="VPDocOutlineItem nested"><li data-v-b933a997=""><a data-v-b933a997="" class="outline-link" href="https://site-uikit-vue2.0.3itapp.com/components/input.html#emitvalue" title="emitValue">emitValue</a><!----></li><li data-v-b933a997=""><a data-v-b933a997="" class="outline-link" href="https://site-uikit-vue2.0.3itapp.com/components/input.html#emitpressenter" title="emitPressEnter">emitPressEnter</a><!----></li></ul></li><li data-v-b933a997=""><a data-v-b933a997="" class="outline-link" href="https://site-uikit-vue2.0.3itapp.com/components/input.html#ejemplos-de-uso" title="Ejemplos de uso">Ejemplos de uso</a><ul data-v-b933a997="" class="VPDocOutlineItem nested"><li data-v-b933a997=""><a data-v-b933a997="" class="outline-link" href="https://site-uikit-vue2.0.3itapp.com/components/input.html#input-password" title="input password">input password</a><!----></li><li data-v-b933a997=""><a data-v-b933a997="" class="outline-link" href="https://site-uikit-vue2.0.3itapp.com/components/input.html#input-datepicker" title="input datepicker">input datepicker</a><!----></li></ul></li><!--]--></ul></div></nav><!--[--><!--]--><div class="spacer" data-v-3f215769=""></div><!--[--><!--]--><!----><!--[--><!--]--><!--[--><!--]--></div></div></div></div><div class="content" data-v-39a288b8=""><div class="content-container" data-v-39a288b8=""><!--[--><!--]--><main class="main" data-v-39a288b8=""><div style="position:relative;" class="vp-doc _components_input" data-v-39a288b8=""><div><h1 id="input" tabindex="-1">Input <a class="header-anchor" href="https://site-uikit-vue2.0.3itapp.com/components/input.html#input" aria-label="Permalink to &quot;Input&quot;">​</a></h1><p>Documentación y ejemplos del componente <code>input</code>. Para <strong>crear formularios</strong> de inserción de un registro.</p><h2 id="props" tabindex="-1">Props <a class="header-anchor" href="https://site-uikit-vue2.0.3itapp.com/components/input.html#props" aria-label="Permalink to &quot;Props&quot;">​</a></h2><h3 id="inputtype" tabindex="-1">inputType <a class="header-anchor" href="https://site-uikit-vue2.0.3itapp.com/components/input.html#inputtype" aria-label="Permalink to &quot;inputType&quot;">​</a></h3><p><strong>Type:</strong> <code>String</code></p><p>Define el <strong>tipo de input</strong> que se necesita, ejemplo <code>text, password, email</code> etc.</p><div class="language-html vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">html</span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">  &lt;</span><span style="--shiki-light:#B31D28;--shiki-light-font-style:italic;--shiki-dark:#FDAEB7;--shiki-dark-font-style:italic;">InputComponent</span></span>
+<span class="line highlighted"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">    inputType</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">"text"</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">  /&gt;</span></span></code></pre></div><h3 id="placeholder" tabindex="-1">placeHolder <a class="header-anchor" href="https://site-uikit-vue2.0.3itapp.com/components/input.html#placeholder" aria-label="Permalink to &quot;placeHolder&quot;">​</a></h3><p><strong>Type:</strong> <code>String</code></p><p>Define el <strong>texto descriptivo</strong> dentro del componente.</p><div class=""><input autocomplete="off" class="eit-input" type="text" maxlength="50" placeholder="Esto es un placeholder"><!----><!----><!----></div><div class="language-html vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">html</span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">  &lt;</span><span style="--shiki-light:#B31D28;--shiki-light-font-style:italic;--shiki-dark:#FDAEB7;--shiki-dark-font-style:italic;">InputComponent</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">    inputType</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">"text"</span></span>
+<span class="line highlighted"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">    placeHolder</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">"Esto es un placeholder"</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">  /&gt;</span></span></code></pre></div><h3 id="maxlength" tabindex="-1">maxLength <a class="header-anchor" href="https://site-uikit-vue2.0.3itapp.com/components/input.html#maxlength" aria-label="Permalink to &quot;maxLength&quot;">​</a></h3><p><strong>Type:</strong> <code>String</code></p><p>Define el <strong>largo máximo de la información</strong> en el componente. Valor por defecto <code>50</code>.</p><div class=""><input autocomplete="off" class="eit-input" type="text" maxlength="10" placeholder="Ingresa un valor"><!----><!----><!----></div><div class="language-html vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">html</span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">  &lt;</span><span style="--shiki-light:#B31D28;--shiki-light-font-style:italic;--shiki-dark:#FDAEB7;--shiki-dark-font-style:italic;">InputComponent</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">    inputType</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">"text"</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">    placeHolder</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">"Ingresa un valor"</span></span>
+<span class="line highlighted"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">    maxLength</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">"10"</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">  /&gt;</span></span></code></pre></div><h3 id="isdisabled" tabindex="-1">isDisabled <a class="header-anchor" href="https://site-uikit-vue2.0.3itapp.com/components/input.html#isdisabled" aria-label="Permalink to &quot;isDisabled&quot;">​</a></h3><p><strong>Type:</strong> <code>Boolean</code></p><p>Esta propiedad <strong>bloquea el componente</strong> e impide modificar su contenido. Valor por defecto <code>false</code>.</p><div class=""><input autocomplete="off" class="eit-input" type="text" maxlength="50" placeholder="Ingresa un valor" disabled=""><!----><!----><!----></div><div class="language-html vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">html</span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">  &lt;</span><span style="--shiki-light:#B31D28;--shiki-light-font-style:italic;--shiki-dark:#FDAEB7;--shiki-dark-font-style:italic;">InputComponent</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">    inputType</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">"text"</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">    placeHolder</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">"Ingresa un valor"</span></span>
+<span class="line highlighted"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">    :isDisabled</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">"true"</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">  /&gt;</span></span></code></pre></div><h3 id="floatlabel" tabindex="-1">floatLabel <a class="header-anchor" href="https://site-uikit-vue2.0.3itapp.com/components/input.html#floatlabel" aria-label="Permalink to &quot;floatLabel&quot;">​</a></h3><p><strong>Type:</strong> <code>String</code></p><p>Propiedad que combina el <strong>placeholder y label</strong> y lo posiciona en la parte superior al hacer focus.</p><div class="eit-input__display"><input autocomplete="off" class="eit-input" type="text" maxlength="50" placeholder=""><label class="eit-label-float">Ingresa un valor</label><!----><!----></div><div class="language-html vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">html</span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">  &lt;</span><span style="--shiki-light:#B31D28;--shiki-light-font-style:italic;--shiki-dark:#FDAEB7;--shiki-dark-font-style:italic;">InputComponent</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">    inputType</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">"text"</span></span>
+<span class="line highlighted"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">    floatLabel</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">"Ingresa un valor"</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">  /&gt;</span></span></code></pre></div><div class="warning custom-block"><p class="custom-block-title">Importante</p><p>Esta propiedad inhabilitar la propiedad <code>placeHolder</code>.</p></div><h3 id="floatleft" tabindex="-1">floatLeft <a class="header-anchor" href="https://site-uikit-vue2.0.3itapp.com/components/input.html#floatleft" aria-label="Permalink to &quot;floatLeft&quot;">​</a></h3><p><strong>Type:</strong> <code>Boolean</code></p><p>Propiedad pensada para <strong>activar el slot</strong> llamado <code>#float-left</code> y agregar un ícono a la izquierda del input. Se recomienda usar la librería <a href="https://fontawesome.com/" target="_blank" rel="noreferrer">fontawesome</a></p><div class="eit-input__display eit-input__display__float-left"><input autocomplete="off" class="eit-input" type="text" maxlength="20" placeholder="Ingresa una dirección"><!----><span class="eit-input__display__icon eit-input__display__float-left--icon"><svg class="svg-inline--fa fa-location-dot" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="location-dot" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" data-eit-variant="gray"><path class="" fill="currentColor" d="M215.7 499.2C267 435 384 279.4 384 192C384 86 298 0 192 0S0 86 0 192c0 87.4 117 243 168.3 307.2c12.3 15.3 35.1 15.3 47.4 0zM192 128a64 64 0 1 1 0 128 64 64 0 1 1 0-128z"></path></svg></span><!----></div><div class="language-html vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">html</span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">&lt;</span><span style="--shiki-light:#B31D28;--shiki-light-font-style:italic;--shiki-dark:#FDAEB7;--shiki-dark-font-style:italic;">InputComponent</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">  inputType</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">"text"</span></span>
+<span class="line highlighted"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">  floatLeft</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">  :maxLength</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">"20"</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">  placeHolder</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">"Ingresa una dirección"</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">&gt;</span></span>
+<span class="line highlighted"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">&lt;</span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">template</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;"> #float-left</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">&gt;</span></span>
+<span class="line highlighted"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">  &lt;</span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">font-awesome-icon</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> </span></span>
+<span class="line highlighted"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">    :icon</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">"['fas', 'location-dot']"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> </span></span>
+<span class="line highlighted"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">    data-eit-variant</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">"gray"</span></span>
+<span class="line highlighted"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">  /&gt;</span></span>
+<span class="line highlighted"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">&lt;/</span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">template</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">&lt;/</span><span style="--shiki-light:#B31D28;--shiki-light-font-style:italic;--shiki-dark:#FDAEB7;--shiki-dark-font-style:italic;">InputComponent</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">&gt;</span></span></code></pre></div><h3 id="floatright" tabindex="-1">floatRight <a class="header-anchor" href="https://site-uikit-vue2.0.3itapp.com/components/input.html#floatright" aria-label="Permalink to &quot;floatRight&quot;">​</a></h3><p><strong>Type:</strong> <code>Boolean</code></p><p>Propiedad pensada para <strong>activar el slot</strong> llamado <code>#float-right</code> y agregar un ícono a la derecha del input. Se recomienda usar la librería <a href="https://fontawesome.com/" target="_blank" rel="noreferrer">fontawesome</a></p><div class="eit-input__display eit-input__display__float-right"><input autocomplete="off" class="eit-input" type="text" maxlength="20" placeholder="Ingresa una dirección"><!----><!----><span class="eit-input__display__icon eit-input__display__float-right--icon"><svg class="svg-inline--fa fa-location-dot" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="location-dot" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" data-eit-variant="gray"><path class="" fill="currentColor" d="M215.7 499.2C267 435 384 279.4 384 192C384 86 298 0 192 0S0 86 0 192c0 87.4 117 243 168.3 307.2c12.3 15.3 35.1 15.3 47.4 0zM192 128a64 64 0 1 1 0 128 64 64 0 1 1 0-128z"></path></svg></span></div><div class="language-html vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">html</span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">&lt;</span><span style="--shiki-light:#B31D28;--shiki-light-font-style:italic;--shiki-dark:#FDAEB7;--shiki-dark-font-style:italic;">InputComponent</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">  inputType</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">"text"</span></span>
+<span class="line highlighted"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">  floatRight</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">  :maxLength</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">"20"</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">  placeHolder</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">"Ingresa una dirección"</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">&gt;</span></span>
+<span class="line highlighted"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">&lt;</span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">template</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;"> #float-right</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">&gt;</span></span>
+<span class="line highlighted"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">  &lt;</span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">font-awesome-icon</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> </span></span>
+<span class="line highlighted"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">    :icon</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">"['fas', 'location-dot']"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> </span></span>
+<span class="line highlighted"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">    data-eit-variant</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">"gray"</span></span>
+<span class="line highlighted"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">  /&gt;</span></span>
+<span class="line highlighted"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">&lt;/</span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">template</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">&lt;/</span><span style="--shiki-light:#B31D28;--shiki-light-font-style:italic;--shiki-dark:#FDAEB7;--shiki-dark-font-style:italic;">InputComponent</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">&gt;</span></span></code></pre></div><h3 id="input-1" tabindex="-1">input <a class="header-anchor" href="https://site-uikit-vue2.0.3itapp.com/components/input.html#input-1" aria-label="Permalink to &quot;input&quot;">​</a></h3><p><strong>Type:</strong> <code>[String, Number]</code></p><p>Se define para agregar la <strong>información entrante</strong> al componente al renderizar el DOM. Principalmente usado en la edición de registros.</p><div class=""><input autocomplete="off" class="eit-input" type="text" maxlength="50" placeholder=""><!----><!----><!----></div><div class="language-vue vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">vue</span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">&lt;</span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">script</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;"> setup</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;"> lang</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">"ts"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">  import</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> { ref } </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">from</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> 'vue'</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">  </span></span>
+<span class="line highlighted"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">  const</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> inputProps</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;"> =</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;"> ref</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">'Texto ejemplo'</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">)</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">&lt;/</span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">script</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">&gt;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">&lt;</span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">template</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">  &lt;</span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">InputComponent</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">    inputType</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">"text"</span></span>
+<span class="line highlighted"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">    :</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">input</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">inputProps</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">"</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">  /&gt;</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">&lt;/</span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">template</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">&gt;</span></span></code></pre></div><h3 id="requiredfield" tabindex="-1">requiredField <a class="header-anchor" href="https://site-uikit-vue2.0.3itapp.com/components/input.html#requiredfield" aria-label="Permalink to &quot;requiredField&quot;">​</a></h3><p><strong>Type:</strong> <code>Boolean</code></p><p>Define esta propiedad <strong>si el campo debe estar lleno</strong> al momento de realizar <code>submit</code>.</p><div class="language-html vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">html</span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">&lt;</span><span style="--shiki-light:#B31D28;--shiki-light-font-style:italic;--shiki-dark:#FDAEB7;--shiki-dark-font-style:italic;">InputComponent</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">  inputType</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">"text"</span></span>
+<span class="line highlighted"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">  :requiredField</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">"true"</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">/&gt;</span></span></code></pre></div><div class="warning custom-block"><p class="custom-block-title">Importante</p><p>Esta propiedad debe usarse junto con las propiedades <a href="https://site-uikit-vue2.0.3itapp.com/components/input.html#error">error</a> y <a href="https://site-uikit-vue2.0.3itapp.com/components/input.html#validation">validation</a>.</p></div><h3 id="error" tabindex="-1">error <a class="header-anchor" href="https://site-uikit-vue2.0.3itapp.com/components/input.html#error" aria-label="Permalink to &quot;error&quot;">​</a></h3><p><strong>Type:</strong> <code>Boolean</code></p><p>Controla el <strong>error de un input requerido</strong> al momento de realizar un <code>submit</code>. Si el input esta vacío, agrega la clase <code>is-invalid</code>.</p><div class="language-html vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">html</span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">&lt;</span><span style="--shiki-light:#B31D28;--shiki-light-font-style:italic;--shiki-dark:#FDAEB7;--shiki-dark-font-style:italic;">InputComponent</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">  inputType</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">"text"</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">  :requiredField</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">"true"</span></span>
+<span class="line highlighted"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">  :error</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">"formError"</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">/&gt;</span></span></code></pre></div><div class="warning custom-block"><p class="custom-block-title">Importante</p><p>Esta propiedad debe usarse junto con las propiedades <a href="https://site-uikit-vue2.0.3itapp.com/components/input.html#requiredfield">requiredfield</a> y <a href="https://site-uikit-vue2.0.3itapp.com/components/input.html#validation">validation</a>.</p></div><h3 id="validation" tabindex="-1">validation <a class="header-anchor" href="https://site-uikit-vue2.0.3itapp.com/components/input.html#validation" aria-label="Permalink to &quot;validation&quot;">​</a></h3><p><strong>Type:</strong> <code>Function</code></p><p>Valida que el componente <strong>tenga información</strong> al momento de realizar un <code>submit</code>. Si el input esta vacío, agrega la clase <code>is-invalid</code>.</p><p>Para más información de las validaciones, revisar la sección de utilidades <a href="https://site-uikit-vue2.0.3itapp.com/utils/useValidator.html">useValidator</a></p><div class=""><input autocomplete="off" class="eit-input is-invalid" type="text" maxlength="10" placeholder="Ingresa un valor"><!----><!----><!----></div><div class="language-vue vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">vue</span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">&lt;</span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">script</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;"> setup</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;"> lang</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">"ts"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">  import</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> { ref } </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">from</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> 'vue'</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">  import</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> { utils } </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">from</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> 'uikit-3it-vue'</span></span>
+<span class="line"></span>
+<span class="line highlighted"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">  const</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> { </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">validateDefault</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> } </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> utils.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">useValidator</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">()</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">  const</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> formError</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;"> =</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;"> ref</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">(</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">true</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">)</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">&lt;/</span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">script</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">&gt;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">&lt;</span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">template</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">  &lt;</span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">InputComponent</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">    inputType</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">"text"</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">    :</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">maxLength</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">"</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">10</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">"</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">    :</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">requiredField</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">"</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">true</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">"</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">    :</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">error</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">formError</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">"</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">    placeHolder</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">"Ingresa un valor"</span></span>
+<span class="line highlighted"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">    :</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">validation</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">validateDefault</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">"</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">  /&gt;</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">&lt;/</span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">template</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">&gt;</span></span></code></pre></div><div class="warning custom-block"><p class="custom-block-title">Importante</p><p>Esta propiedad debe usarse junto con las propiedades <a href="https://site-uikit-vue2.0.3itapp.com/components/input.html#error">error</a> y <a href="https://site-uikit-vue2.0.3itapp.com/components/input.html#requiredfield">requiredfield</a>.</p></div><h3 id="keypress" tabindex="-1">keyPress <a class="header-anchor" href="https://site-uikit-vue2.0.3itapp.com/components/input.html#keypress" aria-label="Permalink to &quot;keyPress&quot;">​</a></h3><p><strong>Type:</strong> <code>Function</code></p><p>Manejador de los eventos del teclado que controla los <strong>caracteres ingresados</strong> en el <code>input</code>.</p><p>Para más información, revisar la sección de utilidades <a href="https://site-uikit-vue2.0.3itapp.com/utils/useKeypress.html">useKeypress</a></p><div class="language-html vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">html</span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">&lt;</span><span style="--shiki-light:#B31D28;--shiki-light-font-style:italic;--shiki-dark:#FDAEB7;--shiki-dark-font-style:italic;">InputComponent</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">  inputType</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">"text"</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">  placeHolder</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">"Ingresa un valor"</span></span>
+<span class="line highlighted"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">  :keyPress</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">"keyPressRut"</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">/&gt;</span></span></code></pre></div><h3 id="inputmask" tabindex="-1">inputMask <a class="header-anchor" href="https://site-uikit-vue2.0.3itapp.com/components/input.html#inputmask" aria-label="Permalink to &quot;inputMask&quot;">​</a></h3><p><strong>Type:</strong> <code>Function</code></p><p><strong>Manejador de máscaras</strong> para los distintos tipos de datos ingresados en el <code>input</code>.</p><p>Para más información, revisar la sección de utilidades <a href="https://site-uikit-vue2.0.3itapp.com/utils/useInputMask.html">useInputMask</a></p><div class="language-html vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">html</span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">&lt;</span><span style="--shiki-light:#B31D28;--shiki-light-font-style:italic;--shiki-dark:#FDAEB7;--shiki-dark-font-style:italic;">InputComponent</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">  inputType</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">"text"</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">  placeHolder</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">"Ingresa un valor"</span></span>
+<span class="line highlighted"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">  :inputMask</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">"inputMaskRut"</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">/&gt;</span></span></code></pre></div><h3 id="submitted" tabindex="-1">submitted <a class="header-anchor" href="https://site-uikit-vue2.0.3itapp.com/components/input.html#submitted" aria-label="Permalink to &quot;submitted&quot;">​</a></h3><p><strong>Type:</strong> <code>Boolean</code></p><p>Propiedad que ejecuta, al pasarle un boolean <code>true</code>, una función interna llamada <code>clean()</code> que reinicia internamente el componente <code>input</code>. Usada principalmente en los formularios para limpiar todos los campos a la vez.</p><div class="language-vue vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">vue</span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">&lt;</span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">script</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;"> setup</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;"> lang</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">"ts"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">&gt;</span></span>
+<span class="line highlighted"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">  const</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> submittedProps</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;"> =</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;"> ref</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">(</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">false</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">)</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">&lt;/</span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">script</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">&gt;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">&lt;</span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">template</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">  &lt;</span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">InputComponent</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">    inputType</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">"text"</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">    placeHolder</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">"Ingresa un valor"</span></span>
+<span class="line highlighted"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">    :</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">submitted</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">submittedProps</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">"</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">  /&gt;</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">&lt;/</span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">template</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">&gt;</span></span></code></pre></div><h2 id="emits" tabindex="-1">Emits <a class="header-anchor" href="https://site-uikit-vue2.0.3itapp.com/components/input.html#emits" aria-label="Permalink to &quot;Emits&quot;">​</a></h2><h3 id="emitvalue" tabindex="-1">emitValue <a class="header-anchor" href="https://site-uikit-vue2.0.3itapp.com/components/input.html#emitvalue" aria-label="Permalink to &quot;emitValue&quot;">​</a></h3><p>Función que notifica los <strong>cambios realizados en la información</strong> del componente <code>input</code>. Se debe usar un manejador en el componente padre que reciba esta información.</p><div class=""><input autocomplete="off" class="eit-input" type="text" maxlength="10" placeholder="Ingresa un valor"><!----><!----><!----></div><div class="eit-border--all eit-border--color p-2 mt-2"><strong>output </strong> <svg class="svg-inline--fa fa-arrow-right eit-color--blue" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="arrow-right" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path class="" fill="currentColor" d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"></path></svg> </div><div class="language-vue vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">vue</span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">&lt;</span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">script</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;"> setup</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;"> lang</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">"ts"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">	import</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> { ref, computed } </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">from</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> 'vue'</span></span>
+<span class="line"></span>
+<span class="line highlighted"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">  const</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> inputEmit</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;"> =</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;"> ref</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">''</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">)</span></span>
+<span class="line"></span>
+<span class="line highlighted"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">  const</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;"> handleEmitInput</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;"> =</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> (</span><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">value</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">) </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=&gt;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> {</span></span>
+<span class="line highlighted"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">    inputEmit.value </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> value</span></span>
+<span class="line highlighted"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">  }</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">&lt;/</span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">script</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">&gt;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">&lt;</span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">template</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">  &lt;</span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">InputComponent</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">    inputType</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">"text"</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">    placeHolder</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">"Ingresa un valor"</span></span>
+<span class="line highlighted"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">    @</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">emitValue</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">handleEmitInput</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">"</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">  /&gt;</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">&lt;/</span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">template</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">&gt;</span></span></code></pre></div><h3 id="emitpressenter" tabindex="-1">emitPressEnter <a class="header-anchor" href="https://site-uikit-vue2.0.3itapp.com/components/input.html#emitpressenter" aria-label="Permalink to &quot;emitPressEnter&quot;">​</a></h3><p>Función que se ejecuta cada vez que se presiona la tecla <code>enter</code>, siempre y cuando el focus este en el componente <code>input</code>.</p><div class=""><input autocomplete="off" class="eit-input" type="text" maxlength="10" placeholder="Haz clic aquí y presiona ENTER"><!----><!----><!----></div><div class="eit-border--all eit-border--color p-2 mt-2"><strong>ENTER </strong> <svg class="svg-inline--fa fa-arrow-right eit-color--blue" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="arrow-right" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path class="" fill="currentColor" d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"></path></svg> 0</div><div class="language-vue vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">vue</span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">&lt;</span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">script</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;"> setup</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;"> lang</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">"ts"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">	import</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> { ref, computed } </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">from</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> 'vue'</span></span>
+<span class="line"></span>
+<span class="line highlighted"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">  const</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> inputEnterCount</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;"> =</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;"> ref</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">(</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">0</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">)</span></span>
+<span class="line"></span>
+<span class="line highlighted"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">  const</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;"> handlePressEnter</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;"> =</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> () </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=&gt;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> {</span></span>
+<span class="line highlighted"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">    inputEnterCount.value </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> inputEnterCount.value </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">+</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> 1</span></span>
+<span class="line highlighted"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">  }</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">&lt;/</span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">script</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">&gt;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">&lt;</span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">template</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">  &lt;</span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">InputComponent</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">    inputType</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">"text"</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">    placeHolder</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">"Haz clic aquí y presiona ENTER"</span></span>
+<span class="line highlighted"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">    @</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">emitPressEnter</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">handlePressEnter</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">"</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">  /&gt;</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">&lt;/</span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">template</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">&gt;</span></span></code></pre></div><h2 id="ejemplos-de-uso" tabindex="-1">Ejemplos de uso <a class="header-anchor" href="https://site-uikit-vue2.0.3itapp.com/components/input.html#ejemplos-de-uso" aria-label="Permalink to &quot;Ejemplos de uso&quot;">​</a></h2><h3 id="input-password" tabindex="-1">input password <a class="header-anchor" href="https://site-uikit-vue2.0.3itapp.com/components/input.html#input-password" aria-label="Permalink to &quot;input password&quot;">​</a></h3><p>Para este ejemplo se necesitan las propiedades <code>floatRight</code> y <code>inputType</code> como mínimo. Se recomienda usar la librería <a href="https://fontawesome.com/" target="_blank" rel="noreferrer">fontawesome</a></p><div class="eit-input__display eit-input__display__float-right"><input autocomplete="off" class="eit-input" type="password" maxlength="50" placeholder="Contraseña"><!----><!----><span class="eit-input__display__icon eit-input__display__float-right--icon"><a href="javascript:" data-eit-color="text-soft" data-eit-link=""><svg class="svg-inline--fa fa-eye-slash" aria-hidden="true" focusable="false" data-prefix="far" data-icon="eye-slash" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><path class="" fill="currentColor" d="M38.8 5.1C28.4-3.1 13.3-1.2 5.1 9.2S-1.2 34.7 9.2 42.9l592 464c10.4 8.2 25.5 6.3 33.7-4.1s6.3-25.5-4.1-33.7L525.6 386.7c39.6-40.6 66.4-86.1 79.9-118.4c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C465.5 68.8 400.8 32 320 32c-68.2 0-125 26.3-169.3 60.8L38.8 5.1zm151 118.3C226 97.7 269.5 80 320 80c65.2 0 118.8 29.6 159.9 67.7C518.4 183.5 545 226 558.6 256c-12.6 28-36.6 66.8-70.9 100.9l-53.8-42.2c9.1-17.6 14.2-37.5 14.2-58.7c0-70.7-57.3-128-128-128c-32.2 0-61.7 11.9-84.2 31.5l-46.1-36.1zM394.9 284.2l-81.5-63.9c4.2-8.5 6.6-18.2 6.6-28.3c0-5.5-.7-10.9-2-16c.7 0 1.3 0 2 0c44.2 0 80 35.8 80 80c0 9.9-1.8 19.4-5.1 28.2zm9.4 130.3C378.8 425.4 350.7 432 320 432c-65.2 0-118.8-29.6-159.9-67.7C121.6 328.5 95 286 81.4 256c8.3-18.4 21.5-41.5 39.4-64.8L83.1 161.5C60.3 191.2 44 220.8 34.5 243.7c-3.3 7.9-3.3 16.7 0 24.6c14.9 35.7 46.2 87.7 93 131.1C174.5 443.2 239.2 480 320 480c47.8 0 89.9-12.9 126.2-32.5l-41.9-33zM192 256c0 70.7 57.3 128 128 128c13.3 0 26.1-2 38.2-5.8L302 334c-23.5-5.4-43.1-21.2-53.7-42.3l-56.1-44.2c-.2 2.8-.3 5.6-.3 8.5z"></path></svg><!----></a></span></div><div class="language-vue vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">vue</span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">&lt;</span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">script</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;"> setup</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;"> lang</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">"ts"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">  import</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> { ref, computed } </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">from</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> 'vue'</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">  const</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> showPassword</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;"> =</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;"> ref</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">(</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">false</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">)</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">  const</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> inputPassword</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;"> =</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;"> ref</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">''</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">)</span></span>
+<span class="line"></span>
+<span class="line highlighted"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">  const</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> controlTypeInputPassword</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;"> =</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;"> computed</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">(() </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=&gt;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> {</span></span>
+<span class="line highlighted"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">    return</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> showPassword.value </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">?</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> 'text'</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;"> :</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> 'password'</span></span>
+<span class="line highlighted"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">  })</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">  const</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;"> handleVisiblePass</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;"> =</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> () </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=&gt;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> {</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">    showPassword.value </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;"> !</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">showPassword.value</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">  }</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">  const</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;"> handlePasswordValue</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;"> =</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> (</span><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">value</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">) </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=&gt;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> {</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">    inputPassword.value </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> value</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">  }</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">&lt;/</span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">script</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">&gt;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">&lt;</span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">template</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">  &lt;</span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">InputComponent</span></span>
+<span class="line highlighted"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">    :</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">inputType</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">controlTypeInputPassword</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">"</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">    placeHolder</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">"Contraseña"</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">    floatRight</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">    @</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">emitValue</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">handlePasswordValue</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">"</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">  &gt;</span></span>
+<span class="line highlighted"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">    &lt;</span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">template</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> #</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">float-right</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">&gt;</span></span>
+<span class="line highlighted"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">      &lt;</span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">a</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> </span></span>
+<span class="line highlighted"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">        @</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">click</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">"</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">handleVisiblePass</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">()</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">"</span></span>
+<span class="line highlighted"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">        href</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">"javascript:"</span></span>
+<span class="line highlighted"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">        data-eit-color</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">"text-soft"</span></span>
+<span class="line highlighted"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">        data-eit-link</span></span>
+<span class="line highlighted"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">      &gt;</span></span>
+<span class="line highlighted"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">        &lt;</span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">font-awesome-icon</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> </span></span>
+<span class="line highlighted"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">          v-if</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">"</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">!</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">showPassword</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">"</span></span>
+<span class="line highlighted"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">          icon</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">"fa-regular fa-eye-slash"</span></span>
+<span class="line highlighted"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">        /&gt;  </span></span>
+<span class="line highlighted"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">        &lt;</span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">font-awesome-icon</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> </span></span>
+<span class="line highlighted"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">          v-if</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">showPassword</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">"</span></span>
+<span class="line highlighted"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">          icon</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">"fa-regular fa-eye"</span></span>
+<span class="line highlighted"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">        /&gt;  </span></span>
+<span class="line highlighted"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">      &lt;/</span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">a</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">&gt;</span></span>
+<span class="line highlighted"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">    &lt;/</span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">template</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">  &lt;/</span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">InputComponent</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">&lt;/</span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">template</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">&gt;</span></span></code></pre></div><h3 id="input-datepicker" tabindex="-1">input datepicker <a class="header-anchor" href="https://site-uikit-vue2.0.3itapp.com/components/input.html#input-datepicker" aria-label="Permalink to &quot;input datepicker&quot;">​</a></h3><p>Para este ejemplo se necesita instalar la librería <a href="https://vue3datepicker.com/installation/" target="_blank" rel="noreferrer">Vue Datepicker</a></p><div class="dp__main dp__theme_light" data-datepicker-instance=""><div><!----><div class="dp__input_wrap"><div class="eit-input__display eit-input__display__float-left"><input autocomplete="off" class="eit-input" type="text" maxlength="50" placeholder="Fecha"><!----><span class="eit-input__display__icon eit-input__display__float-left--icon"><svg class="svg-inline--fa fa-calendar" aria-hidden="true" focusable="false" data-prefix="far" data-icon="calendar" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path class="" fill="currentColor" d="M152 24c0-13.3-10.7-24-24-24s-24 10.7-24 24l0 40L64 64C28.7 64 0 92.7 0 128l0 16 0 48L0 448c0 35.3 28.7 64 64 64l320 0c35.3 0 64-28.7 64-64l0-256 0-48 0-16c0-35.3-28.7-64-64-64l-40 0 0-40c0-13.3-10.7-24-24-24s-24 10.7-24 24l0 40L152 64l0-40zM48 192l352 0 0 256c0 8.8-7.2 16-16 16L64 464c-8.8 0-16-7.2-16-16l0-256z"></path></svg></span><!----></div><!----><div><!----><!----></div><!----><!----></div></div><div><!----></div></div><div class="language-vue vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">vue</span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">&lt;</span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">script</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;"> setup</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;"> lang</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">"ts"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">  import</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> { ref } </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">from</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> 'vue'</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">  import</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> { utils } </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">from</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;"> 'uikit-3it-vue'</span></span>
+<span class="line"></span>
+<span class="line highlighted"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">  const</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> { </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">formatDate</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> } </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> utils.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">useFormat</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">()</span></span>
+<span class="line"></span>
+<span class="line highlighted"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">  const</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> inputDate</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;"> =</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;"> ref</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">(</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">null</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">)</span></span>
+<span class="line highlighted"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">  const</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;"> inputDateRef</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;"> =</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;"> ref</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">(</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">null</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">)</span></span>
+<span class="line"></span>
+<span class="line highlighted"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">  const</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;"> handleClearDate</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;"> =</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> () </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583;">=&gt;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> {</span></span>
+<span class="line highlighted"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">    inputDateRef.value.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">clean</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">()</span></span>
+<span class="line highlighted"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">  }</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">&lt;/</span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">script</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">&gt;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">&lt;</span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">template</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">  &lt;</span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">VueDatePicker</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> </span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">    auto-apply</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">    locale</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">"es"</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">    :</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">enable-time-picker</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">"</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">false</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">"</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">    :</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">month-change-on-scroll</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">"</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">false</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">"</span></span>
+<span class="line highlighted"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">    :</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">format</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">formatDate</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">"</span></span>
+<span class="line highlighted"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">    v-model</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">inputDate</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">"</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">  &gt;</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">    &lt;</span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">template</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> #</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">dp-input</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">{ value }</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">      &lt;</span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">InputComponent</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> </span></span>
+<span class="line highlighted"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">        ref</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">"inputDateRef"</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">        inputType</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">"text"</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">        floatLeft</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">        :</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">input</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">value</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">"</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">      &gt;</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">        &lt;</span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">template</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> #</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">float-left</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">          &lt;</span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">font-awesome-icon</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> </span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">            icon</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">"fa-regular fa-calendar"</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">          /&gt;</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">        &lt;/</span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">template</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">      &lt;/</span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">InputComponent</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">    &lt;/</span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">template</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">    &lt;</span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">template</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> #</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">clear-icon</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">{ clear }</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">      &lt;</span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">font-awesome-icon</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> </span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">        :</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">icon</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">[</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">'fas'</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">, </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">'xmark'</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">]</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> </span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">        data-eit-pe</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">"3"</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">        @</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">click</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">"</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">clear</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">(), </span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">handleClearDate</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">()</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> </span></span>
+<span class="line highlighted"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">      /&gt;</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">    &lt;/</span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">template</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">  &lt;/</span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">VueDatePicker</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">&gt;</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">&lt;/</span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">template</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">&gt;</span></span></code></pre></div></div></div></main><footer class="VPDocFooter" data-v-39a288b8="" data-v-e257564d=""><!--[--><!--]--><!----><nav class="prev-next" aria-labelledby="doc-footer-aria-label" data-v-e257564d=""><span class="visually-hidden" id="doc-footer-aria-label" data-v-e257564d="">Pager</span><div class="pager" data-v-e257564d=""><a class="VPLink link pager-link prev" href="https://site-uikit-vue2.0.3itapp.com/components/filters.html" data-v-e257564d=""><!--[--><span class="desc" data-v-e257564d="">Previous page</span><span class="title" data-v-e257564d="">Filters</span><!--]--></a></div><div class="pager" data-v-e257564d=""><a class="VPLink link pager-link next" href="https://site-uikit-vue2.0.3itapp.com/components/loading.html" data-v-e257564d=""><!--[--><span class="desc" data-v-e257564d="">Next page</span><span class="title" data-v-e257564d="">Loading</span><!--]--></a></div></nav></footer><!--[--><!--]--></div></div></div><!--[--><!--]--></div></div><footer class="VPFooter has-sidebar" data-v-5d98c3a5="" data-v-e315a0ad=""><div class="container" data-v-e315a0ad=""><p class="message" data-v-e315a0ad="">Publicado por 3IT.</p><p class="copyright" data-v-e315a0ad="">© 2024 3IT. Todos los derechos reservados.</p></div></footer><!--[--><!--]--></div></div>
+    <script>window.__VP_HASH_MAP__=JSON.parse("{\"components_alert.md\":\"bxTUuxqQ\",\"components_badge.md\":\"DQdOkxsJ\",\"components_button.md\":\"CyMcyffT\",\"components_detail.md\":\"Bq50YgUl\",\"components_dialog.md\":\"DfdOwQ8j\",\"components_dropdown.md\":\"Bqkhb485\",\"components_errors.md\":\"LlOZO4Ty\",\"components_filters.md\":\"CwAE4fKI\",\"components_input.md\":\"CjZYvJTO\",\"components_loading.md\":\"Dctk7ME3\",\"components_pagination.md\":\"Dr0QwB5X\",\"components_progressbar.md\":\"C2MpS3CE\",\"components_select.md\":\"Du03Wp2H\",\"components_tab.md\":\"D0GuXMiz\",\"components_table.md\":\"CxerxzXa\",\"components_textarearesize.md\":\"BeFp8cw0\",\"components_toast.md\":\"B5J5bBwG\",\"composables_usefilters.md\":\"BkrX18bI\",\"composables_uselogos.md\":\"B9xVqPEu\",\"composables_usemessage.md\":\"uaXP7cnH\",\"composables_userequired.md\":\"BVYZUzEq\",\"composables_userules.md\":\"D0l-bHBd\",\"guide_getting-started.md\":\"B1RVD8qO\",\"index.md\":\"DIsWoWzq\",\"styles_background.md\":\"rWwloeio\",\"styles_border.md\":\"BR-Qt85a\",\"styles_color.md\":\"YPeFvCPl\",\"styles_flex.md\":\"CP6QDTNo\",\"styles_object.md\":\"KZsiPi2O\",\"styles_opacity.md\":\"DY8BtE1Z\",\"styles_shape.md\":\"wGA_I4ps\",\"styles_spacing.md\":\"C06oDC2O\",\"styles_text.md\":\"C8ILrC3x\",\"styles_transform.md\":\"UXCkHADo\",\"styles_transition.md\":\"Ch8vdbRP\",\"utils_useaction.md\":\"C3f__EPf\",\"utils_useformat.md\":\"Bb3z1iEg\",\"utils_useinputmask.md\":\"BXBeTh-F\",\"utils_usekeypress.md\":\"CJ5_9f4Q\",\"utils_usetable.md\":\"DqiOEclg\",\"utils_usetheme.md\":\"CCdElWaW\",\"utils_usetooltip.md\":\"C1Q8oZjK\",\"utils_usevalidator.md\":\"BtpmqSmO\"}");window.__VP_SITE_DATA__=JSON.parse("{\"lang\":\"es-ES\",\"dir\":\"ltr\",\"title\":\"UIKIT 2.0\",\"description\":\"Documentación\",\"base\":\"/\",\"head\":[],\"router\":{\"prefetchLinks\":true},\"appearance\":true,\"themeConfig\":{\"logo\":\"/img/isotipo.png\",\"nav\":[{\"text\":\"Guía\",\"link\":\"/guide/getting-started\"},{\"text\":\"Componentes\",\"link\":\"/components/alert\"},{\"text\":\"Estilos\",\"link\":\"/styles/background\"}],\"sidebar\":[{\"text\":\"Introducción\",\"items\":[{\"text\":\"Empezando\",\"link\":\"/guide/getting-started\"}]},{\"text\":\"Componentes\",\"items\":[{\"text\":\"Alert\",\"link\":\"/components/alert\"},{\"text\":\"Badge\",\"link\":\"/components/badge\"},{\"text\":\"Button\",\"link\":\"/components/button\"},{\"text\":\"Detail\",\"link\":\"/components/detail\"},{\"text\":\"Dialog\",\"link\":\"/components/dialog\"},{\"text\":\"Dropdown\",\"link\":\"/components/dropdown\"},{\"text\":\"Errors\",\"link\":\"/components/errors\"},{\"text\":\"Filters\",\"link\":\"/components/filters\"},{\"text\":\"Input\",\"link\":\"/components/input\"},{\"text\":\"Loading\",\"link\":\"/components/loading\"},{\"text\":\"Pagination\",\"link\":\"/components/pagination\"},{\"text\":\"ProgressBar\",\"link\":\"/components/progressBar\"},{\"text\":\"Select\",\"link\":\"/components/select\"},{\"text\":\"Tab\",\"link\":\"/components/tab\"},{\"text\":\"Table\",\"link\":\"/components/table\"},{\"text\":\"TextareaResize\",\"link\":\"/components/textareaResize\"},{\"text\":\"Toast\",\"link\":\"/components/toast\"}]},{\"text\":\"Utilidades\",\"items\":[{\"text\":\"useAction\",\"link\":\"/utils/useAction\"},{\"text\":\"useFormat\",\"link\":\"/utils/useFormat\"},{\"text\":\"useInputMask\",\"link\":\"/utils/useInputMask\"},{\"text\":\"useKeypress\",\"link\":\"/utils/useKeypress\"},{\"text\":\"useTable\",\"link\":\"/utils/useTable\"},{\"text\":\"useTheme\",\"link\":\"/utils/useTheme\"},{\"text\":\"useTooltip\",\"link\":\"/utils/useTooltip\"},{\"text\":\"useValidator\",\"link\":\"/utils/useValidator\"}]},{\"text\":\"Composables\",\"items\":[{\"text\":\"useFilters\",\"link\":\"/composables/useFilters\"},{\"text\":\"useLogos\",\"link\":\"/composables/useLogos\"},{\"text\":\"useMessage\",\"link\":\"/composables/useMessage\"},{\"text\":\"useRequired\",\"link\":\"/composables/useRequired\"},{\"text\":\"useRules\",\"link\":\"/composables/useRules\"}]},{\"text\":\"Styles\",\"items\":[{\"text\":\"Background\",\"link\":\"/styles/background\"},{\"text\":\"Border\",\"link\":\"/styles/border\"},{\"text\":\"Color\",\"link\":\"/styles/color\"},{\"text\":\"Flex\",\"link\":\"/styles/flex\"},{\"text\":\"Object\",\"link\":\"/styles/object\"},{\"text\":\"Opacity\",\"link\":\"/styles/opacity\"},{\"text\":\"Shape\",\"link\":\"/styles/shape\"},{\"text\":\"Spacing\",\"link\":\"/styles/spacing\"},{\"text\":\"Text\",\"link\":\"/styles/text\"},{\"text\":\"Transform\",\"link\":\"/styles/transform\"},{\"text\":\"Transition\",\"link\":\"/styles/transition\"}]}],\"socialLinks\":[{\"icon\":\"github\",\"link\":\"https://github.com/3itsoluciones/uikit-3it-vue\"},{\"icon\":\"linkedin\",\"link\":\"https://cl.linkedin.com/company/3itchile\"}],\"footer\":{\"message\":\"Publicado por 3IT.\",\"copyright\":\"© 2024 3IT. Todos los derechos reservados.\"},\"search\":{\"provider\":\"local\",\"options\":{\"translations\":{\"button\":{\"buttonText\":\"Buscar\",\"buttonAriaLabel\":\"Buscar\"},\"modal\":{\"noResultsText\":\"No se encontraron resultados\",\"resetButtonTitle\":\"Restablecer búsqueda\",\"footer\":{\"selectText\":\"Seleccionar\",\"navigateText\":\"Navegar\",\"closeText\":\"Cerrar\"}}}}}},\"locales\":{},\"scrollOffset\":134,\"cleanUrls\":false}");</script>
+    
+  
+</body></html>

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recordatorio - Completa tu Entrevista</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 600px;
+            margin: 40px auto;
+            background-color: #ffffff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .header {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 28px;
+        }
+        .header .emoji {
+            font-size: 50px;
+            margin-bottom: 10px;
+        }
+        .content {
+            padding: 40px 30px;
+            color: #333333;
+            line-height: 1.6;
+        }
+        .content h2 {
+            color: #f5576c;
+            font-size: 22px;
+            margin-top: 0;
+        }
+        .alert-box {
+            background-color: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+        .alert-box strong {
+            color: #856404;
+        }
+        .time-left {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 25px;
+            text-align: center;
+            border-radius: 8px;
+            margin: 25px 0;
+        }
+        .time-left .hours {
+            font-size: 48px;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+        .button {
+            display: inline-block;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 15px 40px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin: 20px 0;
+            font-weight: bold;
+        }
+        .button:hover {
+            opacity: 0.9;
+        }
+        .footer {
+            background-color: #f8f9fa;
+            padding: 20px 30px;
+            text-align: center;
+            color: #666666;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="emoji">⏰</div>
+            <h1>¡Recordatorio Importante!</h1>
+        </div>
+
+        <div class="content">
+            <h2>Hola {{nombre_candidato}},</h2>
+
+            <p>Te recordamos que aún no has completado tu entrevista virtual para <strong>{{nombre_chatbot}}</strong>.</p>
+
+            <div class="alert-box">
+                <strong>⚠️ Atención:</strong> Tu entrevista expirará pronto. No pierdas esta oportunidad.
+            </div>
+
+            <div class="time-left">
+                <div>Tiempo Restante</div>
+                <div class="hours">{{horas_restantes}} horas</div>
+                <div>Fecha límite: {{fecha_expiracion}}</div>
+            </div>
+
+            <p>Una vez que expire el plazo, <strong>no podrás acceder</strong> a la entrevista y tu candidatura no será considerada para esta posición.</p>
+
+            <center>
+                <a href="{{chatbot_url}}" class="button">Completar Entrevista Ahora</a>
+            </center>
+
+            <p style="margin-top: 30px;"><strong>¿Por qué es importante completar la entrevista?</strong></p>
+            <ul>
+                <li>Es el primer paso en nuestro proceso de selección</li>
+                <li>Nos permite conocer mejor tu perfil y habilidades</li>
+                <li>Solo toma unos minutos completarla</li>
+                <li>Es tu oportunidad de destacar entre los candidatos</li>
+            </ul>
+
+            <p>Si tienes algún problema técnico o necesitas más tiempo, por favor contáctanos lo antes posible.</p>
+
+            <p style="margin-top: 30px; color: #f5576c; font-weight: bold;">¡No dejes pasar esta oportunidad!</p>
+
+            <p>Si el botón no funciona, copia y pega esta URL en tu navegador:<br>
+            <small style="color: #f5576c;">{{chatbot_url}}</small></p>
+        </div>
+
+        <div class="footer">
+            <p>Este es un correo automático, por favor no respondas a este mensaje.</p>
+            <p>© Sistema de Evaluación de Candidatos</p>
+        </div>
+    </div>
+</body>
+</html>

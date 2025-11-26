@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notificación - Nuevo Candidato Evaluado</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 600px;
+            margin: 40px auto;
+            background-color: #ffffff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .header {
+            background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 26px;
+        }
+        .content {
+            padding: 30px;
+            color: #333333;
+            line-height: 1.6;
+        }
+        .candidate-card {
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        .candidate-card .name {
+            font-size: 22px;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+        .candidate-info {
+            display: table;
+            width: 100%;
+        }
+        .candidate-info div {
+            display: table-row;
+        }
+        .candidate-info div span {
+            display: table-cell;
+            padding: 8px 0;
+        }
+        .candidate-info div span:first-child {
+            font-weight: bold;
+            width: 40%;
+            color: #555;
+        }
+        .result-box {
+            background-color: #ffffff;
+            border: 2px solid #dee2e6;
+            padding: 20px;
+            text-align: center;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        .result-box .result {
+            font-size: 32px;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+        .result-box.approved .result {
+            color: #28a745;
+        }
+        .result-box.rejected .result {
+            color: #dc3545;
+        }
+        .button {
+            display: inline-block;
+            background-color: #3498db;
+            color: white;
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin: 20px 0;
+            font-weight: bold;
+        }
+        .button:hover {
+            background-color: #2980b9;
+        }
+        .footer {
+            background-color: #f8f9fa;
+            padding: 20px 30px;
+            text-align: center;
+            color: #666666;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🔔 Nuevo Candidato Evaluado</h1>
+        </div>
+
+        <div class="content">
+            <p>Se ha completado una nueva evaluación en el sistema.</p>
+
+            <div class="candidate-card">
+                <div class="name">{{nombre_candidato}}</div>
+                <div class="candidate-info">
+                    <div>
+                        <span>📧 Email:</span>
+                        <span>{{email_candidato}}</span>
+                    </div>
+                    <div>
+                        <span>📱 Teléfono:</span>
+                        <span>{{telefono_candidato}}</span>
+                    </div>
+                    <div>
+                        <span>📋 Evaluación:</span>
+                        <span>{{nombre_chatbot}}</span>
+                    </div>
+                    <div>
+                        <span>📅 Fecha:</span>
+                        <span>{{fecha_completado}}</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="result-box">
+                <div>Resultado</div>
+                <div class="result">{{resultado}}</div>
+                <div>Puntaje: <strong>{{puntaje}}%</strong> (Umbral: {{umbral}}%)</div>
+            </div>
+
+            <p><strong>Acciones disponibles:</strong></p>
+            <ul>
+                <li>Revisa los detalles completos de la evaluación</li>
+                <li>Descarga el informe completo del candidato</li>
+                <li>Contacta al candidato para los siguientes pasos</li>
+            </ul>
+
+            <center>
+                <a href="{{admin_url}}" class="button">Ver Detalles Completos</a>
+            </center>
+
+            <p style="margin-top: 30px; font-size: 13px; color: #666;">
+                <strong>Nota:</strong> Accede al panel de administración para revisar las respuestas detalladas,
+                estadísticas y tomar acciones sobre este candidato.
+            </p>
+        </div>
+
+        <div class="footer">
+            <p>Sistema de Evaluación de Candidatos - Panel de Administración</p>
+            <p>© Sistema de Screening Automático</p>
+        </div>
+    </div>
+</body>
+</html>
