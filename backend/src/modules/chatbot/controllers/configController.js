@@ -31,7 +31,7 @@ const obtenerTodos = async (req, res, next) => {
 
 /**
  * GET /api/config/:id
- * Obtener un chatbot por ID
+ * Obtener un chatbot por ID (incluye preguntas)
  */
 const obtenerPorId = async (req, res, next) => {
   try {
@@ -45,6 +45,10 @@ const obtenerPorId = async (req, res, next) => {
       });
     }
 
+    // Cargar las preguntas del chatbot
+    const preguntas = await preguntasRepository.obtenerPorConfig(id, false);
+    chatbot.preguntas = preguntas;
+
     res.json({
       success: true,
       data: chatbot
@@ -56,10 +60,13 @@ const obtenerPorId = async (req, res, next) => {
 
 /**
  * POST /api/config
- * Crear un nuevo chatbot
+ * Crear un nuevo chatbot (incluye preguntas)
  */
 const crear = async (req, res, next) => {
   try {
+    console.log('🚀 MÉTODO CREAR EJECUTÁNDOSE');
+    console.log('📦 Body recibido:', JSON.stringify(req.body, null, 2));
+    
     const datos = req.body;
 
     // Validar campos requeridos
@@ -79,8 +86,34 @@ const crear = async (req, res, next) => {
       });
     }
 
+    // Extraer preguntas antes de crear el chatbot
+    const preguntas = datos.preguntas || [];
+    console.log('📝 Preguntas recibidas:', preguntas.length);
+    console.log('📝 Datos preguntas:', JSON.stringify(preguntas, null, 2));
+    delete datos.preguntas;
+
+    // Crear el chatbot
     const nuevoId = await configRepository.crear(datos);
+    console.log('✅ Chatbot creado con ID:', nuevoId);
+
+    // Crear las preguntas asociadas
+    if (preguntas.length > 0) {
+      console.log('💾 Guardando', preguntas.length, 'preguntas...');
+      for (let i = 0; i < preguntas.length; i++) {
+        const pregunta = preguntas[i];
+        pregunta.config_id = nuevoId;
+        pregunta.orden = i + 1;
+        console.log('💾 Guardando pregunta', i + 1, ':', pregunta.pregunta);
+        const preguntaId = await preguntasRepository.crear(pregunta);
+        console.log('✅ Pregunta guardada con ID:', preguntaId);
+      }
+    } else {
+      console.log('⚠️ No hay preguntas para guardar');
+    }
+
+    // Obtener el chatbot completo con preguntas
     const chatbot = await configRepository.obtenerPorId(nuevoId);
+    chatbot.preguntas = await preguntasRepository.obtenerPorConfig(nuevoId, false);
 
     res.status(201).json({
       success: true,
@@ -94,7 +127,7 @@ const crear = async (req, res, next) => {
 
 /**
  * PUT /api/config/:id
- * Actualizar un chatbot
+ * Actualizar un chatbot (incluye preguntas)
  */
 const actualizar = async (req, res, next) => {
   try {
@@ -121,8 +154,36 @@ const actualizar = async (req, res, next) => {
       }
     }
 
+    // Extraer preguntas antes de actualizar el chatbot
+    const preguntas = datos.preguntas || [];
+    delete datos.preguntas;
+
+    // Actualizar el chatbot
     await configRepository.actualizar(id, datos);
+
+    // Actualizar preguntas: eliminar todas las existentes y crear las nuevas
+    if (preguntas.length > 0) {
+      // Obtener preguntas existentes
+      const preguntasExistentes = await preguntasRepository.obtenerPorConfig(id, false);
+      
+      // Eliminar preguntas existentes
+      for (const pregunta of preguntasExistentes) {
+        await preguntasRepository.eliminar(pregunta.id);
+      }
+
+      // Crear las nuevas preguntas
+      for (let i = 0; i < preguntas.length; i++) {
+        const pregunta = preguntas[i];
+        pregunta.config_id = id;
+        pregunta.orden = i + 1;
+        delete pregunta.id; // Eliminar ID para crear nueva
+        await preguntasRepository.crear(pregunta);
+      }
+    }
+
+    // Obtener el chatbot completo con preguntas
     const chatbotActualizado = await configRepository.obtenerPorId(id);
+    chatbotActualizado.preguntas = await preguntasRepository.obtenerPorConfig(id, false);
 
     res.json({
       success: true,

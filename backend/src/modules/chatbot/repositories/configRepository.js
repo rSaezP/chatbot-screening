@@ -77,8 +77,11 @@ const crear = async (datos) => {
         mensaje_bienvenida,
         mensaje_aprobado,
         mensaje_rechazado,
+        email_reclutador,
+        mensaje_finalizacion,
+        smtp_config,
         activo
-      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
     `;
 
     const params = [
@@ -96,6 +99,9 @@ const crear = async (datos) => {
       datos.mensaje_bienvenida || null,
       datos.mensaje_aprobado || null,
       datos.mensaje_rechazado || null,
+      datos.email_reclutador || null,
+      datos.mensaje_finalizacion || null,
+      datos.smtp_config ? JSON.stringify(datos.smtp_config) : null,
       datos.activo !== undefined ? datos.activo : true
     ];
 
@@ -172,6 +178,18 @@ const actualizar = async (id, datos) => {
     if (datos.mensaje_rechazado !== undefined) {
       campos.push('mensaje_rechazado = ?');
       valores.push(datos.mensaje_rechazado);
+    }
+    if (datos.email_reclutador !== undefined) {
+      campos.push('email_reclutador = ?');
+      valores.push(datos.email_reclutador);
+    }
+    if (datos.mensaje_finalizacion !== undefined) {
+      campos.push('mensaje_finalizacion = ?');
+      valores.push(datos.mensaje_finalizacion);
+    }
+    if (datos.smtp_config !== undefined) {
+      campos.push('smtp_config = ?');
+      valores.push(datos.smtp_config ? JSON.stringify(datos.smtp_config) : null);
     }
     if (datos.activo !== undefined) {
       campos.push('activo = ?');

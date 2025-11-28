@@ -1,6 +1,16 @@
 <script setup lang="ts">
-  import { useRoute } from 'vue-router'
+  import { useRoute, useRouter } from 'vue-router'
+  
   const route = useRoute()
+  const router = useRouter()
+
+  function irACrear() {
+    router.push('/chatbots/new')
+  }
+
+  function irALista() {
+    router.push('/chatbots')
+  }
 </script>
 
 <template>
@@ -46,12 +56,13 @@
         </div>
       </div>
 
-      <ButtonComponent
-        data-eit-variant="blue"
-        text="Crear Chatbot"
-        icon="fa-solid fa-plus"
-        @emitEvent="$router.push('/chatbots/new')"
-      />
+      <button
+        @click="irACrear"
+        style="background: #4A5568; color: white; border: none; padding: 12px 24px; border-radius: 6px; cursor: pointer; font-size: 16px; display: flex; align-items: center; gap: 8px;"
+      >
+        <font-awesome-icon icon="fa-solid fa-plus" />
+        Crear Chatbot
+      </button>
     </div>
 
     <!-- Card: Ver Chatbots -->
@@ -78,12 +89,13 @@
         </div>
       </div>
 
-      <ButtonComponent
-        data-eit-variant="blue"
-        text="Ver Chatbots"
-        icon="fa-solid fa-eye"
-        @emitEvent="$router.push('/chatbots')"
-      />
+      <button
+        @click="irALista"
+        style="background: #4A5568; color: white; border: none; padding: 12px 24px; border-radius: 6px; cursor: pointer; font-size: 16px; display: flex; align-items: center; gap: 8px;"
+      >
+        <font-awesome-icon icon="fa-solid fa-eye" />
+        Ver Chatbots
+      </button>
     </div>
   </div>
 </template>

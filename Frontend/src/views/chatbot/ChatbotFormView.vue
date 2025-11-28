@@ -20,7 +20,7 @@
     </div>
 
     <!-- TabComponent con 5 pasos -->
-    <TabComponent :data="pasos" :activeTab="pasoActual">
+    <TabComponent :data="pasos">
 
       <!-- ============================================ -->
       <!-- TAB 0: ASISTENTE -->
@@ -109,15 +109,6 @@
             </div>
           </div>
 
-          <!-- Botones -->
-          <div data-eit-display="flex" data-eit-justify="end" data-eit-mt="5" data-eit-pt="4">
-            <ButtonComponent
-              data-eit-variant="blue"
-              text="Siguiente"
-              icon="fa-solid fa-arrow-right"
-              @emitEvent="siguientePaso"
-            />
-          </div>
         </div>
       </template>
 
@@ -206,23 +197,6 @@
               Porcentaje mínimo para aprobar (0-100)
             </p>
           </div>
-
-          <!-- Botones -->
-          <div data-eit-display="flex" data-eit-justify="space-between" data-eit-mt="5" data-eit-pt="4" data-eit-gap="3">
-            <ButtonComponent
-              data-eit-variant="blue"
-              data-eit-outline
-              text="Anterior"
-              icon="fa-solid fa-arrow-left"
-              @emitEvent="anteriorPaso"
-            />
-            <ButtonComponent
-              data-eit-variant="blue"
-              text="Siguiente"
-              icon="fa-solid fa-arrow-right"
-              @emitEvent="siguientePaso"
-            />
-          </div>
         </div>
       </template>
 
@@ -272,23 +246,6 @@
             <p data-eit-font-size="x1" data-eit-color="text-soft" data-eit-mt="2" data-eit-mb="0">
               Mensaje después de completar todas las preguntas
             </p>
-          </div>
-
-          <!-- Botones -->
-          <div data-eit-display="flex" data-eit-justify="space-between" data-eit-mt="5" data-eit-pt="4" data-eit-gap="3">
-            <ButtonComponent
-              data-eit-variant="blue"
-              data-eit-outline
-              text="Anterior"
-              icon="fa-solid fa-arrow-left"
-              @emitEvent="anteriorPaso"
-            />
-            <ButtonComponent
-              data-eit-variant="blue"
-              text="Siguiente"
-              icon="fa-solid fa-arrow-right"
-              @emitEvent="siguientePaso"
-            />
           </div>
         </div>
       </template>
@@ -395,22 +352,6 @@
             </div>
           </details>
 
-          <!-- Botones -->
-          <div data-eit-display="flex" data-eit-justify="space-between" data-eit-mt="5" data-eit-pt="4" data-eit-gap="3">
-            <ButtonComponent
-              data-eit-variant="blue"
-              data-eit-outline
-              text="Anterior"
-              icon="fa-solid fa-arrow-left"
-              @emitEvent="anteriorPaso"
-            />
-            <ButtonComponent
-              data-eit-variant="blue"
-              text="Siguiente"
-              icon="fa-solid fa-arrow-right"
-              @emitEvent="siguientePaso"
-            />
-          </div>
         </div>
       </template>
 
@@ -455,15 +396,8 @@
             />
           </div>
 
-          <!-- Botones -->
-          <div data-eit-display="flex" data-eit-justify="space-between" data-eit-mt="5" data-eit-pt="4" data-eit-gap="3">
-            <ButtonComponent
-              data-eit-variant="blue"
-              data-eit-outline
-              text="Anterior"
-              icon="fa-solid fa-arrow-left"
-              @emitEvent="anteriorPaso"
-            />
+          <!-- Botón Guardar -->
+          <div data-eit-display="flex" data-eit-justify="end" data-eit-mt="5" data-eit-pt="4">
             <ButtonComponent
               data-eit-variant="blue"
               text="Guardar Chatbot"
@@ -533,8 +467,13 @@ onMounted(async () => {
     try {
       await store.getChatbotForm(Number(route.params.id))
       if (store.chatbot) {
-        formData.value = { ...store.chatbot }
-        selectedCategoria.value = categorias.find(c => String(c.id) === store.chatbot.categoria) || null
+        formData.value = { 
+          ...store.chatbot,
+          preguntas: store.chatbot.preguntas || []
+        }
+        selectedCategoria.value = categorias.find(c => String(c.id) === store.chatbot?.categoria) || null
+        console.log('Chatbot cargado para edición:', formData.value)
+        console.log('Preguntas cargadas:', formData.value.preguntas)
       }
     } catch (error) {
       console.error('Error al cargar chatbot:', error)
@@ -616,6 +555,10 @@ async function guardarChatbot() {
   try {
     formError.value = false
 
+    console.log('🔍 DIAGNÓSTICO - formData completo:', JSON.parse(JSON.stringify(formData.value)))
+    console.log('🔍 DIAGNÓSTICO - Preguntas en formData:', formData.value.preguntas)
+    console.log('🔍 DIAGNÓSTICO - Cantidad de preguntas:', formData.value.preguntas?.length)
+
     // Validar campos requeridos
     if (!formData.value.nombre_asistente || !formData.value.nombre || !formData.value.email_reclutador) {
       formError.value = true
@@ -623,10 +566,12 @@ async function guardarChatbot() {
       return
     }
 
-    if (formData.value.preguntas.length === 0) {
+    if (!formData.value.preguntas || formData.value.preguntas.length === 0) {
       alert('Debes agregar al menos una pregunta')
       return
     }
+
+    console.log('📤 Enviando al backend:', formData.value)
 
     if (esEdicion.value && formData.value.id) {
       await store.mutationUpdateChatbot(formData.value.id, formData.value)

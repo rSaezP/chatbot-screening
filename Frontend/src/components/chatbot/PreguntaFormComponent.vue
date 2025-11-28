@@ -62,7 +62,7 @@
         </div>
 
         <!-- TEXTO: Keywords -->
-        <div v-if="form.tipo_campo === 'texto_corto' || form.tipo_campo === 'texto_largo'">
+        <div v-if="form.tipo_campo === 'texto' || form.tipo_campo === 'texto_largo'">
           <InputComponent
             inputType="textarea"
             floatLabel="Palabras clave (separadas por comas)"
@@ -265,7 +265,7 @@ function handleTipoChange(option: SelectOption | null) {
       case 'numero':
         form.value.regla.tipo = 'rango'
         break
-      case 'texto_corto':
+      case 'texto':
       case 'texto_largo':
         form.value.regla.tipo = 'keywords'
         break
@@ -273,6 +273,7 @@ function handleTipoChange(option: SelectOption | null) {
         form.value.regla.tipo = 'igual'
         break
       case 'opcion_unica':
+      case 'opcion_multiple':
         form.value.regla.tipo = 'opcion'
         break
       default:

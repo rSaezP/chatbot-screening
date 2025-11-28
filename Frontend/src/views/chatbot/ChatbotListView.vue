@@ -33,29 +33,20 @@ async function eliminar(id: number) {
 <template>
   <div data-eit-p="5">
     <!-- Header -->
-    <div data-eit-display="flex" data-eit-justify="space-between" data-eit-align="center" data-eit-mb="5">
-      <div>
-        <h1 
-          data-eit-font="primary"
-          data-eit-font-size="x7"
-          data-eit-color="text"
-          data-eit-font-weight="900"
-          data-eit-mt="0"
-          data-eit-mb="2"
-        >
-          Chatbots Creados
-        </h1>
-        <p data-eit-color="text-soft" data-eit-font-size="x3" data-eit-mb="0">
-          Gestiona tus chatbots de evaluación
-        </p>
-      </div>
-
-      <ButtonComponent
-        data-eit-variant="blue"
-        text="Crear Nuevo"
-        icon="fa-solid fa-plus"
-        @emitEvent="crearNuevo"
-      />
+    <div data-eit-mb="5">
+      <h1 
+        data-eit-font="primary"
+        data-eit-font-size="x7"
+        data-eit-color="text"
+        data-eit-font-weight="900"
+        data-eit-mt="0"
+        data-eit-mb="2"
+      >
+        Chatbots Creados
+      </h1>
+      <p data-eit-color="text-soft" data-eit-font-size="x3" data-eit-mb="0">
+        Gestiona tus chatbots de evaluación
+      </p>
     </div>
 
     <!-- Loading -->

@@ -18,14 +18,14 @@ export const useStoreTheme = defineStore('theme', () => {
   //Actions
   const getTheme = async () => {
     try {
-      // 3IT Corporate colors
+      // Colores minimalistas y neutros
       handleThemeColors([
-        '#5150c0', // Light theme: --eit-c-primary
-        '#3fcfdf', // Light theme: --eit-c-secondary
-        '#8857c5', // Light theme: --eit-c-tertiary
-        '#5150c0', // Dark theme: --eit-c-dark-primary
-        '#2d99a5', // Dark theme: --eit-c-dark-secondary
-        '#af90d1'  // Dark theme: --eit-c-dark-tertiary
+        '#4A5568', // Light theme: --eit-c-primary (gris azulado)
+        '#718096', // Light theme: --eit-c-secondary (gris medio)
+        '#2D3748', // Light theme: --eit-c-tertiary (gris oscuro)
+        '#4A5568', // Dark theme: --eit-c-dark-primary
+        '#718096', // Dark theme: --eit-c-dark-secondary
+        '#2D3748'  // Dark theme: --eit-c-dark-tertiary
       ])
       logotipo.value = handleThemeLogos([
         // Light logos
