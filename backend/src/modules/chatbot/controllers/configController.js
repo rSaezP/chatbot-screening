@@ -16,8 +16,15 @@ const preguntasRepository = require('../repositories/preguntasRepository');
  */
 const obtenerTodos = async (req, res, next) => {
   try {
-    const soloActivos = req.query.activos === 'true';
+    // Por defecto solo traer activos, a menos que se especifique ?activos=false
+    const soloActivos = req.query.activos !== 'false';
     const chatbots = await configRepository.obtenerTodos(soloActivos);
+
+    // Agregar el conteo de preguntas a cada chatbot
+    for (const chatbot of chatbots) {
+      const preguntas = await preguntasRepository.obtenerPorConfig(chatbot.id, false);
+      chatbot.preguntas = preguntas;
+    }
 
     res.json({
       success: true,

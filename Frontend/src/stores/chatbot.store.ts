@@ -142,15 +142,25 @@ export const useStoreChatbot = defineStore('storeChatbot', () => {
   }
 
   /**
-   * Eliminar un chatbot
+   * Eliminar un chatbot (con actualización optimista)
    */
   const mutationDeleteChatbot = async (id: number) => {
+    // Guardar referencia para rollback
+    const chatbotEliminado = chatbots.value.find(c => c.id === id)
+    const indexOriginal = chatbots.value.findIndex(c => c.id === id)
+    
+    // Actualización optimista: eliminar inmediatamente de la UI
+    chatbots.value = chatbots.value.filter(c => c.id !== id)
+    
     try {
       errorBack.value = null
       loadingBtnDialog.value = true
       await chatbotService.delete(id)
-      chatbots.value = chatbots.value.filter(c => c.id !== id)
     } catch (error) {
+      // Rollback: restaurar el chatbot si falla
+      if (chatbotEliminado && indexOriginal !== -1) {
+        chatbots.value.splice(indexOriginal, 0, chatbotEliminado)
+      }
       if (axios.isAxiosError(error)) errorBack.value = error
       else errorBack.value = null
       throw error
@@ -174,6 +184,41 @@ export const useStoreChatbot = defineStore('storeChatbot', () => {
       else errorBack.value = null
     } finally {
       loadingTable.value = false
+    }
+  }
+
+  // ========== ACTIONS - INVITACIONES ==========
+
+  /**
+   * Enviar invitaciones por email
+   */
+  const mutationEnviarInvitaciones = async (id: number, emails: string[]) => {
+    try {
+      errorBack.value = null
+      loadingBtnDialog.value = true
+      const result = await chatbotService.enviarInvitaciones(id, emails)
+      return result
+    } catch (error) {
+      if (axios.isAxiosError(error)) errorBack.value = error
+      else errorBack.value = null
+      throw error
+    } finally {
+      loadingBtnDialog.value = false
+    }
+  }
+
+  /**
+   * Verificar configuración SMTP
+   */
+  const verificarSMTP = async (id: number) => {
+    try {
+      errorBack.value = null
+      const result = await chatbotService.verificarSMTP(id)
+      return result
+    } catch (error) {
+      if (axios.isAxiosError(error)) errorBack.value = error
+      else errorBack.value = null
+      throw error
     }
   }
 
@@ -267,6 +312,8 @@ export const useStoreChatbot = defineStore('storeChatbot', () => {
     mutationCreateChatbot,
     mutationUpdateChatbot,
     mutationDeleteChatbot,
+    mutationEnviarInvitaciones,
+    verificarSMTP,
 
     // UI Handlers
     handleSlideFilter,
