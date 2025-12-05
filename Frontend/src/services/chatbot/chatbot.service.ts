@@ -64,10 +64,10 @@ export const chatbotService = {
   /**
    * Enviar invitaciones por email
    * @param id - ID del chatbot
-   * @param emails - Array de emails a invitar
+   * @param candidatos - Array de candidatos con nombre, email y teléfono opcionales
    */
-  async enviarInvitaciones(id: number, emails: string[]) {
-    const response = await axiosInstance.post(`/config/${id}/invitar`, { emails })
+  async enviarInvitaciones(id: number, candidatos: Array<{ nombre?: string; email: string; telefono?: string }>) {
+    const response = await axiosInstance.post(`/config/${id}/invitar`, { candidatos })
     return response.data
   },
 

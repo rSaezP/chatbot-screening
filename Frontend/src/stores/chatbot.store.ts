@@ -192,11 +192,11 @@ export const useStoreChatbot = defineStore('storeChatbot', () => {
   /**
    * Enviar invitaciones por email
    */
-  const mutationEnviarInvitaciones = async (id: number, emails: string[]) => {
+  const mutationEnviarInvitaciones = async (id: number, candidatos: Array<{ nombre?: string; email: string; telefono?: string }>) => {
     try {
       errorBack.value = null
       loadingBtnDialog.value = true
-      const result = await chatbotService.enviarInvitaciones(id, emails)
+      const result = await chatbotService.enviarInvitaciones(id, candidatos)
       return result
     } catch (error) {
       if (axios.isAxiosError(error)) errorBack.value = error

@@ -71,11 +71,11 @@ function abrirDialogInvitacion(chatbot: Chatbot) {
   dialogInvitacion.value?.showDialog()
 }
 
-async function enviarInvitaciones(emails: string[]) {
+async function enviarInvitaciones(candidatos: Array<{ nombre?: string; email: string; telefono?: string }>) {
   if (!chatbotSeleccionado.value?.id) return
 
   try {
-    const resultado = await store.mutationEnviarInvitaciones(chatbotSeleccionado.value.id, emails)
+    const resultado = await store.mutationEnviarInvitaciones(chatbotSeleccionado.value.id, candidatos)
     resultadoEnvio.value = resultado
     
     if (resultado.success) {

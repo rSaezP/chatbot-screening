@@ -170,6 +170,11 @@ const enviarInvitacion = async (candidatoEmail, chatbotUrl, config, sesion) => {
 
     const asunto = `Tu Evaluación Profesional está Lista`;
 
+    // Personalizar saludo según si hay nombre o no
+    const saludo = sesion.candidato_nombre 
+      ? `Hola <strong>${sesion.candidato_nombre}</strong>,` 
+      : 'Hola,';
+
     const cuerpo = `
 <!DOCTYPE html>
 <html lang="es">
@@ -200,7 +205,7 @@ const enviarInvitacion = async (candidatoEmail, chatbotUrl, config, sesion) => {
 
     <!-- Contenido -->
     <div style="padding: 20px 30px;">
-      <p style="color: #333333; font-size: 15px; margin: 0 0 10px 0;">Hola,</p>
+      <p style="color: #333333; font-size: 15px; margin: 0 0 10px 0;">${saludo}</p>
       <p style="color: #666666; font-size: 14px; line-height: 1.6; margin: 0 0 20px 0;">
         Has sido invitado a completar la evaluación: <strong>"${config.nombre}"</strong>
       </p>

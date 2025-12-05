@@ -52,27 +52,22 @@ onMounted(async () => {
     
     // Secuencia de mensajes de bienvenida
     setTimeout(() => {
-      // 1. Saludo del asistente
+      // 1. Saludo personalizado del asistente (ÚNICO mensaje de bienvenida)
+      const nombreCandidato = sesion.value.candidato_nombre || ''
+      const saludo = nombreCandidato 
+        ? `¡Hola ${nombreCandidato}! Soy ${chatbot.value.nombre_asistente}, tu asistente virtual 👋`
+        : `¡Hola! Soy ${chatbot.value.nombre_asistente}, tu asistente virtual 👋`
+      
       mensajes.value.push({
         tipo: 'asistente',
-        contenido: `¡Hola! Soy ${chatbot.value.nombre_asistente}, tu asistente virtual 👋`,
+        contenido: saludo,
         timestamp: new Date()
       })
       scrollToBottom()
     }, 500)
     
     setTimeout(() => {
-      // 2. Mensaje de bienvenida personalizado
-      mensajes.value.push({
-        tipo: 'asistente',
-        contenido: chatbot.value.mensaje_bienvenida,
-        timestamp: new Date()
-      })
-      scrollToBottom()
-    }, 1500)
-    
-    setTimeout(() => {
-      // 3. Instrucciones
+      // 2. Instrucciones
       mensajes.value.push({
         tipo: 'asistente',
         contenido: `Te haré ${preguntas.value.length} preguntas. Tómate tu tiempo para responder cada una. ¿Listo para comenzar? 🚀`,

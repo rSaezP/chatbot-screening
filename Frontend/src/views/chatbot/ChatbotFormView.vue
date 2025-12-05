@@ -274,18 +274,21 @@
 
           <div data-eit-mb="5">
             <InputComponent
-              inputType="email"
-              floatLabel="Email del reclutador *"
+              inputType="text"
+              floatLabel="Email(s) del reclutador *"
               :input="formData.email_reclutador"
               :requiredField="true"
               :floatLeft="true"
-              maxLength="200"
+              maxLength="500"
               @emitValue="formData.email_reclutador = $event"
             >
               <template #float-left>
                 <font-awesome-icon icon="fa-solid fa-envelope" data-eit-color="primary" />
               </template>
             </InputComponent>
+            <p data-eit-font-size="x1" data-eit-color="text-soft" data-eit-mt="2" data-eit-mb="0">
+              💡 Puedes ingresar múltiples emails separados por comas: email1@example.com, email2@example.com
+            </p>
           </div>
 
           <!-- Info sobre emails -->

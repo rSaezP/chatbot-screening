@@ -103,56 +103,10 @@ const crear = async (req, res, next) => {
     const nuevoId = await configRepository.crear(datos);
     console.log('✅ Chatbot creado con ID:', nuevoId);
 
-    // 1. CREAR PREGUNTAS DE PERFIL AUTOMÁTICAMENTE
-    console.log('👤 Creando preguntas de perfil automáticas...');
-    const preguntasPerfil = [
-      {
-        config_id: nuevoId,
-        pregunta: '¿Cuál es tu nombre y apellido?',
-        descripcion: 'Pregunta para capturar el nombre completo del candidato',
-        tipo_campo: 'texto',
-        requerida: 1,
-        es_dato_perfil: 1,
-        campo_perfil: 'nombre',
-        orden: -3,
-        activa: 1,
-        metodo_evaluacion: 'regla_fija',
-        regla: null
-      },
-      {
-        config_id: nuevoId,
-        pregunta: '¿Cuál es tu email?',
-        descripcion: 'Pregunta para capturar el email del candidato',
-        tipo_campo: 'email',
-        requerida: 1,
-        es_dato_perfil: 1,
-        campo_perfil: 'email',
-        orden: -2,
-        activa: 1,
-        metodo_evaluacion: 'regla_fija',
-        regla: null
-      },
-      {
-        config_id: nuevoId,
-        pregunta: '¿Cuál es tu teléfono de contacto?',
-        descripcion: 'Pregunta para capturar el teléfono del candidato',
-        tipo_campo: 'telefono',
-        requerida: 0,
-        es_dato_perfil: 1,
-        campo_perfil: 'telefono',
-        orden: -1,
-        activa: 1,
-        metodo_evaluacion: 'regla_fija',
-        regla: null
-      }
-    ];
+    // NOTA: Las preguntas de perfil (nombre, email, teléfono) ya NO se crean automáticamente
+    // porque los datos se capturan desde el formulario de invitaciones (Excel)
 
-    for (const preguntaPerfil of preguntasPerfil) {
-      await preguntasRepository.crear(preguntaPerfil);
-    }
-    console.log('✅ 3 preguntas de perfil creadas automáticamente');
-
-    // 2. Crear las preguntas de evaluación del usuario
+    // Crear las preguntas de evaluación del usuario
     if (preguntas.length > 0) {
       console.log('💾 Guardando', preguntas.length, 'preguntas de evaluación...');
       for (let i = 0; i < preguntas.length; i++) {

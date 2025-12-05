@@ -55,6 +55,17 @@ const obtenerPorToken = async (req, res, next) => {
       });
     }
 
+    // Personalizar mensaje de bienvenida con el nombre del candidato
+    if (sesion.mensaje_bienvenida && sesion.candidato_nombre) {
+      // Reemplazar "Hola," por "Hola [Nombre],"
+      sesion.mensaje_bienvenida_personalizado = sesion.mensaje_bienvenida.replace(
+        /Hola,?/i,
+        `Hola ${sesion.candidato_nombre},`
+      );
+    } else {
+      sesion.mensaje_bienvenida_personalizado = sesion.mensaje_bienvenida;
+    }
+
     res.json({
       success: true,
       data: sesion

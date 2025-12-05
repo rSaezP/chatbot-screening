@@ -331,7 +331,13 @@ const finalizarEvaluacion = async (token, umbralAprobacion = null) => {
     // 8. Notificar al reclutador (si está configurado) con TODA LA INFORMACIÓN
     if (sesionFinalizada.email_reclutador) {
       try {
-        console.log(`📧 Preparando notificación para reclutador: ${sesionFinalizada.email_reclutador}`);
+        // Procesar múltiples emails (separados por comas)
+        const emailsReclutador = sesionFinalizada.email_reclutador
+          .split(',')
+          .map(email => email.trim())
+          .filter(email => email.length > 0);
+        
+        console.log(`📧 Preparando notificación para ${emailsReclutador.length} reclutador(es): ${emailsReclutador.join(', ')}`);
         
         // Obtener TODOS los mensajes de la conversación
         const mensajes = await mensajesRepository.obtenerPorSesion(sesion.id);
@@ -387,9 +393,19 @@ const finalizarEvaluacion = async (token, umbralAprobacion = null) => {
           umbral_aprobacion: umbral
         };
 
-        console.log('📧 Enviando notificación al reclutador...');
-        await emailService.notificarReclutador(sesionFinalizada.email_reclutador, sesionDataCompleta);
-        console.log(`✅ Notificación completa enviada al reclutador: ${sesionFinalizada.email_reclutador}`);
+        console.log('📧 Enviando notificación a los reclutadores...');
+        
+        // Enviar a cada reclutador
+        for (const emailReclutador of emailsReclutador) {
+          try {
+            await emailService.notificarReclutador(emailReclutador, sesionDataCompleta);
+            console.log(`✅ Notificación enviada a: ${emailReclutador}`);
+          } catch (error) {
+            console.error(`❌ Error al enviar a ${emailReclutador}:`, error.message);
+          }
+        }
+        
+        console.log(`✅ Notificaciones enviadas a ${emailsReclutador.length} reclutador(es)`);
       } catch (emailError) {
         console.error(`❌ Error al notificar al reclutador: ${emailError.message}`);
         console.error('Stack trace:', emailError.stack);
