@@ -53,18 +53,64 @@
           </div>
 
           <div data-eit-mb="5">
-            <InputComponent
-              inputType="text"
-              floatLabel="Avatar URL (opcional)"
-              :input="formData.avatar_url"
-              maxLength="500"
-              :floatLeft="true"
-              @emitValue="formData.avatar_url = $event"
-            >
-              <template #float-left>
-                <font-awesome-icon icon="fa-solid fa-image" data-eit-color="secondary" />
-              </template>
-            </InputComponent>
+            <label data-eit-display="block" data-eit-mb="2" data-eit-font-weight="500">
+              Avatar del asistente (opcional)
+            </label>
+            
+            <!-- Preview y botón -->
+            <div data-eit-display="flex" data-eit-align="center" data-eit-gap="3">
+              <!-- Preview del avatar seleccionado -->
+              <div 
+                v-if="formData.avatar_url"
+                style="width: 60px; height: 60px;"
+                data-eit-border-radius="circle"
+                data-eit-overflow="hidden"
+                data-eit-border="all"
+                data-eit-border-color="default"
+                data-eit-flex-shrink="0"
+              >
+                <img 
+                  :src="formData.avatar_url" 
+                  alt="Avatar seleccionado"
+                  style="width: 100%; height: 100%; object-fit: cover;"
+                />
+              </div>
+              <div 
+                v-else
+                style="width: 60px; height: 60px;"
+                data-eit-border-radius="circle"
+                data-eit-bg="soft"
+                data-eit-display="flex"
+                data-eit-align="center"
+                data-eit-justify="center"
+                data-eit-border="all"
+                data-eit-border-color="default"
+                data-eit-flex-shrink="0"
+              >
+                <font-awesome-icon 
+                  icon="fa-solid fa-robot" 
+                  data-eit-color="text-soft"
+                  data-eit-font-size="x5"
+                />
+              </div>
+              
+              <!-- Botón para abrir selector -->
+              <ButtonComponent
+                text="Seleccionar avatar"
+                icon="fa-solid fa-image"
+                data-eit-variant="secondary"
+                @emitEvent="abrirModalAvatar"
+              />
+              
+              <!-- Botón para quitar avatar -->
+              <ButtonComponent
+                v-if="formData.avatar_url"
+                text="Quitar"
+                icon="fa-solid fa-times"
+                data-eit-variant="danger"
+                @emitEvent="seleccionarAvatar('')"
+              />
+            </div>
           </div>
 
           <div data-eit-mb="4">
@@ -366,6 +412,148 @@
       @save="guardarPregunta"
       @cancel="cerrarModalPregunta"
     />
+
+    <!-- Modal de selección de avatar -->
+    <DialogComponent
+      ref="dialogAvatarRef"
+      class="eit-dialog--top eit-dialog--medium"
+    >
+      <template #head>
+        <h3 data-eit-font-size="x5" data-eit-my="0">
+          Selecciona un avatar
+        </h3>
+      </template>
+      
+      <template #content>
+        <div 
+          data-eit-display="grid" 
+          style="grid-template-columns: repeat(3, 1fr); gap: 16px;"
+        >
+          <!-- Avatar 1 -->
+          <div 
+            @click="seleccionarAvatar('/avatars/Trit-1.jpg')"
+            data-eit-cursor="pointer"
+            data-eit-border="all"
+            :data-eit-border-color="formData.avatar_url === '/avatars/Trit-1.jpg' ? 'primary' : 'default'"
+            data-eit-border-radius="x2"
+            data-eit-p="3"
+            data-eit-text-align="center"
+            data-eit-bg="white"
+            :data-eit-box-shadow="formData.avatar_url === '/avatars/Trit-1.jpg' ? 'medium' : 'none'"
+          >
+            <img 
+              src="/avatars/Trit-1.jpg" 
+              alt="Avatar 1"
+              data-eit-width="full"
+              data-eit-border-radius="x2"
+              style="height: 80px; object-fit: cover;"
+            />
+            <p data-eit-font-size="x1" data-eit-mt="2" data-eit-mb="0" data-eit-color="text-soft">
+              Avatar 1
+            </p>
+          </div>
+
+          <!-- Avatar 2 -->
+          <div 
+            @click="seleccionarAvatar('/avatars/Trit-2.jpg')"
+            data-eit-cursor="pointer"
+            data-eit-border="all"
+            :data-eit-border-color="formData.avatar_url === '/avatars/Trit-2.jpg' ? 'primary' : 'default'"
+            data-eit-border-radius="x2"
+            data-eit-p="3"
+            data-eit-text-align="center"
+            data-eit-bg="white"
+            :data-eit-box-shadow="formData.avatar_url === '/avatars/Trit-2.jpg' ? 'medium' : 'none'"
+          >
+            <img 
+              src="/avatars/Trit-2.jpg" 
+              alt="Avatar 2"
+              data-eit-width="full"
+              data-eit-border-radius="x2"
+              style="height: 80px; object-fit: cover;"
+            />
+            <p data-eit-font-size="x1" data-eit-mt="2" data-eit-mb="0" data-eit-color="text-soft">
+              Avatar 2
+            </p>
+          </div>
+
+          <!-- Avatar 3 -->
+          <div 
+            @click="seleccionarAvatar('/avatars/Trit-3.jpg')"
+            data-eit-cursor="pointer"
+            data-eit-border="all"
+            :data-eit-border-color="formData.avatar_url === '/avatars/Trit-3.jpg' ? 'primary' : 'default'"
+            data-eit-border-radius="x2"
+            data-eit-p="3"
+            data-eit-text-align="center"
+            data-eit-bg="white"
+            :data-eit-box-shadow="formData.avatar_url === '/avatars/Trit-3.jpg' ? 'medium' : 'none'"
+          >
+            <img 
+              src="/avatars/Trit-3.jpg" 
+              alt="Avatar 3"
+              data-eit-width="full"
+              data-eit-border-radius="x2"
+              style="height: 80px; object-fit: cover;"
+            />
+            <p data-eit-font-size="x1" data-eit-mt="2" data-eit-mb="0" data-eit-color="text-soft">
+              Avatar 3
+            </p>
+          </div>
+
+          <!-- Avatar 4 -->
+          <div 
+            @click="seleccionarAvatar('/avatars/Trit-4.jpg')"
+            data-eit-cursor="pointer"
+            data-eit-border="all"
+            :data-eit-border-color="formData.avatar_url === '/avatars/Trit-4.jpg' ? 'primary' : 'default'"
+            data-eit-border-radius="x2"
+            data-eit-p="3"
+            data-eit-text-align="center"
+            data-eit-bg="white"
+            :data-eit-box-shadow="formData.avatar_url === '/avatars/Trit-4.jpg' ? 'medium' : 'none'"
+          >
+            <img 
+              src="/avatars/Trit-4.jpg" 
+              alt="Avatar 4"
+              data-eit-width="full"
+              data-eit-border-radius="x2"
+              style="height: 80px; object-fit: cover;"
+            />
+            <p data-eit-font-size="x1" data-eit-mt="2" data-eit-mb="0" data-eit-color="text-soft">
+              Avatar 4
+            </p>
+          </div>
+
+          <!-- Sin avatar -->
+          <div 
+            @click="seleccionarAvatar('')"
+            data-eit-cursor="pointer"
+            data-eit-border="all"
+            :data-eit-border-color="!formData.avatar_url ? 'primary' : 'default'"
+            data-eit-border-radius="x2"
+            data-eit-p="3"
+            data-eit-text-align="center"
+            data-eit-bg="white"
+            data-eit-display="flex"
+            data-eit-flex-direction="column"
+            data-eit-align="center"
+            data-eit-justify="center"
+            :data-eit-box-shadow="!formData.avatar_url ? 'medium' : 'none'"
+            style="min-height: 112px;"
+          >
+            <font-awesome-icon 
+              icon="fa-solid fa-robot" 
+              data-eit-color="text-soft"
+              data-eit-font-size="x6"
+            />
+            <p data-eit-font-size="x1" data-eit-mt="2" data-eit-mb="0" data-eit-color="text-soft">
+              Sin avatar
+            </p>
+          </div>
+        </div>
+      </template>
+    </DialogComponent>
   </div>
 </template>
 
@@ -374,7 +562,7 @@ import { ref, computed, onMounted, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { useStoreChatbot } from '@/stores'
 import type { Chatbot, Pregunta } from '@/interfaces'
-import type { SelectOption } from 'uikit-3it-vue'
+import type { SelectOption, DialogExpose } from 'uikit-3it-vue'
 import { categorias } from '@/constants'
 import { initialChatbot } from '@/factories'
 import PreguntaListComponent from '@/components/chatbot/PreguntaListComponent.vue'
@@ -392,6 +580,9 @@ const formError = ref(false)
 const modalPreguntaAbierto = ref(false)
 const preguntaEnEdicion = ref<Pregunta | null>(null)
 const indicePreguntaEnEdicion = ref<number | null>(null)
+
+// Ref para el dialog de avatar
+const dialogAvatarRef = ref<DialogExpose | null>(null)
 
 const pasos = [
   { name: 'Asistente' },
@@ -434,6 +625,20 @@ watch(selectedCategoria, (newVal) => {
     formData.value.categoria = String(newVal.id)
   }
 })
+
+// Seleccionar avatar
+function abrirModalAvatar() {
+  setTimeout(() => dialogAvatarRef.value?.showDialog(), 100)
+}
+
+function cerrarModalAvatar() {
+  dialogAvatarRef.value?.closeDialog()
+}
+
+function seleccionarAvatar(avatarUrl: string) {
+  formData.value.avatar_url = avatarUrl
+  cerrarModalAvatar()
+}
 
 // Navegación entre pasos
 function siguientePaso() {
