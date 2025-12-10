@@ -21,6 +21,15 @@
 				"requiresPermissions": false,
 				"module": "Chatbots",
 				"submenu": []
+			},
+			{
+				"id": 130,
+				"name": "Candidatos",
+				"icon": "fa-solid fa-users",
+				"url": "/sesiones",
+				"requiresPermissions": false,
+				"module": "Candidatos",
+				"submenu": []
 			}
 		],
 		"admin": []

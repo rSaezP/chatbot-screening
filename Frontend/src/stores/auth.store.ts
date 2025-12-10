@@ -41,6 +41,12 @@ export const useStoreAuth = defineStore('auth', () => {
       description: "Gestión de chatbots",
       path: "/chatbots",
       subModules: []
+    },
+    {
+      name: "Candidatos",
+      description: "Gestión de candidatos y sesiones",
+      path: "/candidatos",
+      subModules: []
     }
   ])
   
@@ -64,13 +70,22 @@ export const useStoreAuth = defineStore('auth', () => {
         requiresPermissions: false,
         module: "Chatbots",
         submenu: []
+      },
+      {
+        id: 130,
+        name: "Candidatos",
+        icon: "fa-solid fa-users",
+        url: "/candidatos",
+        requiresPermissions: false,
+        module: "Candidatos",
+        submenu: []
       }
     ],
     admin: []
   }
   
   const config = ref<UserAuthConfig>(JSON.parse(localStorage.getItem('config') || 'null') || { ...initialUserConfig })
-  const menu = ref(JSON.parse(localStorage.getItem('menu') || 'null') || defaultMenu)
+  const menu = ref(defaultMenu) // Usar siempre el menú por defecto actualizado
 
   const sidebar = reactive({
     toggleMobile: false,
@@ -88,19 +103,16 @@ export const useStoreAuth = defineStore('auth', () => {
   // Actions
   const getUserConfig = async () => {
     try {
-      const response = await fetch(`/db/config/config.json`)
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`)
-      }
-      const data = await response.json()
-      menu.value = data.menu
-      localStorage.setItem('menu', JSON.stringify(data.menu))
+      // Usar siempre el menú por defecto actualizado
+      menu.value = defaultMenu
+      localStorage.setItem('menu', JSON.stringify(defaultMenu))
+      
+      // Solo cargar config si no existe
       if(!localStorage.getItem('config')) {
-        localStorage.setItem('config', JSON.stringify(data.config))
+        localStorage.setItem('config', JSON.stringify(initialUserConfig))
       }
     } catch (error) {
       console.error('Error cargando config:', error)
-      // Usar menú por defecto si falla
       menu.value = defaultMenu
       localStorage.setItem('menu', JSON.stringify(defaultMenu))
       errorBack.value = error

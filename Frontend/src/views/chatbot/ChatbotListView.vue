@@ -124,7 +124,7 @@ function cerrarDialog() {
     <!-- Error -->
     <AlertComponent
       v-if="store.errorBack"
-      data-eit-variant="danger"
+      data-eit-variant="error"
       data-eit-mb="4"
       icon="fa-solid fa-exclamation-triangle"
       message="Error al cargar los chatbots"
@@ -192,7 +192,8 @@ function cerrarDialog() {
         <!-- Botones -->
         <div data-eit-display="flex" data-eit-flex-direction="column" data-eit-gap="2" style="margin-top: auto;">
           <ButtonComponent
-            data-eit-variant="blue"
+            data-eit-variant="gray"
+            data-eit-outline
             text="Invitar Candidatos"
             icon="fa-solid fa-paper-plane"
             @emitEvent="abrirDialogInvitacion(chatbot)"
@@ -204,7 +205,7 @@ function cerrarDialog() {
               text="Editar"
               icon="fa-solid fa-edit"
               @emitEvent="editar(chatbot.id!)"
-              style="flex: 1;"
+              data-eit-flex="fill"
             />
             <ButtonComponent
               data-eit-variant="gray"
@@ -212,7 +213,7 @@ function cerrarDialog() {
               text="Eliminar"
               icon="fa-solid fa-trash"
               @emitEvent="abrirDialogEliminar(chatbot.id!)"
-              style="flex: 1;"
+              data-eit-flex="fill"
             />
           </div>
         </div>

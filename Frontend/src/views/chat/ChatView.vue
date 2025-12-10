@@ -224,7 +224,7 @@ async function enviarRespuesta() {
     <!-- Error -->
     <div v-else-if="error" data-eit-p="5" data-eit-text-align="center">
       <AlertComponent
-        data-eit-variant="danger"
+        data-eit-variant="error"
         icon="fa-solid fa-exclamation-triangle"
         :message="error"
       />
@@ -234,36 +234,50 @@ async function enviarRespuesta() {
     <div v-else data-eit-display="flex" data-eit-flex-direction="column" style="height: 100vh;">
       
       <!-- Header -->
-      <div 
+      <div
         data-eit-p="4"
         data-eit-bg="white"
         data-eit-border="bottom"
         data-eit-border-color="default"
       >
         <div style="max-width: 900px; margin: 0 auto;">
+          <!-- Logo de la empresa -->
+          <div data-eit-display="flex" data-eit-justify="center" data-eit-mb="3">
+            <img
+              src="/img/logo-dark.svg"
+              alt="Logo 3IT"
+              style="height: 40px; width: auto;"
+            />
+          </div>
+
           <div data-eit-display="flex" data-eit-align="center" data-eit-gap="3" data-eit-mb="3">
             <!-- Avatar grande del asistente -->
-            <div 
+            <img
               v-if="chatbot.avatar_url"
-              style="width: 50px; height: 50px; border-radius: 50%; overflow: hidden; flex-shrink: 0; box-shadow: 0 2px 8px rgba(0,0,0,0.1);"
-            >
-              <img 
-                :src="chatbot.avatar_url" 
-                :alt="chatbot.nombre_asistente"
-                style="width: 100%; height: 100%; object-fit: cover;"
-              />
-            </div>
-            <div 
+              :src="chatbot.avatar_url"
+              :alt="chatbot.nombre_asistente"
+              data-eit-shape="circle"
+              data-eit-shape-size="60"
+              data-eit-object-fit="cover"
+              data-eit-flex-shrink="0"
+            />
+            <span
               v-else
-              :style="`background: ${chatbot.color_botones || '#3b82f6'}; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; box-shadow: 0 2px 8px rgba(0,0,0,0.1);`"
+              data-eit-shape="circle"
+              data-eit-shape-size="60"
+              data-eit-display="flex"
+              data-eit-justify="center"
+              data-eit-align="center"
+              data-eit-flex-shrink="0"
+              :style="`background: ${chatbot.color_botones || '#3b82f6'};`"
             >
-              <font-awesome-icon 
+              <font-awesome-icon
                 icon="fa-solid fa-robot"
                 data-eit-color="white"
                 data-eit-font-size="x5"
               />
-            </div>
-            
+            </span>
+
             <div>
               <h2 data-eit-font-size="x5" data-eit-mt="0" data-eit-mb="1" data-eit-color="text" data-eit-font-weight="700">
                 {{ chatbot.nombre }}
@@ -307,33 +321,38 @@ async function enviarRespuesta() {
           style="animation: fadeIn 0.3s ease-in;"
         >
           <!-- Mensaje del asistente (izquierda con avatar) -->
-          <div 
+          <div
             v-if="mensaje.tipo === 'asistente'"
             data-eit-display="flex"
             data-eit-align="start"
             data-eit-gap="3"
           >
             <!-- Avatar -->
-            <div 
+            <img
               v-if="chatbot.avatar_url"
-              style="width: 45px; height: 45px; border-radius: 50%; overflow: hidden; flex-shrink: 0; box-shadow: 0 2px 8px rgba(0,0,0,0.1);"
-            >
-              <img 
-                :src="chatbot.avatar_url" 
-                :alt="chatbot.nombre_asistente"
-                style="width: 100%; height: 100%; object-fit: cover;"
-              />
-            </div>
-            <div 
+              :src="chatbot.avatar_url"
+              :alt="chatbot.nombre_asistente"
+              data-eit-shape="circle"
+              data-eit-shape-size="32"
+              data-eit-object-fit="cover"
+              data-eit-flex-shrink="0"
+            />
+            <span
               v-else
-              :style="`background: ${chatbot.color_botones || '#3b82f6'}; width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; box-shadow: 0 2px 8px rgba(0,0,0,0.1);`"
+              data-eit-shape="circle"
+              data-eit-shape-size="32"
+              data-eit-display="flex"
+              data-eit-justify="center"
+              data-eit-align="center"
+              data-eit-flex-shrink="0"
+              :style="`background: ${chatbot.color_botones || '#3b82f6'};`"
             >
-              <font-awesome-icon 
+              <font-awesome-icon
                 icon="fa-solid fa-robot"
                 data-eit-color="white"
-                data-eit-font-size="x4"
+                data-eit-font-size="x3"
               />
-            </div>
+            </span>
             
             <!-- Mensaje -->
             <div style="flex: 1; max-width: 65%;">
@@ -381,7 +400,7 @@ async function enviarRespuesta() {
         data-eit-border-color="default"
       >
         <div style="max-width: 900px; margin: 0 auto;" data-eit-display="flex" data-eit-gap="3" data-eit-align="end">
-          <div style="flex: 1;">
+          <div data-eit-flex="fill">
             <InputComponent
               :key="preguntaActual"
               inputType="text"

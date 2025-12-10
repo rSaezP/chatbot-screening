@@ -13,7 +13,7 @@
     <!-- Error del backend -->
     <div v-if="store.errorBack" data-eit-mb="4">
       <AlertComponent
-        data-eit-variant="danger"
+        data-eit-variant="error"
         icon="fa-solid fa-exclamation-triangle"
         message="Error al procesar la solicitud"
       />
@@ -60,25 +60,21 @@
             <!-- Preview y botón -->
             <div data-eit-display="flex" data-eit-align="center" data-eit-gap="3">
               <!-- Preview del avatar seleccionado -->
-              <div 
+              <img
                 v-if="formData.avatar_url"
-                style="width: 60px; height: 60px;"
-                data-eit-border-radius="circle"
-                data-eit-overflow="hidden"
+                :src="formData.avatar_url"
+                alt="Avatar seleccionado"
+                data-eit-shape="circle"
+                data-eit-shape-size="60"
+                data-eit-object-fit="cover"
                 data-eit-border="all"
                 data-eit-border-color="default"
                 data-eit-flex-shrink="0"
-              >
-                <img 
-                  :src="formData.avatar_url" 
-                  alt="Avatar seleccionado"
-                  style="width: 100%; height: 100%; object-fit: cover;"
-                />
-              </div>
-              <div 
+              />
+              <span
                 v-else
-                style="width: 60px; height: 60px;"
-                data-eit-border-radius="circle"
+                data-eit-shape="circle"
+                data-eit-shape-size="60"
                 data-eit-bg="soft"
                 data-eit-display="flex"
                 data-eit-align="center"
@@ -87,12 +83,12 @@
                 data-eit-border-color="default"
                 data-eit-flex-shrink="0"
               >
-                <font-awesome-icon 
-                  icon="fa-solid fa-robot" 
+                <font-awesome-icon
+                  icon="fa-solid fa-robot"
                   data-eit-color="text-soft"
                   data-eit-font-size="x5"
                 />
-              </div>
+              </span>
               
               <!-- Botón para abrir selector -->
               <ButtonComponent
@@ -442,12 +438,13 @@
             data-eit-bg="white"
             :data-eit-box-shadow="formData.avatar_url === '/avatars/Trit-1.jpg' ? 'medium' : 'none'"
           >
-            <img 
-              src="/avatars/Trit-1.jpg" 
+            <img
+              src="/avatars/Trit-1.jpg"
               alt="Avatar 1"
               data-eit-width="full"
               data-eit-border-radius="x2"
-              style="height: 80px; object-fit: cover;"
+              data-eit-object-fit="cover"
+              style="height: 80px;"
             />
             <p data-eit-font-size="x1" data-eit-mt="2" data-eit-mb="0" data-eit-color="text-soft">
               Avatar 1
@@ -466,12 +463,13 @@
             data-eit-bg="white"
             :data-eit-box-shadow="formData.avatar_url === '/avatars/Trit-2.jpg' ? 'medium' : 'none'"
           >
-            <img 
-              src="/avatars/Trit-2.jpg" 
+            <img
+              src="/avatars/Trit-2.jpg"
               alt="Avatar 2"
               data-eit-width="full"
               data-eit-border-radius="x2"
-              style="height: 80px; object-fit: cover;"
+              data-eit-object-fit="cover"
+              style="height: 80px;"
             />
             <p data-eit-font-size="x1" data-eit-mt="2" data-eit-mb="0" data-eit-color="text-soft">
               Avatar 2
@@ -490,12 +488,13 @@
             data-eit-bg="white"
             :data-eit-box-shadow="formData.avatar_url === '/avatars/Trit-3.jpg' ? 'medium' : 'none'"
           >
-            <img 
-              src="/avatars/Trit-3.jpg" 
+            <img
+              src="/avatars/Trit-3.jpg"
               alt="Avatar 3"
               data-eit-width="full"
               data-eit-border-radius="x2"
-              style="height: 80px; object-fit: cover;"
+              data-eit-object-fit="cover"
+              style="height: 80px;"
             />
             <p data-eit-font-size="x1" data-eit-mt="2" data-eit-mb="0" data-eit-color="text-soft">
               Avatar 3
@@ -514,12 +513,13 @@
             data-eit-bg="white"
             :data-eit-box-shadow="formData.avatar_url === '/avatars/Trit-4.jpg' ? 'medium' : 'none'"
           >
-            <img 
-              src="/avatars/Trit-4.jpg" 
+            <img
+              src="/avatars/Trit-4.jpg"
               alt="Avatar 4"
               data-eit-width="full"
               data-eit-border-radius="x2"
-              style="height: 80px; object-fit: cover;"
+              data-eit-object-fit="cover"
+              style="height: 80px;"
             />
             <p data-eit-font-size="x1" data-eit-mt="2" data-eit-mb="0" data-eit-color="text-soft">
               Avatar 4
