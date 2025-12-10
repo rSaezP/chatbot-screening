@@ -28,6 +28,7 @@ const emit = defineEmits<{
 // State
 const emailsTexto = ref('')
 const erroresValidacion = ref<string[]>([])
+const formKey = ref(0) // Key para forzar re-render del formulario
 
 // Helper: Parsear una línea de texto a candidato
 function parsearLinea(linea: string): Candidato | null {
@@ -103,6 +104,7 @@ function validarYEnviar() {
 function cerrar() {
   emailsTexto.value = ''
   erroresValidacion.value = []
+  formKey.value++ // Incrementar key para forzar re-render
   emit('cerrar')
 }
 </script>
@@ -132,9 +134,9 @@ function cerrar() {
       message="💡 Puedes copiar desde Excel (Nombre, Email, Teléfono) o ingresar solo emails"
     />
 
-    <!-- Textarea de candidatos -->
-    <div data-eit-mb="3">
-      <label 
+    <!-- Textarea de candidatos con key para forzar re-render -->
+    <div data-eit-mb="3" :key="formKey">
+      <label
         data-eit-display="block"
         data-eit-mb="2"
         data-eit-font-size="x3"

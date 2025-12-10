@@ -10,16 +10,18 @@
     </template>
 
     <template #content>
-      <!-- Texto de la pregunta -->
-      <div data-eit-mb="4">
-        <InputComponent
-          inputType="textarea"
-          floatLabel="Texto de la pregunta *"
-          :input="form.pregunta"
-          maxLength="500"
-          @emitValue="form.pregunta = $event"
-        />
-      </div>
+      <!-- Wrapper con key para forzar re-render cuando se limpia el formulario -->
+      <div :key="formKey">
+        <!-- Texto de la pregunta -->
+        <div data-eit-mb="4">
+          <InputComponent
+            inputType="textarea"
+            floatLabel="Texto de la pregunta *"
+            :input="form.pregunta"
+            maxLength="500"
+            @emitValue="form.pregunta = $event"
+          />
+        </div>
 
       <!-- Tipo de campo -->
       <div data-eit-mb="4">
@@ -139,19 +141,21 @@
         </p>
       </div>
 
-      <!-- Checkboxes -->
-      <div data-eit-display="flex" data-eit-flex-direction="column" data-eit-gap="3">
-        <label data-eit-display="flex" data-eit-align="center" data-eit-gap="2">
-          <input type="checkbox" v-model="form.es_eliminatoria" />
-          <span>Pregunta eliminatoria (rechaza automáticamente si falla)</span>
-        </label>
-        <label data-eit-display="flex" data-eit-align="center" data-eit-gap="2">
-          <input type="checkbox" v-model="form.requerida" />
-          <span>Pregunta requerida</span>
-        </label>
+        <!-- Checkboxes -->
+        <div data-eit-display="flex" data-eit-flex-direction="column" data-eit-gap="3">
+          <label data-eit-display="flex" data-eit-align="center" data-eit-gap="2">
+            <input type="checkbox" v-model="form.es_eliminatoria" />
+            <span>Pregunta eliminatoria (rechaza automáticamente si falla)</span>
+          </label>
+          <label data-eit-display="flex" data-eit-align="center" data-eit-gap="2">
+            <input type="checkbox" v-model="form.requerida" />
+            <span>Pregunta requerida</span>
+          </label>
+        </div>
       </div>
-      
-      <!-- Botones en el contenido -->
+      <!-- Fin del wrapper con key -->
+
+      <!-- Botones en el contenido (fuera del wrapper con key) -->
       <div data-eit-display="flex" data-eit-justify="end" data-eit-gap="3" data-eit-mt="4">
         <ButtonComponent
           data-eit-variant="blue"
@@ -193,6 +197,11 @@ const emit = defineEmits<{
   cancel: []
 }>()
 
+// Exponer funciones para el componente padre
+defineExpose({
+  limpiarFormulario
+})
+
 // Ref del dialog
 type DialogExpose = {
   showDialog: () => void
@@ -201,9 +210,19 @@ type DialogExpose = {
 
 const dialogRef = ref<DialogExpose | null>(null)
 
+// Key para forzar re-render del formulario
+const formKey = ref(0)
+
 // Watch para abrir/cerrar el dialog
 watch(() => props.isOpen, (newVal) => {
   if (newVal) {
+    // Si se abre el modal sin pregunta (nueva pregunta), limpiar el formulario
+    if (!props.pregunta) {
+      limpiarFormulario()
+      // Incrementar la key para forzar re-render
+      formKey.value++
+    }
+    // Abrir el dialog
     setTimeout(() => dialogRef.value?.showDialog(), 100)
   }
 }, { flush: 'post' })
@@ -241,9 +260,40 @@ const opcionesSiNo: SelectOption[] = [
   { id: 'no', label: 'No' }
 ]
 
+// Función para limpiar el formulario
+function limpiarFormulario() {
+  form.value = {
+    pregunta: '',
+    tipo_campo: '' as any,
+    metodo_evaluacion: 'regla_fija',
+    regla: {
+      tipo: '',
+      min: null,
+      max: null,
+      keywords: [],
+      minimo: 1,
+      longitud_minima: null,
+      longitud_maxima: null,
+      respuesta_correcta: 'si',
+      opciones: [],
+      opciones_correctas: []
+    },
+    peso: 25,
+    es_eliminatoria: false,
+    requerida: true,
+    orden: 1
+  }
+  selectedTipo.value = null
+  selectedRespuestaCorrecta.value = null
+  keywordsRaw.value = ''
+  opcionesRaw.value = ''
+  opcionesCorrectasRaw.value = ''
+}
+
 // Cargar datos si estamos editando
 watch(() => props.pregunta, (nueva) => {
   if (nueva) {
+    // Editando pregunta existente
     form.value = { ...nueva }
     selectedTipo.value = tiposRespuesta.find(t => String(t.id) === nueva.tipo_campo) || null
 
@@ -253,6 +303,9 @@ watch(() => props.pregunta, (nueva) => {
       opcionesCorrectasRaw.value = nueva.regla.opciones_correctas?.join('\n') || ''
       selectedRespuestaCorrecta.value = opcionesSiNo.find(o => String(o.id) === nueva.regla.respuesta_correcta) || null
     }
+  } else {
+    // Nueva pregunta - limpiar formulario
+    limpiarFormulario()
   }
 }, { immediate: true })
 

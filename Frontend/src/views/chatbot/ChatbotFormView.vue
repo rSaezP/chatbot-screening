@@ -406,6 +406,7 @@
 
     <!-- Modal de pregunta -->
     <PreguntaFormComponent
+      ref="preguntaFormRef"
       :isOpen="modalPreguntaAbierto"
       :pregunta="preguntaEnEdicion"
       :isEditing="!!preguntaEnEdicion"
@@ -581,8 +582,9 @@ const modalPreguntaAbierto = ref(false)
 const preguntaEnEdicion = ref<Pregunta | null>(null)
 const indicePreguntaEnEdicion = ref<number | null>(null)
 
-// Ref para el dialog de avatar
+// Refs para componentes
 const dialogAvatarRef = ref<DialogExpose | null>(null)
+const preguntaFormRef = ref<{ limpiarFormulario: () => void } | null>(null)
 
 const pasos = [
   { name: 'Asistente' },
@@ -599,7 +601,15 @@ const selectedCategoria = ref<SelectOption | null>(null)
 
 const esEdicion = computed(() => !!route.params.id)
 
-// Cargar chatbot si estamos editando
+// Función para limpiar el formulario principal
+function limpiarFormularioPrincipal() {
+  formData.value = { ...initialChatbot }
+  selectedCategoria.value = null
+  pasoActual.value = 0
+  formError.value = false
+}
+
+// Cargar chatbot si estamos editando, limpiar si es nuevo
 onMounted(async () => {
   if (esEdicion.value) {
     try {
@@ -616,6 +626,9 @@ onMounted(async () => {
     } catch (error) {
       console.error('Error al cargar chatbot:', error)
     }
+  } else {
+    // Nuevo chatbot - asegurar que esté limpio
+    limpiarFormularioPrincipal()
   }
 })
 
@@ -623,6 +636,14 @@ onMounted(async () => {
 watch(selectedCategoria, (newVal) => {
   if (newVal) {
     formData.value.categoria = String(newVal.id)
+  }
+})
+
+// Watch para limpiar cuando cambie de edición a nuevo
+watch(() => route.params.id, (newId, oldId) => {
+  // Si cambia de tener ID a no tener ID (de edición a nuevo)
+  if (oldId && !newId) {
+    limpiarFormularioPrincipal()
   }
 })
 
@@ -661,6 +682,7 @@ function abrirFormPregunta(pregunta?: Pregunta, index?: number) {
   } else {
     preguntaEnEdicion.value = null
     indicePreguntaEnEdicion.value = null
+    // El watch en PreguntaFormComponent limpiará automáticamente el formulario
   }
   modalPreguntaAbierto.value = true
 }
