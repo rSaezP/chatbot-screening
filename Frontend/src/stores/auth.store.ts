@@ -66,7 +66,7 @@ export const useStoreAuth = defineStore('auth', () => {
         id: 120,
         name: "Chatbots",
         icon: "fa-solid fa-robot",
-        url: "/chatbots/new",
+        url: "/chatbots",
         requiresPermissions: false,
         module: "Chatbots",
         submenu: []

@@ -8,6 +8,7 @@ const sesionId = route.params.id as string
 
 // State
 const loading = ref(true)
+const loadingMessage = ref('Cargando evaluación...')
 const sesion = ref<any>(null)
 const chatbot = ref<any>(null)
 const preguntas = ref<any[]>([])
@@ -33,6 +34,38 @@ onMounted(async () => {
     // Obtener sesión por token (el sesionId es el token)
     const resSesion = await axios.get(`http://localhost:4000/api/sesiones/${sesionId}`)
     sesion.value = resSesion.data.data
+    
+    // Verificar si la sesión ya está completada
+    if (sesion.value.estado === 'completado') {
+      loadingMessage.value = 'Esta evaluación ya fue completada'
+      
+      // Esperar un momento para que el usuario vea el mensaje
+      setTimeout(() => {
+        finalizado.value = true
+        loading.value = false
+        
+        // Mostrar mensaje de que ya fue completada
+        mensajes.value.push({
+          tipo: 'asistente',
+          contenido: '✅ Esta evaluación ya ha sido completada anteriormente. Gracias por tu participación.',
+          timestamp: new Date()
+        })
+      }, 1500)
+      
+      return // No continuar con la carga
+    }
+    
+    // Verificar si la sesión está expirada
+    if (sesion.value.estado === 'expirado') {
+      loadingMessage.value = 'Esta evaluación ha expirado'
+      
+      setTimeout(() => {
+        error.value = 'Esta evaluación ha expirado. Por favor contacta al reclutador para obtener una nueva invitación.'
+        loading.value = false
+      }, 1500)
+      
+      return
+    }
     
     // Obtener chatbot con preguntas
     const resChatbot = await axios.get(`http://localhost:4000/api/config/${sesion.value.config_id}`)
@@ -108,6 +141,12 @@ function scrollToBottom() {
 // Enviar respuesta
 async function enviarRespuesta() {
   if (!respuestaActual.value.trim() || enviando.value) return
+  
+  // Verificar que la sesión no esté completada
+  if (sesion.value?.estado === 'completado' || finalizado.value) {
+    alert('Esta evaluación ya ha sido completada y no puede recibir más respuestas.')
+    return
+  }
   
   try {
     enviando.value = true
@@ -218,7 +257,7 @@ async function enviarRespuesta() {
     
     <!-- Loading -->
     <div v-if="loading" data-eit-p="5" data-eit-text-align="center">
-      <p data-eit-color="text-soft" data-eit-font-size="x4">Cargando evaluación...</p>
+      <p data-eit-color="text-soft" data-eit-font-size="x4">{{ loadingMessage }}</p>
     </div>
 
     <!-- Error -->
@@ -244,7 +283,7 @@ async function enviarRespuesta() {
           <!-- Logo de la empresa -->
           <div data-eit-display="flex" data-eit-justify="center" data-eit-mb="3">
             <img
-              src="/img/logo-dark.svg"
+              src="https://static.wixstatic.com/media/3ec04d_1f1f0d021fce4472a254b66aca24f876~mv2.png"
               alt="Logo 3IT"
               style="height: 40px; width: auto;"
             />
