@@ -280,42 +280,37 @@ async function enviarRespuesta() {
         data-eit-border-color="default"
       >
         <div style="max-width: 900px; margin: 0 auto;">
-          <!-- Logo de la empresa -->
-          <div data-eit-display="flex" data-eit-justify="center" data-eit-mb="3">
+          <div data-eit-display="flex" data-eit-align="center" data-eit-gap="4" data-eit-mb="3">
+
+            <!-- Logo de 3IT -->
             <img
               src="https://static.wixstatic.com/media/3ec04d_1f1f0d021fce4472a254b66aca24f876~mv2.png"
-              alt="Logo 3IT"
-              style="height: 40px; width: auto;"
+              alt="3IT Logo"
+              style="height: 60px; object-fit: contain; flex-shrink: 0;"
             />
-          </div>
 
-          <div data-eit-display="flex" data-eit-align="center" data-eit-gap="3" data-eit-mb="3">
-            <!-- Avatar grande del asistente -->
-            <img
+            <!-- Avatar del asistente -->
+            <div
               v-if="chatbot.avatar_url"
-              :src="chatbot.avatar_url"
-              :alt="chatbot.nombre_asistente"
-              data-eit-shape="circle"
-              data-eit-shape-size="60"
-              data-eit-object-fit="cover"
-              data-eit-flex-shrink="0"
-            />
-            <span
+              style="width: 50px; height: 50px; border-radius: 50%; overflow: hidden; flex-shrink: 0; box-shadow: 0 2px 8px rgba(0,0,0,0.1);"
+            >
+              <img
+                :src="chatbot.avatar_url"
+                :alt="chatbot.nombre_asistente"
+                style="width: 100%; height: 100%; object-fit: cover;"
+              />
+            </div>
+            <div
               v-else
-              data-eit-shape="circle"
-              data-eit-shape-size="60"
-              data-eit-display="flex"
-              data-eit-justify="center"
-              data-eit-align="center"
-              data-eit-flex-shrink="0"
-              :style="`background: ${chatbot.color_botones || '#3b82f6'};`"
+              data-eit-bg="primary"
+              style="width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; box-shadow: 0 2px 8px rgba(0,0,0,0.1);"
             >
               <font-awesome-icon
                 icon="fa-solid fa-robot"
                 data-eit-color="white"
                 data-eit-font-size="x5"
               />
-            </span>
+            </div>
 
             <div>
               <h2 data-eit-font-size="x5" data-eit-mt="0" data-eit-mb="1" data-eit-color="text" data-eit-font-weight="700">
@@ -330,8 +325,9 @@ async function enviarRespuesta() {
           <!-- Barra de progreso -->
           <div data-eit-mb="2">
             <div style="background: #e5e7eb; height: 6px; border-radius: 10px; overflow: hidden;">
-              <div 
-                :style="`width: ${progreso}%; background: ${chatbot.color_botones || '#3b82f6'}; height: 100%; transition: width 0.5s ease;`"
+              <div
+                data-eit-bg="primary"
+                :style="`width: ${progreso}%; height: 100%; transition: width 0.5s ease;`"
               ></div>
             </div>
           </div>
@@ -367,41 +363,39 @@ async function enviarRespuesta() {
             data-eit-gap="3"
           >
             <!-- Avatar -->
-            <img
+            <div
               v-if="chatbot.avatar_url"
-              :src="chatbot.avatar_url"
-              :alt="chatbot.nombre_asistente"
-              data-eit-shape="circle"
-              data-eit-shape-size="32"
-              data-eit-object-fit="cover"
-              data-eit-flex-shrink="0"
-            />
-            <span
+              style="width: 40px; height: 40px; border-radius: 50%; overflow: hidden; flex-shrink: 0; box-shadow: 0 2px 8px rgba(0,0,0,0.1);"
+            >
+              <img
+                :src="chatbot.avatar_url"
+                :alt="chatbot.nombre_asistente"
+                style="width: 100%; height: 100%; object-fit: cover;"
+              />
+            </div>
+            <div
               v-else
-              data-eit-shape="circle"
-              data-eit-shape-size="32"
-              data-eit-display="flex"
-              data-eit-justify="center"
-              data-eit-align="center"
-              data-eit-flex-shrink="0"
-              :style="`background: ${chatbot.color_botones || '#3b82f6'};`"
+              data-eit-bg="primary"
+              style="width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; box-shadow: 0 2px 8px rgba(0,0,0,0.1);"
             >
               <font-awesome-icon
                 icon="fa-solid fa-robot"
                 data-eit-color="white"
                 data-eit-font-size="x3"
               />
-            </span>
-            
+            </div>
+
             <!-- Mensaje -->
-            <div style="flex: 1; max-width: 65%;">
+            <div style="flex: 1; max-width: 70%;">
               <p data-eit-font-size="x1" data-eit-color="text-soft" data-eit-mb="1" data-eit-font-weight="600">
                 {{ chatbot.nombre_asistente }}
               </p>
-              <div 
+              <div
                 data-eit-p="3"
                 data-eit-font-size="x3"
-                :style="`background: ${chatbot.color_conversacion || '#ffffff'}; color: #1f2937; border-radius: 18px 18px 18px 4px; box-shadow: 0 2px 8px rgba(0,0,0,0.08);`"
+                data-eit-bg="white"
+                data-eit-color="text"
+                style="border-radius: 16px 16px 16px 4px; box-shadow: 0 1px 4px rgba(0,0,0,0.1); border: 1px solid #e5e7eb;"
               >
                 {{ mensaje.contenido }}
               </div>
@@ -409,19 +403,21 @@ async function enviarRespuesta() {
           </div>
 
           <!-- Mensaje del candidato (derecha sin avatar) -->
-          <div 
+          <div
             v-else
             data-eit-display="flex"
             data-eit-justify="end"
           >
-            <div style="max-width: 65%;">
+            <div style="max-width: 70%;">
               <p data-eit-font-size="x1" data-eit-color="text-soft" data-eit-mb="1" data-eit-font-weight="600" data-eit-text-align="right">
                 Tú
               </p>
-              <div 
+              <div
                 data-eit-p="3"
                 data-eit-font-size="x3"
-                :style="`background: ${chatbot.color_botones || '#3b82f6'}; color: white; border-radius: 18px 18px 4px 18px; box-shadow: 0 2px 8px rgba(0,0,0,0.15);`"
+                data-eit-bg="primary"
+                data-eit-color="white"
+                style="border-radius: 16px 16px 4px 16px; box-shadow: 0 1px 4px rgba(0,0,0,0.15);"
               >
                 {{ mensaje.contenido }}
               </div>
@@ -431,7 +427,7 @@ async function enviarRespuesta() {
       </div>
 
       <!-- Input -->
-      <div 
+      <div
         v-if="!finalizado"
         data-eit-p="4"
         data-eit-bg="white"
@@ -439,11 +435,11 @@ async function enviarRespuesta() {
         data-eit-border-color="default"
       >
         <div style="max-width: 900px; margin: 0 auto;" data-eit-display="flex" data-eit-gap="3" data-eit-align="end">
-          <div data-eit-flex="fill">
+          <div style="flex: 1;">
             <InputComponent
               :key="preguntaActual"
               inputType="text"
-              placeHolder="Escribe tu respuesta aquí..."
+              floatLabel="Escribe tu respuesta aquí..."
               :input="respuestaActual"
               @emitValue="respuestaActual = $event"
               @keyup.enter="enviarRespuesta"
@@ -454,13 +450,13 @@ async function enviarRespuesta() {
             :loading="enviando"
             :disabled="!respuestaActual.trim() || enviando"
             @emitEvent="enviarRespuesta"
-            :style="`background: ${chatbot.color_botones || '#3b82f6'}; border: none;`"
+            data-eit-variant="primary"
           />
         </div>
       </div>
 
       <!-- Finalizado -->
-      <div 
+      <div
         v-else
         data-eit-p="5"
         data-eit-text-align="center"
@@ -469,16 +465,17 @@ async function enviarRespuesta() {
         data-eit-border-color="default"
       >
         <div style="max-width: 500px; margin: 0 auto;">
-          <div 
-            :style="`width: 80px; height: 80px; margin: 0 auto 20px; background: ${chatbot.color_botones || '#3b82f6'}; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 20px rgba(0,0,0,0.15);`"
+          <div
+            data-eit-bg="primary"
+            style="width: 80px; height: 80px; margin: 0 auto 20px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 20px rgba(0,0,0,0.15);"
           >
-            <font-awesome-icon 
-              icon="fa-solid fa-check" 
+            <font-awesome-icon
+              icon="fa-solid fa-check"
               data-eit-color="white"
               style="font-size: 40px;"
             />
           </div>
-          <h3 data-eit-color="text" data-eit-font-size="x6" data-eit-mb="2" data-eit-font-weight="700">
+          <h3 data-eit-color="text" data-eit-font-size="x6" data-eit-mb="3" data-eit-font-weight="700">
             ¡Evaluación Completada!
           </h3>
           <p data-eit-color="text-soft" data-eit-font-size="x3" data-eit-mb="0">
