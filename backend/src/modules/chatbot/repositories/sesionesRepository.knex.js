@@ -120,44 +120,45 @@ const listar = async (opciones = {}) => {
 
     const offset = (page - 1) * limit;
 
-    // Construir query base
-    let query = knex('cb_sesiones')
+    // Función helper para aplicar filtros
+    const applyFilters = (query) => {
+      if (estado) {
+        query = query.where('cb_sesiones.estado', estado);
+      }
+      if (resultado) {
+        query = query.where('cb_sesiones.resultado', resultado);
+      }
+      if (config_id) {
+        query = query.where('cb_sesiones.config_id', config_id);
+      }
+      if (candidato_email) {
+        query = query.where('cb_sesiones.candidato_email', 'like', `%${candidato_email}%`);
+      }
+      if (fecha_desde) {
+        query = query.where('cb_sesiones.fecha_inicio', '>=', fecha_desde);
+      }
+      if (fecha_hasta) {
+        query = query.where('cb_sesiones.fecha_inicio', '<=', fecha_hasta);
+      }
+      return query;
+    };
+
+    // Query para contar (sin SELECT, solo COUNT)
+    let countQuery = knex('cb_sesiones').count('* as total');
+    countQuery = applyFilters(countQuery);
+    const [{ total }] = await countQuery;
+
+    // Query para obtener datos paginados (con SELECT y JOIN)
+    let dataQuery = knex('cb_sesiones')
       .select(
         'cb_sesiones.*',
         'cb_config.nombre as chatbot_nombre'
       )
       .leftJoin('cb_config', 'cb_sesiones.config_id', 'cb_config.id');
 
-    // Aplicar filtros
-    if (estado) {
-      query = query.where('cb_sesiones.estado', estado);
-    }
+    dataQuery = applyFilters(dataQuery);
 
-    if (resultado) {
-      query = query.where('cb_sesiones.resultado', resultado);
-    }
-
-    if (config_id) {
-      query = query.where('cb_sesiones.config_id', config_id);
-    }
-
-    if (candidato_email) {
-      query = query.where('cb_sesiones.candidato_email', 'like', `%${candidato_email}%`);
-    }
-
-    if (fecha_desde) {
-      query = query.where('cb_sesiones.fecha_inicio', '>=', fecha_desde);
-    }
-
-    if (fecha_hasta) {
-      query = query.where('cb_sesiones.fecha_inicio', '<=', fecha_hasta);
-    }
-
-    // Contar total
-    const [{ total }] = await query.clone().count('* as total');
-
-    // Obtener datos paginados
-    const data = await query
+    const data = await dataQuery
       .orderBy('cb_sesiones.id', 'desc')
       .limit(limit)
       .offset(offset);
@@ -287,10 +288,10 @@ const obtenerEstadisticas = async (configId) => {
         knex.raw('COUNT(*) as total'),
         knex.raw('SUM(CASE WHEN estado = "pendiente" THEN 1 ELSE 0 END) as pendientes'),
         knex.raw('SUM(CASE WHEN estado = "en_progreso" THEN 1 ELSE 0 END) as en_progreso'),
-        knex.raw('SUM(CASE WHEN estado = "completada" THEN 1 ELSE 0 END) as completadas'),
+        knex.raw('SUM(CASE WHEN estado = "completado" THEN 1 ELSE 0 END) as completadas'),
         knex.raw('SUM(CASE WHEN resultado = "aprobado" THEN 1 ELSE 0 END) as aprobados'),
         knex.raw('SUM(CASE WHEN resultado = "rechazado" THEN 1 ELSE 0 END) as rechazados'),
-        knex.raw('AVG(porcentaje_aprobacion) as porcentaje_promedio')
+        knex.raw('AVG(porcentaje) as porcentaje_promedio')
       )
       .first();
 
