@@ -1,9 +1,9 @@
 /**
- * Repository: Mensajes de Conversación
- * Maneja todas las operaciones de base de datos para cb_mensajes
+ * Repository: Mensajes de Conversación (Knex Version)
+ * Versión con Knex.js - Query Builder seguro
  */
 
-const { findAll, findOne, insert, update, remove } = require('../../../shared/utils/queryHelper');
+const knex = require('../../../config/knex');
 
 /**
  * Crear un nuevo mensaje
@@ -12,25 +12,16 @@ const { findAll, findOne, insert, update, remove } = require('../../../shared/ut
  */
 const crear = async (datos) => {
   try {
-    const sql = `
-      INSERT INTO cb_mensajes (
-        sesion_id,
-        pregunta_id,
-        tipo,
-        contenido,
-        metadata
-      ) VALUES (?, ?, ?, ?, ?)
-    `;
+    const mensajeData = {
+      sesion_id: datos.sesion_id,
+      pregunta_id: datos.pregunta_id || null,
+      tipo: datos.tipo,
+      contenido: datos.contenido,
+      metadata: datos.metadata ? JSON.stringify(datos.metadata) : null
+    };
 
-    const params = [
-      datos.sesion_id,
-      datos.pregunta_id || null,
-      datos.tipo,
-      datos.contenido,
-      datos.metadata ? JSON.stringify(datos.metadata) : null
-    ];
-
-    return await insert(sql, params);
+    const [id] = await knex('cb_mensajes').insert(mensajeData);
+    return id;
   } catch (error) {
     throw new Error(`Error al crear mensaje: ${error.message}`);
   }
@@ -43,8 +34,9 @@ const crear = async (datos) => {
  */
 const obtenerPorId = async (id) => {
   try {
-    const sql = 'SELECT * FROM cb_mensajes WHERE id = ?';
-    return await findOne(sql, [id]);
+    return await knex('cb_mensajes')
+      .where({ id })
+      .first();
   } catch (error) {
     throw new Error(`Error al obtener mensaje por ID: ${error.message}`);
   }
@@ -58,17 +50,14 @@ const obtenerPorId = async (id) => {
  */
 const obtenerPorSesion = async (sesionId, filtros = {}) => {
   try {
-    let sql = 'SELECT * FROM cb_mensajes WHERE sesion_id = ?';
-    const params = [sesionId];
+    let query = knex('cb_mensajes')
+      .where('sesion_id', sesionId);
 
     if (filtros.tipo) {
-      sql += ' AND tipo = ?';
-      params.push(filtros.tipo);
+      query = query.where('tipo', filtros.tipo);
     }
 
-    sql += ' ORDER BY created_at ASC';
-
-    return await findAll(sql, params);
+    return await query.orderBy('created_at', 'asc');
   } catch (error) {
     throw new Error(`Error al obtener mensajes por sesión: ${error.message}`);
   }
@@ -81,14 +70,16 @@ const obtenerPorSesion = async (sesionId, filtros = {}) => {
  */
 const obtenerPreguntasSesion = async (sesionId) => {
   try {
-    const sql = `
-      SELECT m.*, p.pregunta as texto_pregunta, p.tipo_campo
-      FROM cb_mensajes m
-      LEFT JOIN cb_preguntas p ON m.pregunta_id = p.id
-      WHERE m.sesion_id = ? AND m.tipo = 'pregunta'
-      ORDER BY m.created_at ASC
-    `;
-    return await findAll(sql, [sesionId]);
+    return await knex('cb_mensajes as m')
+      .select(
+        'm.*',
+        'p.pregunta as texto_pregunta',
+        'p.tipo_campo'
+      )
+      .leftJoin('cb_preguntas as p', 'm.pregunta_id', 'p.id')
+      .where('m.sesion_id', sesionId)
+      .where('m.tipo', 'pregunta')
+      .orderBy('m.created_at', 'asc');
   } catch (error) {
     throw new Error(`Error al obtener preguntas de sesión: ${error.message}`);
   }
@@ -101,14 +92,15 @@ const obtenerPreguntasSesion = async (sesionId) => {
  */
 const obtenerRespuestasSesion = async (sesionId) => {
   try {
-    const sql = `
-      SELECT m.*, p.pregunta as texto_pregunta
-      FROM cb_mensajes m
-      LEFT JOIN cb_preguntas p ON m.pregunta_id = p.id
-      WHERE m.sesion_id = ? AND m.tipo = 'respuesta'
-      ORDER BY m.created_at ASC
-    `;
-    return await findAll(sql, [sesionId]);
+    return await knex('cb_mensajes as m')
+      .select(
+        'm.*',
+        'p.pregunta as texto_pregunta'
+      )
+      .leftJoin('cb_preguntas as p', 'm.pregunta_id', 'p.id')
+      .where('m.sesion_id', sesionId)
+      .where('m.tipo', 'respuesta')
+      .orderBy('m.created_at', 'asc');
   } catch (error) {
     throw new Error(`Error al obtener respuestas de sesión: ${error.message}`);
   }
@@ -121,19 +113,17 @@ const obtenerRespuestasSesion = async (sesionId) => {
  */
 const obtenerConversacionCompleta = async (sesionId) => {
   try {
-    const sql = `
-      SELECT
-        m.*,
-        p.pregunta as texto_pregunta,
-        p.tipo_campo,
-        p.descripcion as descripcion_pregunta,
-        p.media_url
-      FROM cb_mensajes m
-      LEFT JOIN cb_preguntas p ON m.pregunta_id = p.id
-      WHERE m.sesion_id = ?
-      ORDER BY m.created_at ASC
-    `;
-    return await findAll(sql, [sesionId]);
+    return await knex('cb_mensajes as m')
+      .select(
+        'm.*',
+        'p.pregunta as texto_pregunta',
+        'p.tipo_campo',
+        'p.descripcion as descripcion_pregunta',
+        'p.media_url'
+      )
+      .leftJoin('cb_preguntas as p', 'm.pregunta_id', 'p.id')
+      .where('m.sesion_id', sesionId)
+      .orderBy('m.created_at', 'asc');
   } catch (error) {
     throw new Error(`Error al obtener conversación completa: ${error.message}`);
   }
@@ -147,27 +137,23 @@ const obtenerConversacionCompleta = async (sesionId) => {
  */
 const actualizar = async (id, datos) => {
   try {
-    const campos = [];
-    const valores = [];
+    const updateData = {};
 
     if (datos.contenido !== undefined) {
-      campos.push('contenido = ?');
-      valores.push(datos.contenido);
+      updateData.contenido = datos.contenido;
     }
 
     if (datos.metadata !== undefined) {
-      campos.push('metadata = ?');
-      valores.push(datos.metadata ? JSON.stringify(datos.metadata) : null);
+      updateData.metadata = datos.metadata ? JSON.stringify(datos.metadata) : null;
     }
 
-    if (campos.length === 0) {
+    if (Object.keys(updateData).length === 0) {
       throw new Error('No hay campos para actualizar');
     }
 
-    valores.push(id);
-
-    const sql = `UPDATE cb_mensajes SET ${campos.join(', ')} WHERE id = ?`;
-    return await update(sql, valores);
+    return await knex('cb_mensajes')
+      .where({ id })
+      .update(updateData);
   } catch (error) {
     throw new Error(`Error al actualizar mensaje: ${error.message}`);
   }
@@ -180,8 +166,9 @@ const actualizar = async (id, datos) => {
  */
 const eliminar = async (id) => {
   try {
-    const sql = 'DELETE FROM cb_mensajes WHERE id = ?';
-    return await remove(sql, [id]);
+    return await knex('cb_mensajes')
+      .where({ id })
+      .delete();
   } catch (error) {
     throw new Error(`Error al eliminar mensaje: ${error.message}`);
   }
@@ -194,15 +181,11 @@ const eliminar = async (id) => {
  */
 const contarPorTipo = async (sesionId) => {
   try {
-    const sql = `
-      SELECT
-        tipo,
-        COUNT(*) as total
-      FROM cb_mensajes
-      WHERE sesion_id = ?
-      GROUP BY tipo
-    `;
-    const resultados = await findAll(sql, [sesionId]);
+    const resultados = await knex('cb_mensajes')
+      .select('tipo')
+      .count('* as total')
+      .where('sesion_id', sesionId)
+      .groupBy('tipo');
 
     const conteo = {
       sistema: 0,
@@ -211,7 +194,7 @@ const contarPorTipo = async (sesionId) => {
     };
 
     resultados.forEach(item => {
-      conteo[item.tipo] = item.total;
+      conteo[item.tipo] = parseInt(item.total);
     });
 
     return conteo;
@@ -228,17 +211,16 @@ const contarPorTipo = async (sesionId) => {
  */
 const obtenerUltimoMensaje = async (sesionId, tipo = null) => {
   try {
-    let sql = 'SELECT * FROM cb_mensajes WHERE sesion_id = ?';
-    const params = [sesionId];
+    let query = knex('cb_mensajes')
+      .where('sesion_id', sesionId);
 
     if (tipo) {
-      sql += ' AND tipo = ?';
-      params.push(tipo);
+      query = query.where('tipo', tipo);
     }
 
-    sql += ' ORDER BY created_at DESC LIMIT 1';
-
-    return await findOne(sql, params);
+    return await query
+      .orderBy('created_at', 'desc')
+      .first();
   } catch (error) {
     throw new Error(`Error al obtener último mensaje: ${error.message}`);
   }
@@ -252,13 +234,16 @@ const obtenerUltimoMensaje = async (sesionId, tipo = null) => {
  */
 const existeRespuesta = async (sesionId, preguntaId) => {
   try {
-    const sql = `
-      SELECT COUNT(*) as total
-      FROM cb_mensajes
-      WHERE sesion_id = ? AND pregunta_id = ? AND tipo = 'respuesta'
-    `;
-    const resultado = await findOne(sql, [sesionId, preguntaId]);
-    return resultado ? resultado.total > 0 : false;
+    const resultado = await knex('cb_mensajes')
+      .count('* as total')
+      .where({
+        sesion_id: sesionId,
+        pregunta_id: preguntaId,
+        tipo: 'respuesta'
+      })
+      .first();
+
+    return resultado ? parseInt(resultado.total) > 0 : false;
   } catch (error) {
     throw new Error(`Error al verificar respuesta existente: ${error.message}`);
   }
@@ -271,8 +256,9 @@ const existeRespuesta = async (sesionId, preguntaId) => {
  */
 const eliminarPorSesion = async (sesionId) => {
   try {
-    const sql = 'DELETE FROM cb_mensajes WHERE sesion_id = ?';
-    return await remove(sql, [sesionId]);
+    return await knex('cb_mensajes')
+      .where('sesion_id', sesionId)
+      .delete();
   } catch (error) {
     throw new Error(`Error al eliminar mensajes de sesión: ${error.message}`);
   }

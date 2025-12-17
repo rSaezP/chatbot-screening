@@ -402,6 +402,29 @@ const obtenerTodasConChatbot = async (filtros = {}) => {
   }
 };
 
+/**
+ * Verificar si una sesión está expirada
+ * @param {number} id - ID de la sesión
+ * @returns {Promise<boolean>} true si está expirada
+ */
+const estaExpirada = async (id) => {
+  try {
+    const resultado = await knex('cb_sesiones')
+      .select(
+        knex.raw('fecha_expiracion < NOW() as expirada'),
+        'estado'
+      )
+      .where('id', id)
+      .first();
+
+    if (!resultado) return false;
+
+    return resultado.expirada === 1 && resultado.estado !== 'completado';
+  } catch (error) {
+    throw new Error(`Error al verificar si sesión está expirada: ${error.message}`);
+  }
+};
+
 module.exports = {
   crear,
   obtenerPorId,
@@ -415,5 +438,6 @@ module.exports = {
   obtenerEstadisticas,
   obtenerSesionCompleta,
   contarPorEstado,
-  obtenerTodasConChatbot
+  obtenerTodasConChatbot,
+  estaExpirada
 };
