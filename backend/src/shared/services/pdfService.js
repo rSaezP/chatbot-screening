@@ -8,6 +8,7 @@ const PDFDocument = require('pdfkit');
 const fs = require('fs');
 const path = require('path');
 const https = require('https');
+const HTTP_CONSTANTS = require('../constants/http');
 
 // Rutas a las fuentes Century Gothic
 const FONT_REGULAR = path.join(__dirname, '../fonts/centurygothic.ttf');
@@ -21,7 +22,7 @@ const FONT_BOLD = path.join(__dirname, '../fonts/centurygothic_bold.ttf');
 async function generarReporteCandidato(sesionData) {
   try {
     // Descargar logo de 3IT
-    const logoUrl = 'https://static.wixstatic.com/media/3ec04d_1f1f0d021fce4472a254b66aca24f876~mv2.png';
+    const logoUrl = HTTP_CONSTANTS.COMPANY_LOGO_URL;
     let logoBuffer = null;
     try {
       logoBuffer = await descargarImagen(logoUrl);

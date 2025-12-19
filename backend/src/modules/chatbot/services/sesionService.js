@@ -11,6 +11,7 @@ const evaluacionesRepository = require('../repositories/evaluacionesRepository.k
 const evaluacionService = require('./evaluacion/evaluacionService');
 const emailService = require('../../../shared/services/emailService');
 const logger = require('../../../config/logger');
+const HTTP_CONSTANTS = require('../../../shared/constants/http');
 
 /**
  * Generar un token único para la sesión
@@ -92,7 +93,7 @@ const crearSesion = async (configId, datosCandidato = {}) => {
     // 📧 ENVIAR EMAIL DE INVITACIÓN (si tiene email)
     if (datosCandidato.email) {
       try {
-        const chatbotUrl = `${process.env.FRONTEND_URL || 'http://localhost:3000'}/chatbot/${token}`;
+        const chatbotUrl = `${HTTP_CONSTANTS.FRONTEND_URL}/chatbot/${token}`;
 
         await emailService.enviarInvitacion(
           datosCandidato.email,

@@ -9,6 +9,7 @@ const pdfService = require('./pdfService');
 const fs = require('fs');
 const path = require('path');
 const logger = require('../../config/logger');
+const HTTP_CONSTANTS = require('../constants/http');
 
 /**
  * Crear transporter de nodemailer
@@ -176,7 +177,7 @@ const enviarInvitacion = async (candidatoEmail, chatbotUrl, config, sesion) => {
       year: 'numeric'
     });
 
-    const asunto = `Tu Evaluación Profesional está Lista`;
+    const asunto = `Invitación: Conversación Virtual - ${config.nombre}`;
 
     // Personalizar saludo según si hay nombre o no
     const saludo = sesion.candidato_nombre 
@@ -195,7 +196,7 @@ const enviarInvitacion = async (candidatoEmail, chatbotUrl, config, sesion) => {
     
     <!-- Logo -->
     <div style="background-color: #ffffff; text-align: center; padding: 30px 20px 10px;">
-      <img src="https://static.wixstatic.com/media/3ec04d_1f1f0d021fce4472a254b66aca24f876~mv2.png" alt="3IT" style="max-width: 100px; height: auto;">
+      <img src="${HTTP_CONSTANTS.COMPANY_LOGO_URL}" alt="3IT" style="max-width: 100px; height: auto;">
     </div>
 
     <!-- Header -->
@@ -433,7 +434,7 @@ const notificarReclutador = async (reclutadorEmail, sesionData) => {
   <div class="container">
     
     <div class="logo">
-      <img src="https://static.wixstatic.com/media/3ec04d_1f1f0d021fce4472a254b66aca24f876~mv2.png" alt="3IT Logo">
+      <img src="${HTTP_CONSTANTS.COMPANY_LOGO_URL}" alt="3IT Logo">
     </div>
 
     <div class="header">
