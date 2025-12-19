@@ -232,7 +232,8 @@ class EvaluacionService {
       // Por ahora asumimos que está disponible en el contexto
 
       // 3. Volver a evaluar
-      // TODO: Necesitaríamos obtener la respuesta original del mensaje
+      // FUTURE FEATURE: Re-evaluación requiere integración con mensajesRepository
+      // para obtener la respuesta original del candidato
       logger.warn('Re-evaluación requiere respuesta original del mensaje', {
         service: 'evaluacionService'
       });

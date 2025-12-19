@@ -6,7 +6,7 @@
 const ReglaFijaEvaluator = require('./ReglaFijaEvaluator');
 const IAEvaluator = require('./IAEvaluator');
 const ManualEvaluator = require('./ManualEvaluator');
-const logger = require('../../../../config/logger');
+const logger = require('../../../../../config/logger');
 
 class EvaluatorFactory {
   /**

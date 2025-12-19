@@ -15,8 +15,9 @@ class IAEvaluator {
    */
   async evaluar(pregunta, respuesta) {
     try {
-      // TODO: Integrar con API de IA (OpenAI, Claude, etc.)
-      // Por ahora retornamos un mock simulado
+      // FUTURE FEATURE: Integración con APIs de IA (OpenAI GPT-4, Claude 3.5)
+      // Mock implementado para testing y desarrollo
+      // Ver métodos evaluarConOpenAI() y evaluarConClaude() para referencia
 
       logger.debug('IAEvaluator en modo mock', {
         service: 'IAEvaluator',
@@ -86,13 +87,13 @@ class IAEvaluator {
   }
 
   /**
-   * Método preparado para integración con OpenAI
+   * FUTURE FEATURE: Método preparado para integración con OpenAI GPT-4
    * @param {Object} pregunta - Pregunta con prompt
    * @param {string} respuesta - Respuesta del candidato
    * @returns {Promise<Object>} Resultado de OpenAI
    */
   async evaluarConOpenAI(pregunta, respuesta) {
-    // TODO: Implementar integración con OpenAI
+    // IMPLEMENTATION PENDING: Requiere OPENAI_API_KEY en .env
     /*
     const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 
@@ -122,13 +123,13 @@ class IAEvaluator {
   }
 
   /**
-   * Método preparado para integración con Claude
+   * FUTURE FEATURE: Método preparado para integración con Claude (Anthropic)
    * @param {Object} pregunta - Pregunta con prompt
    * @param {string} respuesta - Respuesta del candidato
    * @returns {Promise<Object>} Resultado de Claude
    */
   async evaluarConClaude(pregunta, respuesta) {
-    // TODO: Implementar integración con Claude (Anthropic)
+    // IMPLEMENTATION PENDING: Requiere ANTHROPIC_API_KEY en .env
     /*
     const anthropic = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
 

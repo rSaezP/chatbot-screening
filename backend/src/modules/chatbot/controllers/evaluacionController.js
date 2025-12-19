@@ -245,7 +245,7 @@ const evaluacionController = {
     try {
       const { configId } = req.query;
 
-      // TODO: Implementar filtro por config_id si se necesita
+      // FUTURE FEATURE: Implementar filtro por config_id para búsquedas específicas
       // Por ahora retornamos todas las pendientes del sistema
 
       const evaluaciones = await evaluacionesRepository.obtenerPendientes(configId);
